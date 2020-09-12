@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>VideoView.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+VideoView.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.utils</span>
+
+<span class="s1">import android.content.Context</span>
+<span class="s1">import android.content.res.TypedArray</span>
+<span class="s1">import android.util.AttributeSet</span>
+<span class="s1">import android.view.View</span>
+<span class="s1">import android.widget.VideoView</span>
+
+
+<span class="s0">class </span><span class="s1">VideoView(context: Context</span><span class="s0">, </span><span class="s1">attrs: AttributeSet?</span><span class="s0">, </span><span class="s1">defStyleAttr: Int) :</span>
+    <span class="s1">VideoView(context</span><span class="s0">, </span><span class="s1">attrs</span><span class="s0">, </span><span class="s1">defStyleAttr) {</span>
+    <span class="s1">private </span><span class="s0">val </span><span class="s1">mScaleType: Int</span>
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">mHorizontalAspectRatioThreshold = </span><span class="s2">0</span>
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">mVerticalAspectRatioThreshold = </span><span class="s2">0</span>
+
+    <span class="s1">constructor(context: Context) : </span><span class="s0">this</span><span class="s1">(context</span><span class="s0">, null, </span><span class="s2">0</span><span class="s1">) {}</span>
+    <span class="s1">constructor(context: Context</span><span class="s0">, </span><span class="s1">attrs: AttributeSet?) : </span><span class="s0">this</span><span class="s1">(context</span><span class="s0">, </span><span class="s1">attrs</span><span class="s0">, </span><span class="s2">0</span><span class="s1">) {}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onMeasure(widthMeasureSpec: Int</span><span class="s0">, </span><span class="s1">heightMeasureSpec: Int) {</span>
+        <span class="s0">super</span><span class="s1">.onMeasure(widthMeasureSpec</span><span class="s0">, </span><span class="s1">heightMeasureSpec)</span>
+        <span class="s0">if </span><span class="s1">(mScaleType == SCALE_TYPE_CENTER_CROP) {</span>
+            <span class="s1">applyCenterCropMeasure(widthMeasureSpec</span><span class="s0">, </span><span class="s1">heightMeasureSpec)</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(mScaleType == SCALE_TYPE_FILL) {</span>
+            <span class="s1">applyFillMeasure(widthMeasureSpec</span><span class="s0">, </span><span class="s1">heightMeasureSpec)</span>
+        <span class="s1">} </span><span class="s3">// else default/no-op</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">layout(l: Int</span><span class="s0">, </span><span class="s1">t: Int</span><span class="s0">, </span><span class="s1">r: Int</span><span class="s0">, </span><span class="s1">b: Int) {</span>
+        <span class="s0">if </span><span class="s1">(mScaleType == SCALE_TYPE_CENTER_CROP) {</span>
+            <span class="s1">applyCenterCropLayout(l</span><span class="s0">, </span><span class="s1">t</span><span class="s0">, </span><span class="s1">r</span><span class="s0">, </span><span class="s1">b)</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s0">super</span><span class="s1">.layout(l</span><span class="s0">, </span><span class="s1">t</span><span class="s0">, </span><span class="s1">r</span><span class="s0">, </span><span class="s1">b)</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">applyCenterCropLayout(left: Int</span><span class="s0">, </span><span class="s1">top: Int</span><span class="s0">, </span><span class="s1">right: Int</span><span class="s0">, </span><span class="s1">bottom: Int) {</span>
+        <span class="s0">super</span><span class="s1">.layout(</span>
+            <span class="s1">left + mHorizontalAspectRatioThreshold</span><span class="s0">, </span><span class="s1">top + mVerticalAspectRatioThreshold</span><span class="s0">, </span><span class="s1">right</span>
+                    <span class="s1">+ mHorizontalAspectRatioThreshold</span><span class="s0">, </span><span class="s1">bottom + mVerticalAspectRatioThreshold</span>
+        <span class="s1">)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">applyCenterCropMeasure(widthMeasureSpec: Int</span><span class="s0">, </span><span class="s1">heightMeasureSpec: Int) {</span>
+        <span class="s0">val </span><span class="s1">videoWidth = measuredWidth</span>
+        <span class="s0">val </span><span class="s1">videoHeight = measuredHeight</span>
+        <span class="s0">val </span><span class="s1">viewWidth = View.getDefaultSize(</span><span class="s2">0</span><span class="s0">, </span><span class="s1">widthMeasureSpec)</span>
+        <span class="s0">val </span><span class="s1">viewHeight = View.getDefaultSize(</span><span class="s2">0</span><span class="s0">, </span><span class="s1">heightMeasureSpec)</span>
+        <span class="s1">mHorizontalAspectRatioThreshold = </span><span class="s2">0</span>
+        <span class="s1">mVerticalAspectRatioThreshold = </span><span class="s2">0</span>
+        <span class="s0">if </span><span class="s1">(videoWidth == viewWidth) {</span>
+            <span class="s0">val </span><span class="s1">newWidth = (videoWidth.toFloat() / videoHeight * viewHeight).toInt()</span>
+            <span class="s1">setMeasuredDimension(newWidth</span><span class="s0">, </span><span class="s1">viewHeight)</span>
+            <span class="s1">mHorizontalAspectRatioThreshold = -(newWidth - viewWidth) / </span><span class="s2">2</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s0">val </span><span class="s1">newHeight = (videoHeight.toFloat() / videoWidth * viewWidth).toInt()</span>
+            <span class="s1">setMeasuredDimension(viewWidth</span><span class="s0">, </span><span class="s1">newHeight)</span>
+            <span class="s1">mVerticalAspectRatioThreshold = -(newHeight - viewHeight) / </span><span class="s2">2</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">applyFillMeasure(widthMeasureSpec: Int</span><span class="s0">, </span><span class="s1">heightMeasureSpec: Int) {</span>
+        <span class="s0">val </span><span class="s1">width = View.getDefaultSize(</span><span class="s2">0</span><span class="s0">, </span><span class="s1">widthMeasureSpec)</span>
+        <span class="s0">val </span><span class="s1">height = View.getDefaultSize(</span><span class="s2">0</span><span class="s0">, </span><span class="s1">heightMeasureSpec)</span>
+        <span class="s1">setMeasuredDimension(width</span><span class="s0">, </span><span class="s1">height)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">companion </span><span class="s0">object </span><span class="s1">{</span>
+        <span class="s1">private const </span><span class="s0">val </span><span class="s1">SCALE_TYPE_NORMAL = </span><span class="s2">0</span>
+        <span class="s1">private const </span><span class="s0">val </span><span class="s1">SCALE_TYPE_CENTER_CROP = </span><span class="s2">1</span>
+        <span class="s1">private const </span><span class="s0">val </span><span class="s1">SCALE_TYPE_FILL = </span><span class="s2">2</span>
+    <span class="s1">}</span>
+
+    <span class="s1">init {</span>
+        <span class="s0">val </span><span class="s1">attributes: TypedArray =</span>
+            <span class="s1">context.theme</span>
+                <span class="s1">.obtainStyledAttributes(attrs</span><span class="s0">, </span><span class="s1">com.respekt.R.styleable.IntroVideoView</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">0</span><span class="s1">)</span>
+        <span class="s1">mScaleType = attributes.getInt(</span>
+            <span class="s1">com.respekt.R.styleable.IntroVideoView_scaleType</span><span class="s0">,</span>
+            <span class="s1">SCALE_TYPE_FILL</span>
+        <span class="s1">)</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

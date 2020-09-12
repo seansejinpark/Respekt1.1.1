@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.activites</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.lang.System</span><span class="s0">;</span>
+
+<span class="s1">@kotlin.Metadata(mv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s2">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s3">&quot;</span><span class="s0">\u0000</span><span class="s3">p</span><span class="s0">\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0015\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010 \n\u0002\u0010\u000e\n\u0002\b\u0004\n\u0002\u0010\u0002\n\u0002\b\u000b\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010</span><span class="s3">!</span><span class="s0">\n\u0002\u0018\u0002\n\u0002\b\u000b\u0018\u0000</span><span class="s3">2</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0001</span><span class="s3">2</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0002</span><span class="s3">B</span><span class="s0">\u0005\u00a2\u0006\u0002\u0010\u0003</span><span class="s3">J</span><span class="s0">\u0010\u0010\u0014\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">2</span><span class="s0">\u0006\u0010\u0016\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0010</span><span class="s3">H</span><span class="s0">\u0002</span><span class="s3">J</span><span class="s0">\u0006\u0010\u0017\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0007</span><span class="s3">J</span><span class="s0">\b\u0010\u0018\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u000b</span><span class="s3">J</span><span class="s0">\u0006\u0010\u0019\u001a\u0002</span><span class="s3">0</span><span class="s0">\r</span><span class="s3">J</span><span class="s0">\b\u0010\u001a\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">H</span><span class="s0">\u0002</span><span class="s3">J</span><span class="s0">\u0018\u0010\u001b\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">2</span><span class="s0">\u0006\u0010\u001c\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0010</span><span class="s3">2</span><span class="s0">\u0006\u0010\u001d\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0010</span><span class="s3">H</span><span class="s0">\u0002</span><span class="s3">J</span><span class="s0">\b\u0010\u001e\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">H</span><span class="s0">\u0016</span><span class="s3">J</span><span class="s0">\u0012\u0010\u001f\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">2</span><span class="s0">\b\u0010 \u001a\u0004\u0018\u0001</span><span class="s3">0!H</span><span class="s0">\u0014</span><span class="s3">J</span><span class="s0">\b\u0010\&quot;\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">H</span><span class="s0">\u0014</span><span class="s3">J</span><span class="s0">\u0010\u0010</span><span class="s3">#</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">2</span><span class="s0">\u0006\u0010</span><span class="s3">$</span><span class="s0">\u001a\u0002</span><span class="s3">0%H</span><span class="s0">\u0007</span><span class="s3">J</span><span class="s0">\u0010\u0010</span><span class="s3">#</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">2</span><span class="s0">\u0006\u0010</span><span class="s3">$</span><span class="s0">\u001a\u0002</span><span class="s3">0&amp;H</span><span class="s0">\u0007</span><span class="s3">J</span><span class="s0">\u0010\u0010</span><span class="s3">#</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">2</span><span class="s0">\u0006\u0010</span><span class="s3">$</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\'</span><span class="s3">H</span><span class="s0">\u0007</span><span class="s3">J</span><span class="s0">\u0010\u0010</span><span class="s3">#</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">2</span><span class="s0">\u0006\u0010</span><span class="s3">$</span><span class="s0">\u001a\u0002</span><span class="s3">0(H</span><span class="s0">\u0007</span><span class="s3">J </span><span class="s0">\u0010</span><span class="s3">)</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">2</span><span class="s0">\u0006\u0010</span><span class="s3">*</span><span class="s0">\u001a\u0002</span><span class="s3">0+2</span><span class="s0">\u000e\u0010</span><span class="s3">,</span><span class="s0">\u001a\n\u0012\u0004\u0012\u0002</span><span class="s3">0.</span><span class="s0">\u0018\u0001</span><span class="s3">0-H</span><span class="s0">\u0016</span><span class="s3">J</span><span class="s0">\b\u0010</span><span class="s3">/</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">H</span><span class="s0">\u0014</span><span class="s3">J</span><span class="s0">\b\u0010</span><span class="s3">0</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">H</span><span class="s0">\u0014</span><span class="s3">J</span><span class="s0">\u0006\u0010</span><span class="s3">1</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">J</span><span class="s0">\u0006\u0010</span><span class="s3">2</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">J</span><span class="s0">\b\u0010</span><span class="s3">3</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">H</span><span class="s0">\u0002</span><span class="s3">J</span><span class="s0">\u0006\u0010</span><span class="s3">4</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">J</span><span class="s0">\b\u0010</span><span class="s3">5</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">H</span><span class="s0">\u0002</span><span class="s3">J</span><span class="s0">\b\u0010</span><span class="s3">6</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">H</span><span class="s0">\u0002</span><span class="s3">J</span><span class="s0">\u0006\u0010</span><span class="s3">7</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">J</span><span class="s0">\u0006\u0010</span><span class="s3">8</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">R</span><span class="s0">\u000e\u0010\u0004\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0005</span><span class="s3">X</span><span class="s0">\u0082\u0004\u00a2\u0006\u0002\n\u0000</span><span class="s3">R</span><span class="s0">\u000e\u0010\u0006\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0007</span><span class="s3">X</span><span class="s0">\u0082</span><span class="s3">.</span><span class="s0">\u00a2\u0006\u0002\n\u0000</span><span class="s3">R</span><span class="s0">\u000e\u0010\b\u001a\u0002</span><span class="s3">0</span><span class="s0">\t</span><span class="s3">X</span><span class="s0">\u0082\u000e\u00a2\u0006\u0002\n\u0000</span><span class="s3">R</span><span class="s0">\u0010\u0010\n\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u000b</span><span class="s3">X</span><span class="s0">\u0082\u000e\u00a2\u0006\u0002\n\u0000</span><span class="s3">R</span><span class="s0">\u000e\u0010\f\u001a\u0002</span><span class="s3">0</span><span class="s0">\r</span><span class="s3">X</span><span class="s0">\u0082</span><span class="s3">.</span><span class="s0">\u00a2\u0006\u0002\n\u0000</span><span class="s3">R</span><span class="s0">\u0014\u0010\u000e\u001a\b\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\u0010</span><span class="s3">0</span><span class="s0">\u000f</span><span class="s3">X</span><span class="s0">\u0082\u0004\u00a2\u0006\u0002\n\u0000</span><span class="s3">R</span><span class="s0">\u0014\u0010\u0011\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0010</span><span class="s3">X</span><span class="s0">\u0086</span><span class="s3">D</span><span class="s0">\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0012\u0010\u0013\u00a8\u0006</span><span class="s3">9&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s3">&quot;Lcom/respekt/activites/MainActivity;&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroidx/appcompat/app/AppCompatActivity;&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/android/billingclient/api/PurchasesUpdatedListener;&quot;</span><span class="s0">, </span><span class="s3">&quot;()V&quot;</span><span class="s0">, </span><span class="s3">&quot;array&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;billingClient&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/android/billingclient/api/BillingClient;&quot;</span><span class="s0">, </span><span class="s3">&quot;isExpiredOrCancelled&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;mMediaPlayerHolder&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/mediaplayer/MediaPlayerHolder;&quot;</span><span class="s0">, </span><span class="s3">&quot;skuDetails&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/android/billingclient/api/SkuDetails;&quot;</span><span class="s0">, </span><span class="s3">&quot;skuList&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;skuOneMonth&quot;</span><span class="s0">, </span><span class="s3">&quot;getSkuOneMonth&quot;</span><span class="s0">, </span><span class="s3">&quot;()Ljava/lang/String;&quot;</span><span class="s0">, </span><span class="s3">&quot;acknowledgePurchase&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;purchaseToken&quot;</span><span class="s0">, </span><span class="s3">&quot;getBillingClient&quot;</span><span class="s0">, </span><span class="s3">&quot;getMediaPlayerHolder&quot;</span><span class="s0">, </span><span class="s3">&quot;getSkuDetails&quot;</span><span class="s0">, </span><span class="s3">&quot;loadAllSKUs&quot;</span><span class="s0">, </span><span class="s3">&quot;navigateToPlaylist&quot;</span><span class="s0">, </span><span class="s3">&quot;categoryName&quot;</span><span class="s0">, </span><span class="s3">&quot;id&quot;</span><span class="s0">, </span><span class="s3">&quot;onBackPressed&quot;</span><span class="s0">, </span><span class="s3">&quot;onCreate&quot;</span><span class="s0">, </span><span class="s3">&quot;savedInstanceState&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/os/Bundle;&quot;</span><span class="s0">, </span><span class="s3">&quot;onDestroy&quot;</span><span class="s0">, </span><span class="s3">&quot;onMessageEvent&quot;</span><span class="s0">, </span><span class="s3">&quot;event&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/mediaplayer/LocalEventFromMediaPlayerHolder$PlaybackDuration;&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/mediaplayer/LocalEventFromMediaPlayerHolder$PlaybackPosition;&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/mediaplayer/LocalEventFromMediaPlayerHolder$StateChanged;&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/mediaplayer/LocalEventFromMediaPlayerHolder$UpdateLog;&quot;</span><span class="s0">, </span><span class="s3">&quot;onPurchasesUpdated&quot;</span><span class="s0">, </span><span class="s3">&quot;billingResult&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/android/billingclient/api/BillingResult;&quot;</span><span class="s0">, </span><span class="s3">&quot;purchases&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/android/billingclient/api/Purchase;&quot;</span><span class="s0">, </span><span class="s3">&quot;onResume&quot;</span><span class="s0">, </span><span class="s3">&quot;onStop&quot;</span><span class="s0">, </span><span class="s3">&quot;pause&quot;</span><span class="s0">, </span><span class="s3">&quot;play&quot;</span><span class="s0">, </span><span class="s3">&quot;randomVideoPlay&quot;</span><span class="s0">, </span><span class="s3">&quot;reset&quot;</span><span class="s0">, </span><span class="s3">&quot;setHomeFragment&quot;</span><span class="s0">, </span><span class="s3">&quot;setupBilling&quot;</span><span class="s0">, </span><span class="s3">&quot;setupFirebaseMessaging&quot;</span><span class="s0">, </span><span class="s3">&quot;shuffleVideo&quot;</span><span class="s0">, </span><span class="s3">&quot;app_debug&quot;</span><span class="s1">})</span>
+<span class="s0">public final class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">androidx.appcompat.app.AppCompatActivity </span><span class="s0">implements </span><span class="s1">com.android.billingclient.api.PurchasesUpdatedListener {</span>
+    <span class="s0">private final int</span><span class="s1">[] array = {</span><span class="s2">2131689473</span><span class="s0">, </span><span class="s2">2131689474</span><span class="s0">, </span><span class="s2">2131689475</span><span class="s0">, </span><span class="s2">2131689476</span><span class="s0">, </span><span class="s2">2131689477</span><span class="s0">, </span><span class="s2">2131689478</span><span class="s1">}</span><span class="s0">;</span>
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">private final </span><span class="s1">java.lang.String skuOneMonth = </span><span class="s3">&quot;com.respekt.one.month&quot;</span><span class="s0">;</span>
+    <span class="s0">private final </span><span class="s1">java.util.List&lt;java.lang.String&gt; skuList = </span><span class="s0">null;</span>
+    <span class="s0">private </span><span class="s1">com.respekt.mediaplayer.MediaPlayerHolder mMediaPlayerHolder</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">com.android.billingclient.api.BillingClient billingClient</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">com.android.billingclient.api.SkuDetails skuDetails</span><span class="s0">;</span>
+    <span class="s0">private boolean </span><span class="s1">isExpiredOrCancelled = </span><span class="s0">false;</span>
+    <span class="s0">private </span><span class="s1">java.util.HashMap _$_findViewCache</span><span class="s0">;</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getSkuOneMonth() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">android.os.Bundle savedInstanceState) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public final </span><span class="s1">com.android.billingclient.api.BillingClient getBillingClient() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public final </span><span class="s1">com.android.billingclient.api.SkuDetails getSkuDetails() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">private final void </span><span class="s1">loadAllSKUs() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">private final void </span><span class="s1">setupBilling() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">private final void </span><span class="s1">navigateToPlaylist(java.lang.String categoryName</span><span class="s0">, </span><span class="s1">java.lang.String id) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">private final void </span><span class="s1">randomVideoPlay() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">private final void </span><span class="s1">setHomeFragment() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">protected void </span><span class="s1">onResume() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onBackPressed() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">shuffleVideo() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">protected void </span><span class="s1">onStop() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">protected void </span><span class="s1">onDestroy() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">com.respekt.mediaplayer.MediaPlayerHolder getMediaPlayerHolder() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">pause() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">play() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">reset() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.greenrobot.eventbus.Subscribe(threadMode = org.greenrobot.eventbus.ThreadMode.MAIN)</span>
+    <span class="s0">public final void </span><span class="s1">onMessageEvent(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.mediaplayer.LocalEventFromMediaPlayerHolder.UpdateLog event) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.greenrobot.eventbus.Subscribe(threadMode = org.greenrobot.eventbus.ThreadMode.MAIN)</span>
+    <span class="s0">public final void </span><span class="s1">onMessageEvent(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.mediaplayer.LocalEventFromMediaPlayerHolder.PlaybackDuration event) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.greenrobot.eventbus.Subscribe(threadMode = org.greenrobot.eventbus.ThreadMode.MAIN)</span>
+    <span class="s0">public final void </span><span class="s1">onMessageEvent(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.mediaplayer.LocalEventFromMediaPlayerHolder.PlaybackPosition event) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.greenrobot.eventbus.Subscribe(threadMode = org.greenrobot.eventbus.ThreadMode.MAIN)</span>
+    <span class="s0">public final void </span><span class="s1">onMessageEvent(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.mediaplayer.LocalEventFromMediaPlayerHolder.StateChanged event) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onPurchasesUpdated(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.android.billingclient.api.BillingResult billingResult</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.util.List&lt;com.android.billingclient.api.Purchase&gt; purchases) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">private final void </span><span class="s1">acknowledgePurchase(java.lang.String purchaseToken) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setupFirebaseMessaging() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public </span><span class="s1">MainActivity() {</span>
+        <span class="s0">super</span><span class="s1">()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

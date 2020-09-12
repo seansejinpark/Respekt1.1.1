@@ -1,0 +1,167 @@
+<html>
+<head>
+<title>AndroidManifest.xml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #e8bf6a;}
+.s1 { color: #bababa;}
+.s2 { color: #6a8759;}
+.s3 { color: #a9b7c6;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+AndroidManifest.xml</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s2">=&quot;1.0&quot; </span><span class="s1">encoding</span><span class="s2">=&quot;utf-8&quot;</span><span class="s0">?&gt;</span>
+<span class="s0">&lt;manifest </span><span class="s1">xmlns:android</span><span class="s2">=&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="s1">package</span><span class="s2">=&quot;com.respekt&quot;</span>
+    <span class="s1">android:versionCode</span><span class="s2">=&quot;3&quot;</span>
+    <span class="s1">android:versionName</span><span class="s2">=&quot;1.1&quot; </span><span class="s0">&gt;</span>
+
+    <span class="s0">&lt;uses-sdk</span>
+        <span class="s1">android:minSdkVersion</span><span class="s2">=&quot;16&quot;</span>
+        <span class="s1">android:targetSdkVersion</span><span class="s2">=&quot;30&quot; </span><span class="s0">/&gt;</span>
+
+    <span class="s0">&lt;uses-permission </span><span class="s1">android:name</span><span class="s2">=&quot;android.permission.INTERNET&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;uses-permission </span><span class="s1">android:name</span><span class="s2">=&quot;android.permission.ACCESS_NETWORK_STATE&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;uses-permission </span><span class="s1">android:name</span><span class="s2">=&quot;com.android.vending.BILLING&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;uses-permission </span><span class="s1">android:name</span><span class="s2">=&quot;android.permission.WAKE_LOCK&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;uses-permission </span><span class="s1">android:name</span><span class="s2">=&quot;com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE&quot; </span><span class="s0">/&gt; </span><span class="s4">&lt;!-- Required by older versions of Google Play services to create IID tokens --&gt;</span>
+    <span class="s0">&lt;uses-permission </span><span class="s1">android:name</span><span class="s2">=&quot;com.google.android.c2dm.permission.RECEIVE&quot; </span><span class="s0">/&gt;</span>
+
+    <span class="s0">&lt;application</span>
+        <span class="s1">android:name</span><span class="s2">=&quot;com.respekt.utils.RespektApplication&quot;</span>
+        <span class="s1">android:allowBackup</span><span class="s2">=&quot;true&quot;</span>
+        <span class="s1">android:appComponentFactory</span><span class="s2">=&quot;androidx.core.app.CoreComponentFactory&quot;</span>
+        <span class="s1">android:debuggable</span><span class="s2">=&quot;true&quot;</span>
+        <span class="s1">android:icon</span><span class="s2">=&quot;@drawable/ic_launcher&quot;</span>
+        <span class="s1">android:label</span><span class="s2">=&quot;@string/app_name&quot;</span>
+        <span class="s1">android:largeHeap</span><span class="s2">=&quot;true&quot;</span>
+        <span class="s1">android:roundIcon</span><span class="s2">=&quot;@drawable/ic_launcher&quot;</span>
+        <span class="s1">android:supportsRtl</span><span class="s2">=&quot;true&quot;</span>
+        <span class="s1">android:testOnly</span><span class="s2">=&quot;true&quot;</span>
+        <span class="s1">android:theme</span><span class="s2">=&quot;@style/AppTheme&quot;</span>
+        <span class="s1">android:usesCleartextTraffic</span><span class="s2">=&quot;true&quot; </span><span class="s0">&gt;</span>
+        <span class="s0">&lt;activity</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.respekt.activites.SplashActivity&quot;</span>
+            <span class="s1">android:screenOrientation</span><span class="s2">=&quot;portrait&quot; </span><span class="s0">&gt;</span>
+            <span class="s0">&lt;intent-filter&gt;</span>
+                <span class="s0">&lt;action </span><span class="s1">android:name</span><span class="s2">=&quot;android.intent.action.MAIN&quot; </span><span class="s0">/&gt;</span>
+
+                <span class="s0">&lt;category </span><span class="s1">android:name</span><span class="s2">=&quot;android.intent.category.LAUNCHER&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/intent-filter&gt;</span>
+        <span class="s0">&lt;/activity&gt;</span>
+        <span class="s0">&lt;activity</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.respekt.activites.MainActivity&quot;</span>
+            <span class="s1">android:screenOrientation</span><span class="s2">=&quot;portrait&quot; </span><span class="s0">&gt;</span>
+            <span class="s0">&lt;intent-filter&gt;</span>
+                <span class="s0">&lt;action </span><span class="s1">android:name</span><span class="s2">=&quot;android.intent.action.MAIN&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/intent-filter&gt;</span>
+        <span class="s0">&lt;/activity&gt;</span>
+
+        <span class="s0">&lt;meta-data</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.android.play.billingclient.version&quot;</span>
+            <span class="s1">android:value</span><span class="s2">=&quot;3.0.0&quot; </span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;activity</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.android.billingclient.api.ProxyBillingActivity&quot;</span>
+            <span class="s1">android:configChanges</span><span class="s2">=&quot;keyboard|keyboardHidden|screenLayout|screenSize|orientation&quot;</span>
+            <span class="s1">android:theme</span><span class="s2">=&quot;@android:style/Theme.Translucent.NoTitleBar&quot; </span><span class="s0">/&gt;</span>
+        <span class="s4">&lt;!--</span>
+             <span class="s4">FirebaseMessagingService performs security checks at runtime, 
+             but set to not exported to explicitly avoid allowing another app to call it. 
+        --&gt;</span>
+        <span class="s0">&lt;service</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.firebase.messaging.FirebaseMessagingService&quot;</span>
+            <span class="s1">android:directBootAware</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:exported</span><span class="s2">=&quot;false&quot; </span><span class="s0">&gt;</span>
+            <span class="s0">&lt;intent-filter </span><span class="s1">android:priority</span><span class="s2">=&quot;-500&quot; </span><span class="s0">&gt;</span>
+                <span class="s0">&lt;action </span><span class="s1">android:name</span><span class="s2">=&quot;com.google.firebase.MESSAGING_EVENT&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/intent-filter&gt;</span>
+        <span class="s0">&lt;/service&gt;</span>
+        <span class="s0">&lt;service</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.firebase.components.ComponentDiscoveryService&quot;</span>
+            <span class="s1">android:directBootAware</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:exported</span><span class="s2">=&quot;false&quot; </span><span class="s0">&gt;</span>
+            <span class="s0">&lt;meta-data</span>
+                <span class="s1">android:name</span><span class="s2">=&quot;com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar&quot;</span>
+                <span class="s1">android:value</span><span class="s2">=&quot;com.google.firebase.components.ComponentRegistrar&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;meta-data</span>
+                <span class="s1">android:name</span><span class="s2">=&quot;com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar&quot;</span>
+                <span class="s1">android:value</span><span class="s2">=&quot;com.google.firebase.components.ComponentRegistrar&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;meta-data</span>
+                <span class="s1">android:name</span><span class="s2">=&quot;com.google.firebase.components:com.google.firebase.iid.Registrar&quot;</span>
+                <span class="s1">android:value</span><span class="s2">=&quot;com.google.firebase.components.ComponentRegistrar&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;meta-data</span>
+                <span class="s1">android:name</span><span class="s2">=&quot;com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar&quot;</span>
+                <span class="s1">android:value</span><span class="s2">=&quot;com.google.firebase.components.ComponentRegistrar&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;meta-data</span>
+                <span class="s1">android:name</span><span class="s2">=&quot;com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar&quot;</span>
+                <span class="s1">android:value</span><span class="s2">=&quot;com.google.firebase.components.ComponentRegistrar&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/service&gt;</span>
+
+        <span class="s0">&lt;receiver</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.android.gms.measurement.AppMeasurementReceiver&quot;</span>
+            <span class="s1">android:enabled</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:exported</span><span class="s2">=&quot;false&quot; </span><span class="s0">&gt;</span>
+        <span class="s0">&lt;/receiver&gt;</span>
+
+        <span class="s0">&lt;service</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.android.gms.measurement.AppMeasurementService&quot;</span>
+            <span class="s1">android:enabled</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:exported</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;service</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.android.gms.measurement.AppMeasurementJobService&quot;</span>
+            <span class="s1">android:enabled</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:exported</span><span class="s2">=&quot;false&quot;</span>
+            <span class="s1">android:permission</span><span class="s2">=&quot;android.permission.BIND_JOB_SERVICE&quot; </span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;receiver</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.firebase.iid.FirebaseInstanceIdReceiver&quot;</span>
+            <span class="s1">android:exported</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:permission</span><span class="s2">=&quot;com.google.android.c2dm.permission.SEND&quot; </span><span class="s0">&gt;</span>
+            <span class="s0">&lt;intent-filter&gt;</span>
+                <span class="s0">&lt;action </span><span class="s1">android:name</span><span class="s2">=&quot;com.google.android.c2dm.intent.RECEIVE&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/intent-filter&gt;</span>
+        <span class="s0">&lt;/receiver&gt;</span>
+
+        <span class="s0">&lt;provider</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.firebase.provider.FirebaseInitProvider&quot;</span>
+            <span class="s1">android:authorities</span><span class="s2">=&quot;com.respekt.firebaseinitprovider&quot;</span>
+            <span class="s1">android:exported</span><span class="s2">=&quot;false&quot;</span>
+            <span class="s1">android:initOrder</span><span class="s2">=&quot;100&quot; </span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;activity</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.android.gms.common.api.GoogleApiActivity&quot;</span>
+            <span class="s1">android:exported</span><span class="s2">=&quot;false&quot;</span>
+            <span class="s1">android:theme</span><span class="s2">=&quot;@android:style/Theme.Translucent.NoTitleBar&quot; </span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;meta-data</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.android.gms.version&quot;</span>
+            <span class="s1">android:value</span><span class="s2">=&quot;@integer/google_play_services_version&quot; </span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;service</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.android.datatransport.runtime.backends.TransportBackendDiscovery&quot;</span>
+            <span class="s1">android:exported</span><span class="s2">=&quot;false&quot; </span><span class="s0">&gt;</span>
+            <span class="s0">&lt;meta-data</span>
+                <span class="s1">android:name</span><span class="s2">=&quot;backend:com.google.android.datatransport.cct.CctBackendFactory&quot;</span>
+                <span class="s1">android:value</span><span class="s2">=&quot;cct&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/service&gt;</span>
+        <span class="s0">&lt;service</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService&quot;</span>
+            <span class="s1">android:exported</span><span class="s2">=&quot;false&quot;</span>
+            <span class="s1">android:permission</span><span class="s2">=&quot;android.permission.BIND_JOB_SERVICE&quot; </span><span class="s0">&gt;</span>
+        <span class="s0">&lt;/service&gt;</span>
+
+        <span class="s0">&lt;receiver</span>
+            <span class="s1">android:name</span><span class="s2">=&quot;com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver&quot;</span>
+            <span class="s1">android:exported</span><span class="s2">=&quot;false&quot; </span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;/application&gt;</span>
+
+<span class="s0">&lt;/manifest&gt;</span></pre>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<html>
+<head>
+<title>PlayListFragment.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PlayListFragment.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.fragments</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.lang.System</span><span class="s0">;</span>
+
+<span class="s1">@kotlin.Metadata(mv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s2">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s3">&quot;</span><span class="s0">\u0000</span><span class="s3">R</span><span class="s0">\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0010\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0010\u000e\n\u0002\b\u000e\n\u0002\u0010\u000b\n\u0002\b\n\n\u0002\u0010</span><span class="s3">!</span><span class="s0">\n\u0002\b\u0010\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0006\u0018\u0000 </span><span class="s3">C2</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0001</span><span class="s3">2</span><span class="s0">\u000e\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\u0003\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">0</span><span class="s0">\u0002</span><span class="s3">:</span><span class="s0">\u0001</span><span class="s3">CB</span><span class="s0">\u0005\u00a2\u0006\u0002\u0010\u0005</span><span class="s3">J</span><span class="s0">\u0014\u0010</span><span class="s3">/</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">2</span><span class="s0">\f\u0010</span><span class="s3">0</span><span class="s0">\u001a\b\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">0</span><span class="s0">\'</span><span class="s3">J</span><span class="s0">\u0010\u0010</span><span class="s3">1</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">2</span><span class="s0">\u0006\u0010</span><span class="s3">2</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\r</span><span class="s3">H</span><span class="s0">\u0002</span><span class="s3">J</span><span class="s0">\b\u0010</span><span class="s3">3</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">H</span><span class="s0">\u0002</span><span class="s3">J</span><span class="s0">\u0011\u0010</span><span class="s3">4</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">2</span><span class="s0">\u0006\u0010</span><span class="s3">5</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H</span><span class="s0">\u0096\u0002</span><span class="s3">J</span><span class="s0">\u0012\u0010</span><span class="s3">6</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">2</span><span class="s0">\b\u0010</span><span class="s3">7</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s3">08H</span><span class="s0">\u0016</span><span class="s3">J&amp;</span><span class="s0">\u0010</span><span class="s3">9</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s3">0:2</span><span class="s0">\u0006\u0010</span><span class="s3">;</span><span class="s0">\u001a\u0002</span><span class="s3">0&lt;2</span><span class="s0">\b\u0010</span><span class="s3">=</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s3">0&gt;2</span><span class="s0">\b\u0010</span><span class="s3">7</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s3">08H</span><span class="s0">\u0016</span><span class="s3">J</span><span class="s0">\b\u0010</span><span class="s3">?</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">H</span><span class="s0">\u0016</span><span class="s3">J</span><span class="s0">\b\u0010</span><span class="s3">@</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">H</span><span class="s0">\u0016</span><span class="s3">J</span><span class="s0">\u001a\u0010</span><span class="s3">A</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">2</span><span class="s0">\u0006\u0010</span><span class="s3">B</span><span class="s0">\u001a\u0002</span><span class="s3">0:2</span><span class="s0">\b\u0010</span><span class="s3">7</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s3">08H</span><span class="s0">\u0016</span><span class="s3">R</span><span class="s0">\u001c\u0010\u0006\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0007</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\b\u0010\t\&quot;\u0004\b\n\u0010\u000b</span><span class="s3">R</span><span class="s0">\u001a\u0010\f\u001a\u0002</span><span class="s3">0</span><span class="s0">\r</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u000e\u0010\u000f\&quot;\u0004\b\u0010\u0010\u0011</span><span class="s3">R</span><span class="s0">\u001a\u0010\u0012\u001a\u0002</span><span class="s3">0</span><span class="s0">\r</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0013\u0010\u000f\&quot;\u0004\b\u0014\u0010\u0011</span><span class="s3">R</span><span class="s0">\u001a\u0010\u0015\u001a\u0002</span><span class="s3">0</span><span class="s0">\r</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0016\u0010\u000f\&quot;\u0004\b\u0017\u0010\u0011</span><span class="s3">R</span><span class="s0">\u001a\u0010\u0018\u001a\u0002</span><span class="s3">0</span><span class="s0">\r</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0019\u0010\u000f\&quot;\u0004\b\u001a\u0010\u0011</span><span class="s3">R</span><span class="s0">\u001a\u0010\u001b\u001a\u0002</span><span class="s3">0</span><span class="s0">\u001c</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u001b\u0010\u001d\&quot;\u0004\b\u001e\u0010\u001f</span><span class="s3">R</span><span class="s0">\u001a\u0010 \u001a\u0002</span><span class="s3">0</span><span class="s0">\u001c</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b \u0010\u001d\&quot;\u0004\b</span><span class="s3">!</span><span class="s0">\u0010\u001f</span><span class="s3">R</span><span class="s0">\u001a\u0010\&quot;\u001a\u0002</span><span class="s3">0</span><span class="s0">\u001c</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\&quot;\u0010\u001d\&quot;\u0004\b</span><span class="s3">#</span><span class="s0">\u0010\u001f</span><span class="s3">R</span><span class="s0">\u0010\u0010</span><span class="s3">$</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\r</span><span class="s3">X</span><span class="s0">\u0082\u000e\u00a2\u0006\u0002\n\u0000</span><span class="s3">R</span><span class="s0">\u0010\u0010</span><span class="s3">%</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\r</span><span class="s3">X</span><span class="s0">\u0082\u000e\u00a2\u0006\u0002\n\u0000</span><span class="s3">R</span><span class="s0">\&quot;\u0010</span><span class="s3">&amp;</span><span class="s0">\u001a\n\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\u0003\u0018\u0001</span><span class="s3">0</span><span class="s0">\'</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b</span><span class="s3">(</span><span class="s0">\u0010</span><span class="s3">)</span><span class="s0">\&quot;\u0004\b</span><span class="s3">*</span><span class="s0">\u0010</span><span class="s3">+R</span><span class="s0">\u001a\u0010</span><span class="s3">,</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\r</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b</span><span class="s3">-</span><span class="s0">\u0010\u000f\&quot;\u0004\b</span><span class="s3">.</span><span class="s0">\u0010\u0011\u00a8\u0006</span><span class="s3">D&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s3">&quot;Lcom/respekt/fragments/PlayListFragment;&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroidx/fragment/app/Fragment;&quot;</span><span class="s0">, </span><span class="s3">&quot;Lkotlin/Function1;&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/models/DataItem;&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;()V&quot;</span><span class="s0">, </span><span class="s3">&quot;adapter&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/utils/PlayListAdapter;&quot;</span><span class="s0">, </span><span class="s3">&quot;getAdapter&quot;</span><span class="s0">, </span><span class="s3">&quot;()Lcom/respekt/utils/PlayListAdapter;&quot;</span><span class="s0">, </span><span class="s3">&quot;setAdapter&quot;</span><span class="s0">, </span><span class="s3">&quot;(Lcom/respekt/utils/PlayListAdapter;)V&quot;</span><span class="s0">, </span><span class="s3">&quot;categoryName&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;getCategoryName&quot;</span><span class="s0">, </span><span class="s3">&quot;()Ljava/lang/String;&quot;</span><span class="s0">, </span><span class="s3">&quot;setCategoryName&quot;</span><span class="s0">, </span><span class="s3">&quot;(Ljava/lang/String;)V&quot;</span><span class="s0">, </span><span class="s3">&quot;filterCategoryOne&quot;</span><span class="s0">, </span><span class="s3">&quot;getFilterCategoryOne&quot;</span><span class="s0">, </span><span class="s3">&quot;setFilterCategoryOne&quot;</span><span class="s0">, </span><span class="s3">&quot;filterCategoryThree&quot;</span><span class="s0">, </span><span class="s3">&quot;getFilterCategoryThree&quot;</span><span class="s0">, </span><span class="s3">&quot;setFilterCategoryThree&quot;</span><span class="s0">, </span><span class="s3">&quot;filterCategoryTwo&quot;</span><span class="s0">, </span><span class="s3">&quot;getFilterCategoryTwo&quot;</span><span class="s0">, </span><span class="s3">&quot;setFilterCategoryTwo&quot;</span><span class="s0">, </span><span class="s3">&quot;isFilterOne&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;()Z&quot;</span><span class="s0">, </span><span class="s3">&quot;setFilterOne&quot;</span><span class="s0">, </span><span class="s3">&quot;(Z)V&quot;</span><span class="s0">, </span><span class="s3">&quot;isFilterThree&quot;</span><span class="s0">, </span><span class="s3">&quot;setFilterThree&quot;</span><span class="s0">, </span><span class="s3">&quot;isFilterTwo&quot;</span><span class="s0">, </span><span class="s3">&quot;setFilterTwo&quot;</span><span class="s0">, </span><span class="s3">&quot;param1&quot;</span><span class="s0">, </span><span class="s3">&quot;param2&quot;</span><span class="s0">, </span><span class="s3">&quot;playList&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;getPlayList&quot;</span><span class="s0">, </span><span class="s3">&quot;()Ljava/util/List;&quot;</span><span class="s0">, </span><span class="s3">&quot;setPlayList&quot;</span><span class="s0">, </span><span class="s3">&quot;(Ljava/util/List;)V&quot;</span><span class="s0">, </span><span class="s3">&quot;playListId&quot;</span><span class="s0">, </span><span class="s3">&quot;getPlayListId&quot;</span><span class="s0">, </span><span class="s3">&quot;setPlayListId&quot;</span><span class="s0">, </span><span class="s3">&quot;bindList&quot;</span><span class="s0">, </span><span class="s3">&quot;list&quot;</span><span class="s0">, </span><span class="s3">&quot;fetchPlayList&quot;</span><span class="s0">, </span><span class="s3">&quot;id&quot;</span><span class="s0">, </span><span class="s3">&quot;filter&quot;</span><span class="s0">, </span><span class="s3">&quot;invoke&quot;</span><span class="s0">, </span><span class="s3">&quot;dataItem&quot;</span><span class="s0">, </span><span class="s3">&quot;onCreate&quot;</span><span class="s0">, </span><span class="s3">&quot;savedInstanceState&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/os/Bundle;&quot;</span><span class="s0">, </span><span class="s3">&quot;onCreateView&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/view/View;&quot;</span><span class="s0">, </span><span class="s3">&quot;inflater&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/view/LayoutInflater;&quot;</span><span class="s0">, </span><span class="s3">&quot;container&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/view/ViewGroup;&quot;</span><span class="s0">, </span><span class="s3">&quot;onPause&quot;</span><span class="s0">, </span><span class="s3">&quot;onResume&quot;</span><span class="s0">, </span><span class="s3">&quot;onViewCreated&quot;</span><span class="s0">, </span><span class="s3">&quot;view&quot;</span><span class="s0">, </span><span class="s3">&quot;Companion&quot;</span><span class="s0">, </span><span class="s3">&quot;app_debug&quot;</span><span class="s1">})</span>
+<span class="s0">public final class </span><span class="s1">PlayListFragment </span><span class="s0">extends </span><span class="s1">androidx.fragment.app.Fragment </span><span class="s0">implements </span><span class="s1">kotlin.jvm.functions.Function1&lt;com.respekt.models.DataItem</span><span class="s0">, </span><span class="s1">kotlin.Unit&gt; {</span>
+    <span class="s0">private </span><span class="s1">java.lang.String param1</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">java.lang.String param2</span><span class="s0">;</span>
+    <span class="s0">private boolean </span><span class="s1">isFilterOne = </span><span class="s0">false;</span>
+    <span class="s0">private boolean </span><span class="s1">isFilterTwo = </span><span class="s0">false;</span>
+    <span class="s0">private boolean </span><span class="s1">isFilterThree = </span><span class="s0">false;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">private </span><span class="s1">java.util.List&lt;com.respekt.models.DataItem&gt; playList</span><span class="s0">;</span>
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">private </span><span class="s1">java.lang.String filterCategoryOne = </span><span class="s3">&quot;&quot;</span><span class="s0">;</span>
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">private </span><span class="s1">java.lang.String filterCategoryTwo = </span><span class="s3">&quot;&quot;</span><span class="s0">;</span>
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">private </span><span class="s1">java.lang.String filterCategoryThree = </span><span class="s3">&quot;&quot;</span><span class="s0">;</span>
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">private </span><span class="s1">java.lang.String categoryName = </span><span class="s3">&quot;&quot;</span><span class="s0">;</span>
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">private </span><span class="s1">java.lang.String playListId = </span><span class="s3">&quot;&quot;</span><span class="s0">;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">private </span><span class="s1">com.respekt.utils.PlayListAdapter adapter</span><span class="s0">;</span>
+    <span class="s0">public static final </span><span class="s1">com.respekt.fragments.PlayListFragment.Companion Companion = </span><span class="s0">null;</span>
+    <span class="s0">private </span><span class="s1">java.util.HashMap _$_findViewCache</span><span class="s0">;</span>
+    
+    <span class="s0">public final boolean </span><span class="s1">isFilterOne() {</span>
+        <span class="s0">return false;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setFilterOne(</span><span class="s0">boolean </span><span class="s1">p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final boolean </span><span class="s1">isFilterTwo() {</span>
+        <span class="s0">return false;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setFilterTwo(</span><span class="s0">boolean </span><span class="s1">p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final boolean </span><span class="s1">isFilterThree() {</span>
+        <span class="s0">return false;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setFilterThree(</span><span class="s0">boolean </span><span class="s1">p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.util.List&lt;com.respekt.models.DataItem&gt; getPlayList() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setPlayList(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.util.List&lt;com.respekt.models.DataItem&gt; p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getFilterCategoryOne() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setFilterCategoryOne(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">java.lang.String p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getFilterCategoryTwo() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setFilterCategoryTwo(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">java.lang.String p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getFilterCategoryThree() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setFilterCategoryThree(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">java.lang.String p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getCategoryName() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setCategoryName(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">java.lang.String p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getPlayListId() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setPlayListId(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">java.lang.String p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">com.respekt.utils.PlayListAdapter getAdapter() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setAdapter(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">com.respekt.utils.PlayListAdapter p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onCreate(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">android.os.Bundle savedInstanceState) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">bindList(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">java.util.List&lt;com.respekt.models.DataItem&gt; list) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public </span><span class="s1">android.view.View onCreateView(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.view.LayoutInflater inflater</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">android.view.ViewGroup container</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">android.os.Bundle savedInstanceState) {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onViewCreated(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.view.View view</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">android.os.Bundle savedInstanceState) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">private final void </span><span class="s1">fetchPlayList(java.lang.String id) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">private final void </span><span class="s1">filter() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onResume() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onPause() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">invoke(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.models.DataItem dataItem) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public </span><span class="s1">PlayListFragment() {</span>
+        <span class="s0">super</span><span class="s1">()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public static final </span><span class="s1">com.respekt.fragments.PlayListFragment newInstance(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">java.lang.String param1</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">java.lang.String param2) {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@kotlin.Metadata(mv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s2">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s3">&quot;</span><span class="s0">\u0000\u001a\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0002\b\u0086\u0003\u0018\u0000</span><span class="s3">2</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0001</span><span class="s3">B</span><span class="s0">\u0007\b\u0002\u00a2\u0006\u0002\u0010\u0002</span><span class="s3">J</span><span class="s0">\u0018\u0010\u0003\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">2</span><span class="s0">\u0006\u0010\u0005\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0006</span><span class="s3">2</span><span class="s0">\u0006\u0010\u0007\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0006</span><span class="s3">H</span><span class="s0">\u0007\u00a8\u0006\b</span><span class="s3">&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s3">&quot;Lcom/respekt/fragments/PlayListFragment$Companion;&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;()V&quot;</span><span class="s0">, </span><span class="s3">&quot;newInstance&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/fragments/PlayListFragment;&quot;</span><span class="s0">, </span><span class="s3">&quot;param1&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;param2&quot;</span><span class="s0">, </span><span class="s3">&quot;app_debug&quot;</span><span class="s1">})</span>
+    <span class="s0">public static final class </span><span class="s1">Companion {</span>
+        
+        <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+        <span class="s0">public final </span><span class="s1">com.respekt.fragments.PlayListFragment newInstance(@org.jetbrains.annotations.NotNull()</span>
+        <span class="s1">java.lang.String param1</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.NotNull()</span>
+        <span class="s1">java.lang.String param2) {</span>
+            <span class="s0">return null;</span>
+        <span class="s1">}</span>
+        
+        <span class="s0">private </span><span class="s1">Companion() {</span>
+            <span class="s0">super</span><span class="s1">()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

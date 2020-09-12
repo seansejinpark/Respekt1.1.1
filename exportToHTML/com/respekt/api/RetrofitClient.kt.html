@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>RetrofitClient.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+RetrofitClient.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.api</span>
+
+<span class="s1">import com.respekt.BuildConfig</span>
+<span class="s1">import okhttp3.OkHttpClient</span>
+<span class="s1">import okhttp3.logging.HttpLoggingInterceptor</span>
+<span class="s1">import retrofit2.Retrofit</span>
+<span class="s1">import retrofit2.converter.gson.GsonConverterFactory</span>
+<span class="s1">import java.util.concurrent.TimeUnit</span>
+
+<span class="s0">object </span><span class="s1">RetrofitClient {</span>
+
+    <span class="s1">private const </span><span class="s0">val </span><span class="s1">BASE_URL = BuildConfig.SERVER_URL</span>
+
+    <span class="s0">val </span><span class="s1">instance: Api by lazy {</span>
+        <span class="s0">val </span><span class="s1">retrofit = Retrofit.Builder()</span>
+            <span class="s1">.baseUrl(BASE_URL)</span>
+            <span class="s1">.addConverterFactory(GsonConverterFactory.create())</span>
+            <span class="s1">.client(geOkHttpClient())</span>
+            <span class="s1">.build()</span>
+
+        <span class="s1">retrofit.create(Api::</span><span class="s0">class</span><span class="s1">.java)</span>
+
+    <span class="s1">}</span>
+
+
+    <span class="s0">fun </span><span class="s1">geOkHttpClient(): OkHttpClient {</span>
+        <span class="s0">val </span><span class="s1">interceptor = HttpLoggingInterceptor()</span>
+        <span class="s1">interceptor.level = HttpLoggingInterceptor.Level.HEADERS</span>
+        <span class="s1">interceptor.level = HttpLoggingInterceptor.Level.BODY</span>
+        <span class="s0">val </span><span class="s1">builder = OkHttpClient.Builder()</span>
+        <span class="s1">builder.addInterceptor(interceptor)</span>
+        <span class="s0">return </span><span class="s1">builder.build()</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

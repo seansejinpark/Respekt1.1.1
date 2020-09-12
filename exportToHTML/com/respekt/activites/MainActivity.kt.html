@@ -1,0 +1,310 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.activites</span>
+
+<span class="s1">import android.net.Uri</span>
+<span class="s1">import android.os.Bundle</span>
+<span class="s1">import android.util.Log</span>
+<span class="s1">import android.view.WindowManager</span>
+<span class="s1">import androidx.appcompat.app.AppCompatActivity</span>
+<span class="s1">import androidx.fragment.app.FragmentManager</span>
+<span class="s1">import com.android.billingclient.api.*</span>
+<span class="s1">import com.google.android.gms.tasks.OnCompleteListener</span>
+<span class="s1">import com.google.firebase.iid.FirebaseInstanceId</span>
+<span class="s1">import com.respekt.R</span>
+<span class="s1">import com.respekt.fragments.HomeFragment</span>
+<span class="s1">import com.respekt.fragments.MeFragment</span>
+<span class="s1">import com.respekt.fragments.PlayListFragment</span>
+<span class="s1">import com.respekt.mediaplayer.LocalEventFromMainActivity</span>
+<span class="s1">import com.respekt.mediaplayer.LocalEventFromMediaPlayerHolder</span>
+<span class="s1">import com.respekt.mediaplayer.MediaPlayerHolder</span>
+<span class="s1">import com.respekt.utils.MeData</span>
+<span class="s1">import kotlinx.android.synthetic.main.activity_main.*</span>
+<span class="s1">import org.greenrobot.eventbus.EventBus</span>
+<span class="s1">import org.greenrobot.eventbus.Subscribe</span>
+<span class="s1">import org.greenrobot.eventbus.ThreadMode</span>
+
+
+<span class="s0">class </span><span class="s1">MainActivity : AppCompatActivity()</span><span class="s0">, </span><span class="s1">PurchasesUpdatedListener {</span>
+
+    <span class="s1">private </span><span class="s0">val </span><span class="s1">array = intArrayOf(</span>
+        <span class="s1">R.raw.video1</span><span class="s0">, </span><span class="s1">R.raw.video2</span><span class="s0">, </span><span class="s1">R.raw.video3</span><span class="s0">, </span><span class="s1">R.raw.video4</span><span class="s0">, </span><span class="s1">R.raw.video5</span><span class="s0">, </span><span class="s1">R.raw.video6</span>
+    <span class="s1">)</span>
+    <span class="s0">val </span><span class="s1">skuOneMonth = </span><span class="s2">&quot;com.respekt.one.month&quot;</span>
+    <span class="s1">private </span><span class="s0">val </span><span class="s1">skuList = listOf(skuOneMonth)</span>
+
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">mMediaPlayerHolder: MediaPlayerHolder? = </span><span class="s0">null</span>
+    <span class="s1">private lateinit </span><span class="s0">var </span><span class="s1">billingClient: BillingClient</span>
+    <span class="s1">private lateinit </span><span class="s0">var </span><span class="s1">skuDetails: SkuDetails</span>
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">isExpiredOrCancelled = </span><span class="s0">false</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate(savedInstanceState: Bundle?) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span>
+        <span class="s1">setContentView(R.layout.activity_main)</span>
+        <span class="s1">window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)</span>
+        <span class="s1">setupFirebaseMessaging()</span>
+        <span class="s1">setHomeFragment()</span>
+        <span class="s1">randomVideoPlay()</span>
+        <span class="s1">setupBilling()</span>
+        <span class="s1">mMediaPlayerHolder = MediaPlayerHolder(</span><span class="s0">this</span><span class="s1">)</span>
+
+        <span class="s1">btnHome.setOnClickListener {</span>
+            <span class="s1">supportFragmentManager.popBackStack(</span><span class="s0">null, </span><span class="s1">FragmentManager.POP_BACK_STACK_INCLUSIVE)</span><span class="s0">;</span>
+            <span class="s0">val </span><span class="s1">transaction = supportFragmentManager.beginTransaction()</span>
+            <span class="s1">transaction.replace(</span>
+                <span class="s1">R.id.frame_container</span><span class="s0">,</span>
+                <span class="s1">HomeFragment.newInstance(</span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s1">)</span><span class="s0">,</span>
+                <span class="s2">&quot;PlayerList&quot;</span>
+            <span class="s1">)</span>
+            <span class="s1">transaction.commit()</span>
+        <span class="s1">}</span>
+        <span class="s1">btnMe.setOnClickListener {</span>
+            <span class="s0">val </span><span class="s1">transaction = supportFragmentManager.beginTransaction()</span>
+            <span class="s1">supportFragmentManager.popBackStack(</span><span class="s0">null, </span><span class="s1">FragmentManager.POP_BACK_STACK_INCLUSIVE)</span><span class="s0">;</span>
+            <span class="s1">transaction.replace(R.id.frame_container</span><span class="s0">, </span><span class="s1">MeFragment.newInstance(</span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s1">))</span>
+            <span class="s1">transaction.addToBackStack(</span><span class="s0">null</span><span class="s1">)</span>
+            <span class="s1">transaction.commit()</span>
+        <span class="s1">}</span>
+        <span class="s1">btnBeautification.setOnClickListener {</span>
+            <span class="s1">navigateToPlaylist(</span><span class="s2">&quot;BEAUTY MEDITATION&quot;</span><span class="s0">, </span><span class="s2">&quot;1&quot;</span><span class="s1">)</span>
+        <span class="s1">}</span>
+        <span class="s1">btnMusic.setOnClickListener {</span>
+            <span class="s1">navigateToPlaylist(</span><span class="s2">&quot;MUSIC&quot;</span><span class="s0">, </span><span class="s2">&quot;3&quot;</span><span class="s1">)</span>
+        <span class="s1">}</span>
+        <span class="s1">btnShortBreak.setOnClickListener {</span>
+            <span class="s1">navigateToPlaylist(</span><span class="s2">&quot;SHORT BREAK&quot;</span><span class="s0">, </span><span class="s2">&quot;2&quot;</span><span class="s1">)</span>
+        <span class="s1">}</span>
+        <span class="s1">btnSound.setOnClickListener {</span>
+            <span class="s1">navigateToPlaylist(</span><span class="s2">&quot;SOUND&quot;</span><span class="s0">, </span><span class="s2">&quot;4&quot;</span><span class="s1">)</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">getBillingClient(): BillingClient {</span>
+        <span class="s0">return </span><span class="s1">billingClient</span>
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">getSkuDetails(): SkuDetails {</span>
+        <span class="s0">return </span><span class="s1">skuDetails</span>
+    <span class="s1">}</span>
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">loadAllSKUs() = </span><span class="s0">if </span><span class="s1">(billingClient.isReady) {</span>
+        <span class="s0">val </span><span class="s1">params = SkuDetailsParams</span>
+            <span class="s1">.newBuilder()</span>
+            <span class="s1">.setSkusList(skuList)</span>
+            <span class="s1">.setType(BillingClient.SkuType.SUBS)</span>
+            <span class="s1">.build()</span>
+        <span class="s1">billingClient.queryPurchaseHistoryAsync(BillingClient.SkuType.SUBS) { billingResult</span><span class="s0">, </span><span class="s1">purchasesList -&gt;</span>
+            <span class="s0">if </span><span class="s1">(billingResult.responseCode == BillingClient.BillingResponseCode.OK &amp;&amp; purchasesList != </span><span class="s0">null</span><span class="s1">) {</span>
+                <span class="s1">Log.e(</span><span class="s2">&quot;responseCode&quot;</span><span class="s0">, </span><span class="s1">billingResult.responseCode.toString())</span>
+                <span class="s1">Log.e(</span><span class="s2">&quot; resultHistory&quot;</span><span class="s0">, </span><span class="s1">billingResult.toString())</span>
+                <span class="s1">Log.e(</span><span class="s2">&quot; purchasesList&quot;</span><span class="s0">, </span><span class="s1">purchasesList.toString())</span>
+                <span class="s0">if </span><span class="s1">(purchasesList.isNotEmpty()) {</span>
+                    <span class="s0">val </span><span class="s1">queryPurchases = billingClient.queryPurchases(BillingClient.SkuType.SUBS)</span>
+                    <span class="s1">Log.e(</span><span class="s2">&quot;queryPurchases&quot;</span><span class="s0">, </span><span class="s1">queryPurchases.purchasesList.toString())</span>
+                    <span class="s0">val </span><span class="s1">list = queryPurchases.purchasesList.orEmpty()</span>
+                    <span class="s0">if </span><span class="s1">(list.isNotEmpty()) {</span>
+                        <span class="s1">MeData.setPurchasedState(MeData.Purchased)</span>
+                    <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                        <span class="s1">MeData.setPurchasedState(MeData.Expire)</span>
+                    <span class="s1">}</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">MeData.setPurchasedState(MeData.NotPurchased)</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s1">billingClient.querySkuDetailsAsync(params) { billingResult</span><span class="s0">, </span><span class="s1">skuDetailsList -&gt;</span>
+            <span class="s3">// Process the result.</span>
+            <span class="s0">if </span><span class="s1">(skuDetailsList != </span><span class="s0">null</span><span class="s1">) {</span>
+                <span class="s0">if </span><span class="s1">(billingResult.responseCode == BillingClient.BillingResponseCode.OK &amp;&amp; skuDetailsList.isNotEmpty()) {</span>
+                    <span class="s0">for </span><span class="s1">(skuDetails </span><span class="s0">in </span><span class="s1">skuDetailsList) {</span>
+                        <span class="s0">this</span><span class="s1">.skuDetails = skuDetails</span>
+                        <span class="s1">Log.e(</span><span class="s2">&quot;SkuName&quot;</span><span class="s0">, </span><span class="s1">skuDetails.toString())</span>
+                        <span class="s3">//this will return both the SKUs from Google Play Console</span>
+                    <span class="s1">}</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+    <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+        <span class="s1">println(</span><span class="s2">&quot;Billing Client not ready&quot;</span><span class="s1">)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">setupBilling() {</span>
+        <span class="s1">billingClient = BillingClient.newBuilder(</span><span class="s0">this</span><span class="s1">)</span>
+            <span class="s1">.enablePendingPurchases()</span>
+            <span class="s1">.setListener(</span><span class="s0">this</span><span class="s1">)</span>
+            <span class="s1">.build()</span>
+
+        <span class="s1">billingClient.startConnection(</span><span class="s0">object </span><span class="s1">: BillingClientStateListener {</span>
+            <span class="s1">override</span>
+            <span class="s0">fun </span><span class="s1">onBillingSetupFinished(billingResult: BillingResult) {</span>
+                <span class="s0">if </span><span class="s1">(billingResult.responseCode == BillingClient.BillingResponseCode.OK) {</span>
+<span class="s3">//                     The BillingClient is ready. You can query purchases here.</span>
+                    <span class="s1">loadAllSKUs()</span><span class="s0">; </span><span class="s3">// This is used to fetch purchased items from google play store</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+
+            <span class="s1">override </span><span class="s0">fun </span><span class="s1">onBillingServiceDisconnected() {</span>
+                <span class="s3">// Try to restart the connection on the next request to</span>
+                <span class="s3">// Google Play by calling the startConnection() method.</span>
+
+<span class="s3">//                showToast(&quot;Billing service disconnected...&quot;)</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span>
+    <span class="s1">}</span>
+
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">navigateToPlaylist(categoryName: String</span><span class="s0">, </span><span class="s1">id: String) {</span>
+        <span class="s1">supportFragmentManager.popBackStack(</span><span class="s0">null, </span><span class="s1">FragmentManager.POP_BACK_STACK_INCLUSIVE)</span><span class="s0">;</span>
+        <span class="s0">val </span><span class="s1">transaction = supportFragmentManager.beginTransaction()</span>
+        <span class="s1">transaction.replace(</span>
+            <span class="s1">R.id.frame_container</span><span class="s0">,</span>
+            <span class="s1">PlayListFragment.newInstance(categoryName</span><span class="s0">, </span><span class="s1">id)</span><span class="s0">,</span>
+            <span class="s2">&quot;PlayerList&quot;</span>
+        <span class="s1">)</span>
+        <span class="s1">transaction.addToBackStack(</span><span class="s0">null</span><span class="s1">)</span>
+        <span class="s1">transaction.commit()</span>
+    <span class="s1">}</span>
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">randomVideoPlay() {</span>
+        <span class="s0">val </span><span class="s1">path = </span><span class="s2">&quot;android.resource://&quot; </span><span class="s1">+ packageName + </span><span class="s2">&quot;/&quot; </span><span class="s1">+ array.random()</span>
+        <span class="s1">videoView.setVideoURI(Uri.parse(path))</span>
+        <span class="s1">videoView.start()</span>
+        <span class="s1">videoView.setOnPreparedListener { mp -&gt; mp.isLooping = </span><span class="s0">true </span><span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">setHomeFragment() {</span>
+        <span class="s0">val </span><span class="s1">transaction = supportFragmentManager.beginTransaction()</span>
+        <span class="s1">transaction.replace(R.id.frame_container</span><span class="s0">, </span><span class="s1">HomeFragment.newInstance(</span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s1">))</span>
+        <span class="s1">transaction.commit()</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onResume() {</span>
+        <span class="s0">super</span><span class="s1">.onResume()</span>
+        <span class="s1">randomVideoPlay()</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onBackPressed() {</span>
+        <span class="s0">super</span><span class="s1">.onBackPressed()</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">shuffleVideo() {</span>
+        <span class="s1">randomVideoPlay()</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onStop() {</span>
+        <span class="s0">super</span><span class="s1">.onStop()</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onDestroy() {</span>
+        <span class="s0">super</span><span class="s1">.onDestroy()</span>
+        <span class="s1">mMediaPlayerHolder?.release()</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">getMediaPlayerHolder(): MediaPlayerHolder? = mMediaPlayerHolder</span>
+
+    <span class="s3">// Handle user input for button presses.</span>
+    <span class="s0">fun </span><span class="s1">pause() {</span>
+        <span class="s1">EventBus.getDefault().post(LocalEventFromMainActivity.PausePlayback())</span>
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">play() {</span>
+        <span class="s1">EventBus.getDefault().post(LocalEventFromMainActivity.StartPlayback())</span>
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">reset() {</span>
+        <span class="s1">EventBus.getDefault().post(LocalEventFromMainActivity.ResetPlayback())</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.MAIN)</span>
+    <span class="s0">fun </span><span class="s1">onMessageEvent(event: LocalEventFromMediaPlayerHolder.UpdateLog) {</span>
+<span class="s3">//        log(event.formattedMessage)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.MAIN)</span>
+    <span class="s0">fun </span><span class="s1">onMessageEvent(event: LocalEventFromMediaPlayerHolder.PlaybackDuration) {</span>
+<span class="s3">//        mSeekbarAudio.setMax(event.duration)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.MAIN)</span>
+    <span class="s0">fun </span><span class="s1">onMessageEvent(event: LocalEventFromMediaPlayerHolder.PlaybackPosition) {</span>
+<span class="s3">//        if (!isUserSeeking) {</span>
+<span class="s3">//            mSeekbarAudio.setProgress(event.position, true)</span>
+<span class="s3">//        }</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.MAIN)</span>
+    <span class="s0">fun </span><span class="s1">onMessageEvent(event: LocalEventFromMediaPlayerHolder.StateChanged) {</span>
+        <span class="s3">/*Toast.makeText( 
+            this, java.lang.String.format(&quot;State changed to:%s&quot;, event.currentState), 
+            Toast.LENGTH_SHORT 
+        ).show()*/</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onPurchasesUpdated(</span>
+        <span class="s1">billingResult: BillingResult</span><span class="s0">,</span>
+        <span class="s1">purchases: MutableList&lt;Purchase&gt;?</span>
+    <span class="s1">) {</span>
+        <span class="s0">if </span><span class="s1">(billingResult?.responseCode == BillingClient.BillingResponseCode.OK &amp;&amp; purchases != </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s0">for </span><span class="s1">(purchase </span><span class="s0">in </span><span class="s1">purchases) {</span>
+                <span class="s1">acknowledgePurchase(purchase.purchaseToken)</span>
+
+            <span class="s1">}</span>
+        <span class="s1">} </span><span class="s0">else if </span><span class="s1">(billingResult?.responseCode == BillingClient.BillingResponseCode.USER_CANCELED) {</span>
+            <span class="s1">Log.e(</span><span class="s2">&quot;Purchased&quot;</span><span class="s0">, </span><span class="s2">&quot;Cancelled&quot;</span><span class="s1">)</span>
+            <span class="s3">// Handle an error caused by a user cancelling the purchase flow.</span>
+
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s3">// Handle any other error codes.</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">acknowledgePurchase(purchaseToken: String) {</span>
+        <span class="s0">val </span><span class="s1">params = AcknowledgePurchaseParams.newBuilder()</span>
+            <span class="s1">.setPurchaseToken(purchaseToken)</span>
+            <span class="s1">.build()</span>
+        <span class="s1">MeData.setPurchasedState(MeData.Purchased)</span>
+        <span class="s1">billingClient.acknowledgePurchase(params) { billingResult -&gt;</span>
+            <span class="s0">val </span><span class="s1">responseCode = billingResult.responseCode</span>
+            <span class="s0">val </span><span class="s1">debugMessage = billingResult.debugMessage</span>
+            <span class="s1">Log.e(</span><span class="s2">&quot;acknowledgePurchase&quot;</span><span class="s0">, </span><span class="s1">responseCode.toString() + debugMessage)</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">setupFirebaseMessaging(){</span>
+        <span class="s1">FirebaseInstanceId.getInstance().instanceId</span>
+            <span class="s1">.addOnCompleteListener(OnCompleteListener { task -&gt;</span>
+                <span class="s0">if </span><span class="s1">(!task.isSuccessful) {</span>
+                    <span class="s1">Log.w(</span><span class="s2">&quot;Firebase&quot;</span><span class="s0">, </span><span class="s2">&quot;getInstanceId failed&quot;</span><span class="s0">, </span><span class="s1">task.exception)</span>
+                    <span class="s0">return</span><span class="s1">@OnCompleteListener</span>
+                <span class="s1">}</span>
+
+                <span class="s3">// Get new Instance ID token</span>
+                <span class="s0">val </span><span class="s1">token = task.result?.token</span>
+
+                <span class="s3">// Log and toast</span>
+                <span class="s1">Log.e(</span><span class="s2">&quot;Token:--&quot;</span><span class="s0">, </span><span class="s1">token.toString())</span>
+
+
+            <span class="s1">})</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

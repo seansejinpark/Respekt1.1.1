@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>PurchaseDialogFragment.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PurchaseDialogFragment.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.fragments</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.lang.System</span><span class="s0">;</span>
+
+<span class="s1">@kotlin.Metadata(mv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s2">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s3">&quot;</span><span class="s0">\u0000</span><span class="s3">0</span><span class="s0">\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0006\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\b\u0002\u0018\u0000</span><span class="s3">2</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0001</span><span class="s3">:</span><span class="s0">\u0001\u0016</span><span class="s3">B</span><span class="s0">\u0005\u00a2\u0006\u0002\u0010\u0002</span><span class="s3">J</span><span class="s0">\b\u0010\u000f\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">J</span><span class="s0">\u001e\u0010\u0010\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0011</span><span class="s3">2</span><span class="s0">\u0006\u0010\u0012\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0013</span><span class="s3">2</span><span class="s0">\u0006\u0010\u0014\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">2</span><span class="s0">\u0006\u0010\t\u001a\u0002</span><span class="s3">0</span><span class="s0">\n</span><span class="s3">R</span><span class="s0">\u001c\u0010\u0003\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0005\u0010\u0006\&quot;\u0004\b\u0007\u0010\b</span><span class="s3">R</span><span class="s0">\u001a\u0010\t\u001a\u0002</span><span class="s3">0</span><span class="s0">\n</span><span class="s3">X</span><span class="s0">\u0086</span><span class="s3">.</span><span class="s0">\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u000b\u0010\f\&quot;\u0004\b\r\u0010\u000e\u00a8\u0006\u0017</span><span class="s3">&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s3">&quot;Lcom/respekt/fragments/PurchaseDialogFragment;&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;()V&quot;</span><span class="s0">, </span><span class="s3">&quot;dialog&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/app/Dialog;&quot;</span><span class="s0">, </span><span class="s3">&quot;getDialog&quot;</span><span class="s0">, </span><span class="s3">&quot;()Landroid/app/Dialog;&quot;</span><span class="s0">, </span><span class="s3">&quot;setDialog&quot;</span><span class="s0">, </span><span class="s3">&quot;(Landroid/app/Dialog;)V&quot;</span><span class="s0">, </span><span class="s3">&quot;onClosePurchasedDialog&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/fragments/PurchaseDialogFragment$OnClosePurchasedDialog;&quot;</span><span class="s0">, </span><span class="s3">&quot;getOnClosePurchasedDialog&quot;</span><span class="s0">, </span><span class="s3">&quot;()Lcom/respekt/fragments/PurchaseDialogFragment$OnClosePurchasedDialog;&quot;</span><span class="s0">, </span><span class="s3">&quot;setOnClosePurchasedDialog&quot;</span><span class="s0">, </span><span class="s3">&quot;(Lcom/respekt/fragments/PurchaseDialogFragment$OnClosePurchasedDialog;)V&quot;</span><span class="s0">, </span><span class="s3">&quot;getPurchasedDialog&quot;</span><span class="s0">, </span><span class="s3">&quot;openDialog&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;context&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/content/Context;&quot;</span><span class="s0">, </span><span class="s3">&quot;isFromMeScreen&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;OnClosePurchasedDialog&quot;</span><span class="s0">, </span><span class="s3">&quot;app_debug&quot;</span><span class="s1">})</span>
+<span class="s0">public final class </span><span class="s1">PurchaseDialogFragment {</span>
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public </span><span class="s1">com.respekt.fragments.PurchaseDialogFragment.OnClosePurchasedDialog onClosePurchasedDialog</span><span class="s0">;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">private </span><span class="s1">android.app.Dialog dialog</span><span class="s0">;</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public final </span><span class="s1">com.respekt.fragments.PurchaseDialogFragment.OnClosePurchasedDialog getOnClosePurchasedDialog() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setOnClosePurchasedDialog(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.fragments.PurchaseDialogFragment.OnClosePurchasedDialog p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">android.app.Dialog getDialog() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setDialog(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">android.app.Dialog p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">openDialog(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.content.Context context</span><span class="s0">, boolean </span><span class="s1">isFromMeScreen</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.fragments.PurchaseDialogFragment.OnClosePurchasedDialog onClosePurchasedDialog) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">android.app.Dialog getPurchasedDialog() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public </span><span class="s1">PurchaseDialogFragment() {</span>
+        <span class="s0">super</span><span class="s1">()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@kotlin.Metadata(mv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s2">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s3">&quot;</span><span class="s0">\u0000\u0012\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0004\b</span><span class="s3">f</span><span class="s0">\u0018\u0000</span><span class="s3">2</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0001</span><span class="s3">J</span><span class="s0">\b\u0010\u0002\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H&amp;J</span><span class="s0">\b\u0010\u0004\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H&amp;J</span><span class="s0">\b\u0010\u0005\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H&amp;J</span><span class="s0">\b\u0010\u0006\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H&amp;</span><span class="s0">\u00a8\u0006\u0007</span><span class="s3">&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s3">&quot;Lcom/respekt/fragments/PurchaseDialogFragment$OnClosePurchasedDialog;&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;onClose&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;onPrivacyClicked&quot;</span><span class="s0">, </span><span class="s3">&quot;onSubscribeClicked&quot;</span><span class="s0">, </span><span class="s3">&quot;onTermsClicked&quot;</span><span class="s0">, </span><span class="s3">&quot;app_debug&quot;</span><span class="s1">})</span>
+    <span class="s0">public static abstract interface </span><span class="s1">OnClosePurchasedDialog {</span>
+        
+        <span class="s0">public abstract void </span><span class="s1">onClose()</span><span class="s0">;</span>
+        
+        <span class="s0">public abstract void </span><span class="s1">onSubscribeClicked()</span><span class="s0">;</span>
+        
+        <span class="s0">public abstract void </span><span class="s1">onPrivacyClicked()</span><span class="s0">;</span>
+        
+        <span class="s0">public abstract void </span><span class="s1">onTermsClicked()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

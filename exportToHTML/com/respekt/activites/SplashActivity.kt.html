@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>SplashActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+SplashActivity.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.activites</span>
+
+<span class="s1">import android.content.Intent</span>
+<span class="s1">import android.os.Bundle</span>
+<span class="s1">import android.os.Handler</span>
+<span class="s1">import android.view.View</span>
+<span class="s1">import androidx.appcompat.app.AppCompatActivity</span>
+<span class="s1">import com.respekt.R</span>
+
+
+<span class="s0">class </span><span class="s1">SplashActivity : AppCompatActivity() {</span>
+
+    <span class="s0">val </span><span class="s1">SPLASH_TIME_OUT = </span><span class="s2">3000</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate(savedInstanceState: Bundle?) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span>
+        <span class="s1">setContentView(R.layout.activity_splash)</span>
+
+        <span class="s1">Handler().postDelayed(Runnable { </span><span class="s3">// This method will be executed once the timer is over</span>
+            <span class="s3">// Start your app main activity</span>
+            <span class="s0">val </span><span class="s1">i = Intent(</span><span class="s0">this</span><span class="s1">@SplashActivity</span><span class="s0">, </span><span class="s1">MainActivity::</span><span class="s0">class</span><span class="s1">.java)</span>
+            <span class="s1">startActivity(i)</span>
+
+            <span class="s3">// close this activity</span>
+            <span class="s1">finish()</span>
+        <span class="s1">}</span><span class="s0">, </span><span class="s1">SPLASH_TIME_OUT.toLong())</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

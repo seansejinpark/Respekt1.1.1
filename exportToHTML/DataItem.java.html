@@ -1,0 +1,207 @@
+<html>
+<head>
+<title>DataItem.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+DataItem.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.models</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.lang.System</span><span class="s0">;</span>
+
+<span class="s1">@kotlinx.android.parcel.Parcelize()</span>
+<span class="s1">@kotlin.Metadata(mv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s2">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s3">&quot;</span><span class="s0">\u0000</span><span class="s3">4</span><span class="s0">\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u001b\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0010\u0000\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\b\u0087\b\u0018\u0000</span><span class="s3">2</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0001</span><span class="s3">Be</span><span class="s0">\u0012\n\b\u0002\u0010\u0002\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003\u0012\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003\u0012\n\b\u0002\u0010\u0005\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003\u0012\n\b\u0002\u0010\u0006\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003\u0012\n\b\u0002\u0010\u0007\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003\u0012\n\b\u0002\u0010\b\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003\u0012\n\b\u0002\u0010\t\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003\u0012\n\b\u0002\u0010\n\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003\u00a2\u0006\u0002\u0010\u000b</span><span class="s3">J</span><span class="s0">\u000b\u0010\u0015\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H</span><span class="s0">\u00c6\u0003</span><span class="s3">J</span><span class="s0">\u000b\u0010\u0016\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H</span><span class="s0">\u00c6\u0003</span><span class="s3">J</span><span class="s0">\u000b\u0010\u0017\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H</span><span class="s0">\u00c6\u0003</span><span class="s3">J</span><span class="s0">\u000b\u0010\u0018\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H</span><span class="s0">\u00c6\u0003</span><span class="s3">J</span><span class="s0">\u000b\u0010\u0019\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H</span><span class="s0">\u00c6\u0003</span><span class="s3">J</span><span class="s0">\u000b\u0010\u001a\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H</span><span class="s0">\u00c6\u0003</span><span class="s3">J</span><span class="s0">\u000b\u0010\u001b\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H</span><span class="s0">\u00c6\u0003</span><span class="s3">J</span><span class="s0">\u000b\u0010\u001c\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H</span><span class="s0">\u00c6\u0003</span><span class="s3">Ji</span><span class="s0">\u0010\u001d\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0000</span><span class="s3">2</span><span class="s0">\n\b\u0002\u0010\u0002\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">2</span><span class="s0">\n\b\u0002\u0010\u0004\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">2</span><span class="s0">\n\b\u0002\u0010\u0005\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">2</span><span class="s0">\n\b\u0002\u0010\u0006\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">2</span><span class="s0">\n\b\u0002\u0010\u0007\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">2</span><span class="s0">\n\b\u0002\u0010\b\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">2</span><span class="s0">\n\b\u0002\u0010\t\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">2</span><span class="s0">\n\b\u0002\u0010\n\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H</span><span class="s0">\u00c6\u0001</span><span class="s3">J</span><span class="s0">\t\u0010\u001e\u001a\u0002</span><span class="s3">0</span><span class="s0">\u001f</span><span class="s3">H</span><span class="s0">\u00d6\u0001</span><span class="s3">J</span><span class="s0">\u0013\u0010 \u001a\u0002</span><span class="s3">0!2</span><span class="s0">\b\u0010\&quot;\u001a\u0004\u0018\u0001</span><span class="s3">0#H</span><span class="s0">\u00d6\u0003</span><span class="s3">J</span><span class="s0">\t\u0010</span><span class="s3">$</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u001f</span><span class="s3">H</span><span class="s0">\u00d6\u0001</span><span class="s3">J</span><span class="s0">\t\u0010</span><span class="s3">%</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">H</span><span class="s0">\u00d6\u0001</span><span class="s3">J</span><span class="s0">\u0019\u0010</span><span class="s3">&amp;</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\'</span><span class="s3">2</span><span class="s0">\u0006\u0010</span><span class="s3">(</span><span class="s0">\u001a\u0002</span><span class="s3">0)2</span><span class="s0">\u0006\u0010</span><span class="s3">*</span><span class="s0">\u001a\u0002</span><span class="s3">0</span><span class="s0">\u001f</span><span class="s3">H</span><span class="s0">\u00d6\u0001</span><span class="s3">R</span><span class="s0">\u0018\u0010\u0002\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">8</span><span class="s0">\u0006</span><span class="s3">X</span><span class="s0">\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\f\u0010\r</span><span class="s3">R</span><span class="s0">\u0018\u0010\u0004\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">8</span><span class="s0">\u0006</span><span class="s3">X</span><span class="s0">\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u000e\u0010\r</span><span class="s3">R</span><span class="s0">\u0018\u0010\u0007\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">8</span><span class="s0">\u0006</span><span class="s3">X</span><span class="s0">\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u000f\u0010\r</span><span class="s3">R</span><span class="s0">\u0018\u0010\n\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">8</span><span class="s0">\u0006</span><span class="s3">X</span><span class="s0">\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0010\u0010\r</span><span class="s3">R</span><span class="s0">\u0018\u0010\u0005\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">8</span><span class="s0">\u0006</span><span class="s3">X</span><span class="s0">\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0011\u0010\r</span><span class="s3">R</span><span class="s0">\u0018\u0010\t\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">8</span><span class="s0">\u0006</span><span class="s3">X</span><span class="s0">\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0012\u0010\r</span><span class="s3">R</span><span class="s0">\u0018\u0010\b\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">8</span><span class="s0">\u0006</span><span class="s3">X</span><span class="s0">\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0013\u0010\r</span><span class="s3">R</span><span class="s0">\u0018\u0010\u0006\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">8</span><span class="s0">\u0006</span><span class="s3">X</span><span class="s0">\u0087\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0014\u0010\r\u00a8\u0006</span><span class="s3">+&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s3">&quot;Lcom/respekt/models/DataItem;&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/os/Parcelable;&quot;</span><span class="s0">, </span><span class="s3">&quot;categoryName&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;coverPhoto&quot;</span><span class="s0">, </span><span class="s3">&quot;musicDuration&quot;</span><span class="s0">, </span><span class="s3">&quot;subCategory&quot;</span><span class="s0">, </span><span class="s3">&quot;id&quot;</span><span class="s0">, </span><span class="s3">&quot;musicTitle&quot;</span><span class="s0">, </span><span class="s3">&quot;musicFile&quot;</span><span class="s0">, </span><span class="s3">&quot;musicArtist&quot;</span><span class="s0">, </span><span class="s3">&quot;(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V&quot;</span><span class="s0">, </span><span class="s3">&quot;getCategoryName&quot;</span><span class="s0">, </span><span class="s3">&quot;()Ljava/lang/String;&quot;</span><span class="s0">, </span><span class="s3">&quot;getCoverPhoto&quot;</span><span class="s0">, </span><span class="s3">&quot;getId&quot;</span><span class="s0">, </span><span class="s3">&quot;getMusicArtist&quot;</span><span class="s0">, </span><span class="s3">&quot;getMusicDuration&quot;</span><span class="s0">, </span><span class="s3">&quot;getMusicFile&quot;</span><span class="s0">, </span><span class="s3">&quot;getMusicTitle&quot;</span><span class="s0">, </span><span class="s3">&quot;getSubCategory&quot;</span><span class="s0">, </span><span class="s3">&quot;component1&quot;</span><span class="s0">, </span><span class="s3">&quot;component2&quot;</span><span class="s0">, </span><span class="s3">&quot;component3&quot;</span><span class="s0">, </span><span class="s3">&quot;component4&quot;</span><span class="s0">, </span><span class="s3">&quot;component5&quot;</span><span class="s0">, </span><span class="s3">&quot;component6&quot;</span><span class="s0">, </span><span class="s3">&quot;component7&quot;</span><span class="s0">, </span><span class="s3">&quot;component8&quot;</span><span class="s0">, </span><span class="s3">&quot;copy&quot;</span><span class="s0">, </span><span class="s3">&quot;describeContents&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;equals&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;other&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;hashCode&quot;</span><span class="s0">, </span><span class="s3">&quot;toString&quot;</span><span class="s0">, </span><span class="s3">&quot;writeToParcel&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;parcel&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/os/Parcel;&quot;</span><span class="s0">, </span><span class="s3">&quot;flags&quot;</span><span class="s0">, </span><span class="s3">&quot;app_debug&quot;</span><span class="s1">})</span>
+<span class="s0">public final class </span><span class="s1">DataItem </span><span class="s0">implements </span><span class="s1">android.os.Parcelable {</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">@com.google.gson.annotations.SerializedName(value = </span><span class="s3">&quot;category_name&quot;</span><span class="s1">)</span>
+    <span class="s0">private final </span><span class="s1">java.lang.String categoryName = </span><span class="s0">null;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">@com.google.gson.annotations.SerializedName(value = </span><span class="s3">&quot;cover_photo&quot;</span><span class="s1">)</span>
+    <span class="s0">private final </span><span class="s1">java.lang.String coverPhoto = </span><span class="s0">null;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">@com.google.gson.annotations.SerializedName(value = </span><span class="s3">&quot;music_duration&quot;</span><span class="s1">)</span>
+    <span class="s0">private final </span><span class="s1">java.lang.String musicDuration = </span><span class="s0">null;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">@com.google.gson.annotations.SerializedName(value = </span><span class="s3">&quot;sub_category&quot;</span><span class="s1">)</span>
+    <span class="s0">private final </span><span class="s1">java.lang.String subCategory = </span><span class="s0">null;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">@com.google.gson.annotations.SerializedName(value = </span><span class="s3">&quot;id&quot;</span><span class="s1">)</span>
+    <span class="s0">private final </span><span class="s1">java.lang.String id = </span><span class="s0">null;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">@com.google.gson.annotations.SerializedName(value = </span><span class="s3">&quot;music_title&quot;</span><span class="s1">)</span>
+    <span class="s0">private final </span><span class="s1">java.lang.String musicTitle = </span><span class="s0">null;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">@com.google.gson.annotations.SerializedName(value = </span><span class="s3">&quot;music_file&quot;</span><span class="s1">)</span>
+    <span class="s0">private final </span><span class="s1">java.lang.String musicFile = </span><span class="s0">null;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">@com.google.gson.annotations.SerializedName(value = </span><span class="s3">&quot;music_artist&quot;</span><span class="s1">)</span>
+    <span class="s0">private final </span><span class="s1">java.lang.String musicArtist = </span><span class="s0">null;</span>
+    <span class="s0">public static final </span><span class="s1">android.os.Parcelable.Creator CREATOR = </span><span class="s0">null;</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getCategoryName() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getCoverPhoto() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getMusicDuration() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getSubCategory() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getId() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getMusicTitle() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getMusicFile() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String getMusicArtist() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public </span><span class="s1">DataItem(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String categoryName</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String coverPhoto</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String musicDuration</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String subCategory</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String id</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String musicTitle</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String musicFile</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String musicArtist) {</span>
+        <span class="s0">super</span><span class="s1">()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public </span><span class="s1">DataItem() {</span>
+        <span class="s0">super</span><span class="s1">()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String component1() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String component2() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String component3() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String component4() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String component5() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String component6() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String component7() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.lang.String component8() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public final </span><span class="s1">com.respekt.models.DataItem copy(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String categoryName</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String coverPhoto</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String musicDuration</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String subCategory</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String id</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String musicTitle</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String musicFile</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.String musicArtist) {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public </span><span class="s1">java.lang.String toString() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public int </span><span class="s1">hashCode() {</span>
+        <span class="s0">return </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public boolean </span><span class="s1">equals(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.lang.Object p0) {</span>
+        <span class="s0">return false;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public int </span><span class="s1">describeContents() {</span>
+        <span class="s0">return </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">writeToParcel(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.os.Parcel parcel</span><span class="s0">, int </span><span class="s1">flags) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@kotlin.Metadata(mv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s2">3</span><span class="s1">)</span>
+    <span class="s0">public static final class </span><span class="s1">Creator </span><span class="s0">implements </span><span class="s1">android.os.Parcelable.Creator {</span>
+        
+        <span class="s0">public </span><span class="s1">Creator() {</span>
+            <span class="s0">super</span><span class="s1">()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        
+        <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+        <span class="s0">public final </span><span class="s1">java.lang.Object[] newArray(</span><span class="s0">int </span><span class="s1">size) {</span>
+            <span class="s0">return null;</span>
+        <span class="s1">}</span>
+        
+        <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+        <span class="s0">public final </span><span class="s1">java.lang.Object createFromParcel(@org.jetbrains.annotations.NotNull()</span>
+        <span class="s1">android.os.Parcel in) {</span>
+            <span class="s0">return null;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

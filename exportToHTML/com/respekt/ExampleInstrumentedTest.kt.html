@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>ExampleInstrumentedTest.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #629755; font-style: italic;}
+.s3 { color: #808080;}
+.s4 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ExampleInstrumentedTest.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt</span>
+
+<span class="s1">import androidx.test.platform.app.InstrumentationRegistry</span>
+<span class="s1">import androidx.test.ext.junit.runners.AndroidJUnit4</span>
+
+<span class="s1">import org.junit.Test</span>
+<span class="s1">import org.junit.runner.RunWith</span>
+
+<span class="s1">import org.junit.Assert.*</span>
+
+<span class="s2">/**</span>
+ <span class="s2">* Instrumented test, which will execute on an Android device.</span>
+ <span class="s2">*</span>
+ <span class="s2">* See [testing documentation](http://d.android.com/tools/testing).</span>
+ <span class="s2">*/</span>
+<span class="s1">@RunWith(AndroidJUnit4::</span><span class="s0">class</span><span class="s1">)</span>
+<span class="s0">class </span><span class="s1">ExampleInstrumentedTest {</span>
+    <span class="s1">@Test</span>
+    <span class="s0">fun </span><span class="s1">useAppContext() {</span>
+        <span class="s3">// Context of the app under test.</span>
+        <span class="s0">val </span><span class="s1">appContext = InstrumentationRegistry.getInstrumentation().targetContext</span>
+        <span class="s1">assertEquals(</span><span class="s4">&quot;com.respekt&quot;</span><span class="s0">, </span><span class="s1">appContext.packageName)</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

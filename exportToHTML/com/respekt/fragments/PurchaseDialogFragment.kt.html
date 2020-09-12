@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>PurchaseDialogFragment.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PurchaseDialogFragment.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.fragments</span>
+
+<span class="s1">import android.app.Dialog</span>
+<span class="s1">import android.content.Context</span>
+<span class="s1">import android.view.Window</span>
+<span class="s1">import android.view.WindowManager</span>
+<span class="s1">import android.widget.TextView</span>
+<span class="s1">import com.respekt.R</span>
+<span class="s1">import com.respekt.utils.MeData</span>
+
+<span class="s0">class </span><span class="s1">PurchaseDialogFragment() {</span>
+    <span class="s1">lateinit </span><span class="s0">var </span><span class="s1">onClosePurchasedDialog: OnClosePurchasedDialog</span>
+
+    <span class="s0">var </span><span class="s1">dialog: Dialog? = </span><span class="s0">null</span>
+    <span class="s0">fun </span><span class="s1">openDialog(</span>
+        <span class="s1">context: Context</span><span class="s0">,</span>
+        <span class="s1">isFromMeScreen: Boolean</span><span class="s0">,</span>
+        <span class="s1">onClosePurchasedDialog: OnClosePurchasedDialog</span>
+    <span class="s1">) {</span>
+        <span class="s1">dialog = Dialog(context)</span>
+        <span class="s1">dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)</span>
+        <span class="s1">dialog?.setCancelable(isFromMeScreen)</span>
+        <span class="s1">dialog?.setContentView(R.layout.dialog_purchase)</span>
+        <span class="s1">dialog?.window?.setLayout(</span>
+            <span class="s1">WindowManager.LayoutParams.MATCH_PARENT</span><span class="s0">,</span>
+            <span class="s1">WindowManager.LayoutParams.WRAP_CONTENT</span>
+        <span class="s1">)</span>
+        <span class="s0">this</span><span class="s1">.onClosePurchasedDialog = onClosePurchasedDialog</span>
+
+        <span class="s0">val </span><span class="s1">tvSubscribe = dialog?.findViewById&lt;TextView&gt;(R.id.tvSubscribe)</span>
+        <span class="s0">val </span><span class="s1">tvPolicy = dialog?.findViewById&lt;TextView&gt;(R.id.tvPolicy)</span>
+        <span class="s0">val </span><span class="s1">tvTermsUse = dialog?.findViewById&lt;TextView&gt;(R.id.tvTermsUse)</span>
+        <span class="s0">val </span><span class="s1">tvClose = dialog?.findViewById&lt;TextView&gt;(R.id.tvClose)</span>
+
+        <span class="s0">val </span><span class="s1">purchasedTitle = dialog?.findViewById&lt;TextView&gt;(R.id.purchasedTitle)</span>
+        <span class="s0">val </span><span class="s1">purchasedDesc = dialog?.findViewById&lt;TextView&gt;(R.id.purchasedDesc)</span>
+
+        <span class="s0">if </span><span class="s1">(MeData.getPurchasedState() == MeData.NotPurchased) {</span>
+            <span class="s1">purchasedTitle?.text = context.getString(R.string.policy_subscription_title)</span>
+            <span class="s1">purchasedDesc?.text = context.getString(R.string.policy_subscription)</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">purchasedTitle?.text = context.getString(R.string.policy_subscription_expire_title)</span>
+            <span class="s1">purchasedDesc?.text = context.getString(R.string.policy_subscription_expire)</span>
+        <span class="s1">}</span>
+
+        <span class="s1">tvSubscribe?.setOnClickListener {</span>
+            <span class="s1">onClosePurchasedDialog.onSubscribeClicked()</span>
+            <span class="s1">dialog?.dismiss()</span>
+
+        <span class="s1">}</span>
+        <span class="s1">tvPolicy?.setOnClickListener {</span>
+            <span class="s1">dialog?.dismiss()</span>
+            <span class="s1">onClosePurchasedDialog.onPrivacyClicked()</span>
+
+        <span class="s1">}</span>
+        <span class="s1">tvTermsUse?.setOnClickListener {</span>
+            <span class="s1">dialog?.dismiss()</span>
+            <span class="s1">onClosePurchasedDialog.onTermsClicked()</span>
+        <span class="s1">}</span>
+        <span class="s1">tvClose?.setOnClickListener {</span>
+            <span class="s0">if </span><span class="s1">(isFromMeScreen)</span>
+                <span class="s1">dialog?.dismiss()</span>
+            <span class="s0">else </span><span class="s1">{</span>
+                <span class="s1">dialog?.dismiss()</span>
+            <span class="s1">}</span>
+            <span class="s1">onClosePurchasedDialog.onClose()</span>
+        <span class="s1">}</span>
+        <span class="s1">dialog?.show()</span>
+    <span class="s1">}</span>
+
+    <span class="s1">public </span><span class="s0">fun </span><span class="s1">getPurchasedDialog(): Dialog? {</span>
+        <span class="s0">return </span><span class="s1">dialog</span>
+    <span class="s1">}</span>
+
+
+    <span class="s1">public </span><span class="s0">interface </span><span class="s1">OnClosePurchasedDialog {</span>
+        <span class="s1">public </span><span class="s0">fun </span><span class="s1">onClose()</span>
+        <span class="s1">public </span><span class="s0">fun </span><span class="s1">onSubscribeClicked()</span>
+        <span class="s1">public </span><span class="s0">fun </span><span class="s1">onPrivacyClicked()</span>
+        <span class="s1">public </span><span class="s0">fun </span><span class="s1">onTermsClicked()</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span></pre>
+</body>
+</html>

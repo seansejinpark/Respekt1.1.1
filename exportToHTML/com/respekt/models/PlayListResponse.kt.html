@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>PlayListResponse.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PlayListResponse.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.models</span>
+
+<span class="s1">import android.os.Parcelable</span>
+<span class="s1">import com.google.gson.annotations.SerializedName</span>
+<span class="s1">import kotlinx.android.parcel.Parcelize</span>
+
+<span class="s1">@Parcelize</span>
+<span class="s1">data </span><span class="s0">class </span><span class="s1">PlayListResponse(</span>
+
+	<span class="s1">@field:SerializedName(</span><span class="s2">&quot;data&quot;</span><span class="s1">)</span>
+	<span class="s0">val </span><span class="s1">data: MutableList&lt;DataItem&gt;? = </span><span class="s0">null,</span>
+
+	<span class="s1">@field:SerializedName(</span><span class="s2">&quot;message&quot;</span><span class="s1">)</span>
+	<span class="s0">val </span><span class="s1">message: String? = </span><span class="s0">null,</span>
+
+	<span class="s1">@field:SerializedName(</span><span class="s2">&quot;status&quot;</span><span class="s1">)</span>
+	<span class="s0">val </span><span class="s1">status: String? = </span><span class="s0">null</span>
+<span class="s1">) : Parcelable</span>
+
+<span class="s1">@Parcelize</span>
+<span class="s1">data </span><span class="s0">class </span><span class="s1">DataItem(</span>
+
+	<span class="s1">@field:SerializedName(</span><span class="s2">&quot;category_name&quot;</span><span class="s1">)</span>
+	<span class="s0">val </span><span class="s1">categoryName: String? = </span><span class="s0">null,</span>
+
+	<span class="s1">@field:SerializedName(</span><span class="s2">&quot;cover_photo&quot;</span><span class="s1">)</span>
+	<span class="s0">val </span><span class="s1">coverPhoto: String? = </span><span class="s0">null,</span>
+
+	<span class="s1">@field:SerializedName(</span><span class="s2">&quot;music_duration&quot;</span><span class="s1">)</span>
+	<span class="s0">val </span><span class="s1">musicDuration: String? = </span><span class="s0">null,</span>
+
+	<span class="s1">@field:SerializedName(</span><span class="s2">&quot;sub_category&quot;</span><span class="s1">)</span>
+	<span class="s0">val </span><span class="s1">subCategory: String? = </span><span class="s0">null,</span>
+
+	<span class="s1">@field:SerializedName(</span><span class="s2">&quot;id&quot;</span><span class="s1">)</span>
+	<span class="s0">val </span><span class="s1">id: String? = </span><span class="s0">null,</span>
+
+	<span class="s1">@field:SerializedName(</span><span class="s2">&quot;music_title&quot;</span><span class="s1">)</span>
+	<span class="s0">val </span><span class="s1">musicTitle: String? = </span><span class="s0">null,</span>
+
+	<span class="s1">@field:SerializedName(</span><span class="s2">&quot;music_file&quot;</span><span class="s1">)</span>
+	<span class="s0">val </span><span class="s1">musicFile: String? = </span><span class="s0">null,</span>
+
+	<span class="s1">@field:SerializedName(</span><span class="s2">&quot;music_artist&quot;</span><span class="s1">)</span>
+	<span class="s0">val </span><span class="s1">musicArtist: String? = </span><span class="s0">null</span>
+<span class="s1">) : Parcelable</span>
+</pre>
+</body>
+</html>

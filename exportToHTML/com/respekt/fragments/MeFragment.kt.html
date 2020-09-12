@@ -1,0 +1,324 @@
+<html>
+<head>
+<title>MeFragment.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MeFragment.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.fragments</span>
+
+<span class="s1">import android.content.Context</span>
+<span class="s1">import android.content.Intent</span>
+<span class="s1">import android.net.Uri</span>
+<span class="s1">import android.os.Bundle</span>
+<span class="s1">import android.util.Log</span>
+<span class="s1">import android.view.LayoutInflater</span>
+<span class="s1">import android.view.View</span>
+<span class="s1">import android.view.ViewGroup</span>
+<span class="s1">import androidx.core.content.ContextCompat</span>
+<span class="s1">import androidx.fragment.app.Fragment</span>
+<span class="s1">import androidx.recyclerview.widget.DefaultItemAnimator</span>
+<span class="s1">import androidx.recyclerview.widget.LinearLayoutManager</span>
+<span class="s1">import com.android.billingclient.api.BillingFlowParams</span>
+<span class="s1">import com.bumptech.glide.Glide</span>
+<span class="s1">import com.bumptech.glide.request.RequestOptions</span>
+<span class="s1">import com.respekt.R</span>
+<span class="s1">import com.respekt.activites.MainActivity</span>
+<span class="s1">import com.respekt.mediaplayer.LocalEventFromMainActivity</span>
+<span class="s1">import com.respekt.mediaplayer.LocalEventFromMediaPlayerHolder</span>
+<span class="s1">import com.respekt.mediaplayer.MediaPlayerHolder</span>
+<span class="s1">import com.respekt.models.DataItem</span>
+<span class="s1">import com.respekt.utils.MarginItemDecorationHorizontal</span>
+<span class="s1">import com.respekt.utils.MeData</span>
+<span class="s1">import com.respekt.utils.ResentListAdapter</span>
+<span class="s1">import kotlinx.android.synthetic.main.fragment_me.*</span>
+<span class="s1">import org.greenrobot.eventbus.EventBus</span>
+<span class="s1">import org.greenrobot.eventbus.Subscribe</span>
+<span class="s1">import org.greenrobot.eventbus.ThreadMode</span>
+
+
+<span class="s0">class </span><span class="s1">MeFragment : Fragment()</span><span class="s0">, </span><span class="s1">(DataItem) -&gt; Unit</span><span class="s0">, </span><span class="s1">PurchaseDialogFragment.OnClosePurchasedDialog {</span>
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">param1: String? = </span><span class="s0">null</span>
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">param2: String? = </span><span class="s0">null</span>
+    <span class="s0">var </span><span class="s1">mContext: Context? = </span><span class="s0">null</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate(savedInstanceState: Bundle?) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span>
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">bindList(list: MutableList&lt;DataItem?&gt;) {</span>
+        <span class="s0">var </span><span class="s1">adapter = ResentListAdapter(activity!!</span><span class="s0">, </span><span class="s1">list</span><span class="s0">, this</span><span class="s1">)</span>
+        <span class="s0">val </span><span class="s1">layoutManager = LinearLayoutManager(activity</span><span class="s0">, </span><span class="s1">LinearLayoutManager.HORIZONTAL</span><span class="s0">, false</span><span class="s1">)</span>
+        <span class="s1">rvPlayList?.layoutManager = layoutManager</span>
+        <span class="s1">rvPlayList?.addItemDecoration(</span>
+            <span class="s1">MarginItemDecorationHorizontal(</span>
+                <span class="s1">resources.getDimension(R.dimen._10sdp).toInt()</span>
+            <span class="s1">)</span>
+        <span class="s1">)</span>
+        <span class="s1">rvPlayList?.itemAnimator = DefaultItemAnimator()</span>
+
+        <span class="s1">rvPlayList?.adapter = adapter</span>
+        <span class="s1">adapter.notifyDataSetChanged()</span>
+    <span class="s1">}</span>
+
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreateView(</span>
+        <span class="s1">inflater: LayoutInflater</span><span class="s0">, </span><span class="s1">container: ViewGroup?</span><span class="s0">,</span>
+        <span class="s1">savedInstanceState: Bundle?</span>
+    <span class="s1">): View? {</span>
+        <span class="s2">// Inflate the layout for this fragment</span>
+        <span class="s0">return </span><span class="s1">inflater.inflate(R.layout.fragment_me</span><span class="s0">, </span><span class="s1">container</span><span class="s0">, false</span><span class="s1">)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onViewCreated(view: View</span><span class="s0">, </span><span class="s1">savedInstanceState: Bundle?) {</span>
+        <span class="s0">super</span><span class="s1">.onViewCreated(view</span><span class="s0">, </span><span class="s1">savedInstanceState)</span>
+<span class="s2">//        rvPlayList.hide()</span>
+        <span class="s1">(activity </span><span class="s0">as </span><span class="s1">MainActivity).shuffleVideo()</span>
+        <span class="s1">MeData.getTotalMinutes()?.let {</span>
+            <span class="s1">tvTotalMinutes.text = </span><span class="s3">&quot;&quot; </span><span class="s1">+ (((it.toLong() / </span><span class="s4">1000</span><span class="s1">) / </span><span class="s4">60</span><span class="s1">))</span>
+        <span class="s1">}</span>
+        <span class="s1">tvTotalSession.text = MeData.getTotalSessions()</span>
+        <span class="s1">Log.e(</span><span class="s3">&quot;Size&quot;</span><span class="s0">, </span><span class="s1">MeData.getResentSession()?.list?.size.toString())</span>
+        <span class="s1">MeData.getResentSession()?.let { it -&gt;</span>
+            <span class="s1">bindList(it.list)</span>
+        <span class="s1">}</span>
+        <span class="s1">playerBtnClick()</span>
+
+        <span class="s0">if </span><span class="s1">(MeData.getPurchasedState() == MeData.Purchased) {</span>
+            <span class="s1">btnSubscription.visibility = View.GONE</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">btnSubscription.visibility = View.VISIBLE</span>
+        <span class="s1">}</span>
+
+        <span class="s0">if </span><span class="s1">((activity </span><span class="s0">as </span><span class="s1">MainActivity).getMediaPlayerHolder()?.isPlaying!!) {</span>
+            <span class="s1">btnPlayPause.background = ContextCompat.getDrawable(</span>
+                <span class="s1">activity!!</span><span class="s0">,</span>
+                <span class="s1">R.drawable.ic_pause</span>
+            <span class="s1">)</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">btnPlayPause.background = ContextCompat.getDrawable(</span>
+                <span class="s1">activity!!</span><span class="s0">,</span>
+                <span class="s1">R.drawable.ic_play</span>
+            <span class="s1">)</span>
+        <span class="s1">}</span>
+        <span class="s1">(activity </span><span class="s0">as </span><span class="s1">MainActivity).getMediaPlayerHolder()?.isPlaying?.let {</span>
+            <span class="s0">if </span><span class="s1">(it) {</span>
+                <span class="s1">layoutRunningMusic.visibility = View.VISIBLE</span>
+                <span class="s0">val </span><span class="s1">dataItem = (activity </span><span class="s0">as </span><span class="s1">MainActivity).getMediaPlayerHolder()?.dataItem</span>
+                <span class="s1">Glide.with(activity!!)</span>
+                    <span class="s1">.load(dataItem?.coverPhoto)</span>
+                    <span class="s1">.apply(RequestOptions())</span>
+                    <span class="s1">.fitCenter()</span>
+                    <span class="s1">.error(R.drawable.rounded_pink_layout)</span>
+                    <span class="s1">.placeholder(R.drawable.rounded_pink_layout)</span>
+                    <span class="s1">.into(ivMusic)</span>
+                <span class="s1">tvMusicName.text = dataItem?.musicTitle</span>
+                <span class="s1">tvMusicduration.text = dataItem?.musicDuration</span>
+                <span class="s0">return</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s1">layoutRunningMusic.visibility = View.GONE</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">btnShop.setOnClickListener {</span>
+            <span class="s0">val </span><span class="s1">transaction = activity?.supportFragmentManager?.beginTransaction()</span>
+<span class="s2">//            transaction?.hide(activity?.supportFragmentManager?.findFragmentByTag(&quot;PlayerList&quot;)!!)</span>
+            <span class="s1">transaction?.replace(R.id.frame_container</span><span class="s0">, </span><span class="s1">ShopFragment.newInstance(</span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s1">))</span>
+            <span class="s1">transaction?.addToBackStack(</span><span class="s0">null</span><span class="s1">)</span>
+            <span class="s1">transaction?.commit()</span>
+        <span class="s1">}</span>
+        <span class="s1">btnSubscription.setOnClickListener {</span>
+            <span class="s1">mContext?.let {</span>
+                <span class="s1">PurchaseDialogFragment().openDialog(it</span><span class="s0">, true, this</span><span class="s1">)</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onAttach(context: Context) {</span>
+        <span class="s0">super</span><span class="s1">.onAttach(context)</span>
+        <span class="s1">mContext = context</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onDetach() {</span>
+        <span class="s0">super</span><span class="s1">.onDetach()</span>
+        <span class="s1">mContext = </span><span class="s0">null</span>
+    <span class="s1">}</span>
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">playerBtnClick() {</span>
+        <span class="s1">btnPlayPause.setOnClickListener {</span>
+            <span class="s0">if </span><span class="s1">((activity </span><span class="s0">as </span><span class="s1">MainActivity).getMediaPlayerHolder()?.isPlaying!!) {</span>
+                <span class="s1">pause()</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s1">play()</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">layoutRunningMusic.setOnClickListener {</span>
+            <span class="s2">/*val dataItem = (activity as MainActivity).getMediaPlayerHolder()?.dataItem 
+            dataItem?.let { 
+                val transaction = activity?.supportFragmentManager?.beginTransaction() 
+                transaction?.hide(activity?.supportFragmentManager?.findFragmentByTag(&quot;PlayerList&quot;)!!) 
+                transaction?.replace(R.id.frame_container, PlayerFragment.newInstance(it, true)) 
+                transaction?.addToBackStack(null) 
+                transaction?.commit() 
+            }*/</span>
+
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">companion </span><span class="s0">object </span><span class="s1">{</span>
+        <span class="s1">@JvmStatic</span>
+        <span class="s0">fun </span><span class="s1">newInstance(param1: String</span><span class="s0">, </span><span class="s1">param2: String) =</span>
+            <span class="s1">MeFragment().apply {</span>
+                <span class="s1">arguments = Bundle().apply {</span>
+<span class="s2">//                    putString(ARG_PARAM1, param1)</span>
+<span class="s2">//                    putString(ARG_PARAM2, param2)</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onResume() {</span>
+        <span class="s0">super</span><span class="s1">.onResume()</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onPause() {</span>
+        <span class="s0">super</span><span class="s1">.onPause()</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">invoke(p1: DataItem) {</span>
+        <span class="s0">val </span><span class="s1">transaction = activity?.supportFragmentManager?.beginTransaction()</span>
+        <span class="s1">transaction?.replace(</span>
+            <span class="s1">R.id.frame_container</span><span class="s0">,</span>
+            <span class="s1">PlayerFragment.newInstance(p1</span><span class="s0">, false</span><span class="s1">)</span><span class="s0">,</span>
+            <span class="s3">&quot;PlayerFragment&quot;</span>
+        <span class="s1">)</span>
+        <span class="s1">transaction?.addToBackStack(</span><span class="s0">null</span><span class="s1">)</span>
+        <span class="s1">transaction?.commit()</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onStart() {</span>
+        <span class="s0">super</span><span class="s1">.onStart()</span>
+        <span class="s1">Log.e(javaClass.name</span><span class="s0">, </span><span class="s3">&quot;onStart()&quot;</span><span class="s1">)</span>
+        <span class="s1">EventBus.getDefault().register(</span><span class="s0">this</span><span class="s1">)</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onStop() {</span>
+        <span class="s0">super</span><span class="s1">.onStop()</span>
+        <span class="s1">EventBus.getDefault().unregister(</span><span class="s0">this</span><span class="s1">)</span>
+    <span class="s1">}</span>
+
+    <span class="s2">// Event subscribers.</span>
+    <span class="s1">@Subscribe(sticky = </span><span class="s0">true, </span><span class="s1">threadMode = ThreadMode.MAIN)</span>
+    <span class="s0">fun </span><span class="s1">onMessageEvent(event: LocalEventFromMediaPlayerHolder.UpdateLog) {</span>
+<span class="s2">//        log(event.formattedMessage)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(sticky = </span><span class="s0">true, </span><span class="s1">threadMode = ThreadMode.MAIN)</span>
+    <span class="s0">fun </span><span class="s1">onMessageEvent(event: LocalEventFromMediaPlayerHolder.PlaybackDuration) {</span>
+<span class="s2">//        seekbar_audio.max = event.duration</span>
+<span class="s2">//        getDurationTimer(event.duration, tvTotalDuration)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(sticky = </span><span class="s0">true, </span><span class="s1">threadMode = ThreadMode.MAIN)</span>
+    <span class="s0">fun </span><span class="s1">onMessageEvent(event: LocalEventFromMediaPlayerHolder.PlaybackPosition) {</span>
+<span class="s2">//        if (!isUserSeeking) {</span>
+<span class="s2">//            seekbar_audio.progress = event.position</span>
+<span class="s2">//            getDurationTimer(event.position, tvCurrentDuration)</span>
+<span class="s2">//        }</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(sticky = </span><span class="s0">true, </span><span class="s1">threadMode = ThreadMode.MAIN)</span>
+    <span class="s0">fun </span><span class="s1">onMessageEvent(event: LocalEventFromMediaPlayerHolder.PreparedDone) {</span>
+        <span class="s1">play()</span>
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">pause() {</span>
+        <span class="s1">EventBus.getDefault().post(LocalEventFromMainActivity.PausePlayback())</span>
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">play() {</span>
+        <span class="s1">EventBus.getDefault().post(LocalEventFromMainActivity.StartPlayback())</span>
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">reset() {</span>
+        <span class="s1">EventBus.getDefault().post(LocalEventFromMainActivity.ResetPlayback())</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.MAIN)</span>
+    <span class="s0">fun </span><span class="s1">onMessageEvent(event: LocalEventFromMediaPlayerHolder.StateChanged) {</span>
+        <span class="s0">when </span><span class="s1">(event.currentState) {</span>
+            <span class="s1">MediaPlayerHolder.PlayerState.PLAYING -&gt; {</span>
+                <span class="s1">btnPlayPause.background = ContextCompat.getDrawable(</span>
+                    <span class="s1">activity!!</span><span class="s0">,</span>
+                    <span class="s1">R.drawable.ic_pause</span>
+                <span class="s1">)</span>
+            <span class="s1">}</span>
+            <span class="s1">MediaPlayerHolder.PlayerState.PAUSED -&gt; {</span>
+                <span class="s1">btnPlayPause.background = ContextCompat.getDrawable(</span>
+                    <span class="s1">activity!!</span><span class="s0">,</span>
+                    <span class="s1">R.drawable.ic_play</span>
+                <span class="s1">)</span>
+            <span class="s1">}</span>
+            <span class="s1">MediaPlayerHolder.PlayerState.COMPLETED -&gt; {</span>
+                <span class="s1">btnPlayPause.background = ContextCompat.getDrawable(</span>
+                    <span class="s1">activity!!</span><span class="s0">,</span>
+                    <span class="s1">R.drawable.ic_play</span>
+                <span class="s1">)</span>
+            <span class="s1">}</span>
+            <span class="s1">MediaPlayerHolder.PlayerState.RESET -&gt; {</span>
+                <span class="s1">btnPlayPause.background = ContextCompat.getDrawable(</span>
+                    <span class="s1">activity!!</span><span class="s0">,</span>
+                    <span class="s1">R.drawable.ic_play</span>
+                <span class="s1">)</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s1">println(</span><span class="s3">&quot;State:--&quot; </span><span class="s1">+ java.lang.String.format(</span><span class="s3">&quot;State changed to:%s&quot;</span><span class="s0">, </span><span class="s1">event.currentState))</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onClose() {</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onSubscribeClicked() {</span>
+        <span class="s0">val </span><span class="s1">billingClient = (activity </span><span class="s0">as </span><span class="s1">MainActivity).getBillingClient()</span>
+        <span class="s0">val </span><span class="s1">skuDetails = (activity </span><span class="s0">as </span><span class="s1">MainActivity).getSkuDetails()</span>
+        <span class="s0">if </span><span class="s1">(billingClient != </span><span class="s0">null </span><span class="s1">&amp;&amp; skuDetails != </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s0">val </span><span class="s1">flowParams: BillingFlowParams = BillingFlowParams.newBuilder()</span>
+                <span class="s1">.setSkuDetails(skuDetails)</span>
+                <span class="s1">.build()</span>
+            <span class="s0">val </span><span class="s1">responseCode =</span>
+                <span class="s1">billingClient.launchBillingFlow(activity </span><span class="s0">as </span><span class="s1">MainActivity</span><span class="s0">, </span><span class="s1">flowParams).responseCode</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onPrivacyClicked() {</span>
+        <span class="s0">val </span><span class="s1">openURL = Intent(Intent.ACTION_VIEW)</span>
+        <span class="s1">openURL.data = Uri.parse(</span><span class="s3">&quot;https://respekt.co/pages/privacy-policy-respekt-app&quot;</span><span class="s1">)</span>
+        <span class="s1">activity?.startActivity(openURL)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onTermsClicked() {</span>
+        <span class="s0">val </span><span class="s1">openURL = Intent(Intent.ACTION_VIEW)</span>
+        <span class="s1">openURL.data = Uri.parse(</span><span class="s3">&quot;https://respekt.co/pages/terms-of-service-respekt-app&quot;</span><span class="s1">)</span>
+        <span class="s1">activity?.startActivity(openURL)</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+</pre>
+</body>
+</html>

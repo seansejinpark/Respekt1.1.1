@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>ShopFragment.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ShopFragment.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.fragments</span>
+
+<span class="s1">import android.annotation.SuppressLint</span>
+<span class="s1">import android.content.DialogInterface</span>
+<span class="s1">import android.net.http.SslError</span>
+<span class="s1">import android.os.Bundle</span>
+<span class="s1">import android.view.LayoutInflater</span>
+<span class="s1">import android.view.View</span>
+<span class="s1">import android.view.ViewGroup</span>
+<span class="s1">import android.webkit.SslErrorHandler</span>
+<span class="s1">import android.webkit.WebView</span>
+<span class="s1">import android.webkit.WebViewClient</span>
+<span class="s1">import androidx.appcompat.app.AlertDialog</span>
+<span class="s1">import androidx.fragment.app.Fragment</span>
+<span class="s1">import com.respekt.R</span>
+<span class="s1">import kotlinx.android.synthetic.main.fragment_shop.*</span>
+
+
+<span class="s0">class </span><span class="s1">ShopFragment : Fragment() {</span>
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">param1: String? = </span><span class="s0">null</span>
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">param2: String? = </span><span class="s0">null</span>
+
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreateView(</span>
+        <span class="s1">inflater: LayoutInflater</span><span class="s0">, </span><span class="s1">container: ViewGroup?</span><span class="s0">,</span>
+        <span class="s1">savedInstanceState: Bundle?</span>
+    <span class="s1">): View? {</span>
+        <span class="s2">// Inflate the layout for this fragment</span>
+        <span class="s0">return </span><span class="s1">inflater.inflate(R.layout.fragment_shop</span><span class="s0">, </span><span class="s1">container</span><span class="s0">, false</span><span class="s1">)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onViewCreated(view: View</span><span class="s0">, </span><span class="s1">savedInstanceState: Bundle?) {</span>
+        <span class="s0">super</span><span class="s1">.onViewCreated(view</span><span class="s0">, </span><span class="s1">savedInstanceState)</span>
+        <span class="s1">initWebView()</span>
+        <span class="s1">webViewButtonClicks()</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@SuppressLint(</span><span class="s3">&quot;SetJavaScriptEnabled&quot;</span><span class="s1">)</span>
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">initWebView() {</span>
+        <span class="s1">wvShop.settings.javaScriptEnabled = </span><span class="s0">true</span>
+        <span class="s1">wvShop.settings.loadWithOverviewMode = </span><span class="s0">true</span>
+        <span class="s1">wvShop.settings.useWideViewPort = </span><span class="s0">true</span>
+        <span class="s1">wvShop.settings.domStorageEnabled = </span><span class="s0">true</span>
+        <span class="s1">wvShop.webViewClient = </span><span class="s0">object </span><span class="s1">: WebViewClient() {}</span>
+        <span class="s1">wvShop.loadUrl(</span><span class="s3">&quot;https://respekt.co/collections/skincare&quot;</span><span class="s1">)</span>
+    <span class="s1">}</span>
+
+
+    <span class="s0">fun </span><span class="s1">webViewButtonClicks() {</span>
+        <span class="s1">btnBack.setOnClickListener {</span>
+            <span class="s0">if </span><span class="s1">(wvShop.canGoBack()) {</span>
+                <span class="s1">wvShop.goBack()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s1">btnForward.setOnClickListener {</span>
+            <span class="s0">if </span><span class="s1">(wvShop.canGoForward()) {</span>
+                <span class="s1">wvShop.goForward()</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s1">btnRefresh.setOnClickListener {</span>
+            <span class="s1">wvShop.reload()</span>
+        <span class="s1">}</span>
+        <span class="s1">btnCancel.setOnClickListener {</span>
+            <span class="s1">wvShop.stopLoading()</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+
+    <span class="s1">companion </span><span class="s0">object </span><span class="s1">{</span>
+        <span class="s1">@JvmStatic</span>
+        <span class="s0">fun </span><span class="s1">newInstance(param1: String</span><span class="s0">, </span><span class="s1">param2: String) =</span>
+            <span class="s1">ShopFragment().apply {</span>
+                <span class="s1">arguments = Bundle().apply {</span>
+<span class="s2">//                    putString(ARG_PARAM1, param1)</span>
+<span class="s2">//                    putString(ARG_PARAM2, param2)</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+    <span class="s1">}</span>
+
+
+<span class="s1">}</span>
+
+</pre>
+</body>
+</html>

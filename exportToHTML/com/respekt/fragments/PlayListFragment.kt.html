@@ -1,0 +1,263 @@
+<html>
+<head>
+<title>PlayListFragment.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PlayListFragment.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.fragments</span>
+
+<span class="s1">import android.os.Bundle</span>
+<span class="s1">import android.view.LayoutInflater</span>
+<span class="s1">import android.view.View</span>
+<span class="s1">import android.view.ViewGroup</span>
+<span class="s1">import android.widget.Toast</span>
+<span class="s1">import androidx.core.content.ContextCompat</span>
+<span class="s1">import androidx.fragment.app.Fragment</span>
+<span class="s1">import androidx.recyclerview.widget.DefaultItemAnimator</span>
+<span class="s1">import androidx.recyclerview.widget.LinearLayoutManager</span>
+<span class="s1">import com.respekt.R</span>
+<span class="s1">import com.respekt.activites.MainActivity</span>
+<span class="s1">import com.respekt.api.RetrofitClient</span>
+<span class="s1">import com.respekt.models.DataItem</span>
+<span class="s1">import com.respekt.models.PlayListResponse</span>
+<span class="s1">import com.respekt.utils.MarginItemDecoration</span>
+<span class="s1">import com.respekt.utils.PlayListAdapter</span>
+<span class="s1">import com.respekt.utils.hide</span>
+<span class="s1">import com.respekt.utils.show</span>
+<span class="s1">import kotlinx.android.synthetic.main.fragment_play_list.*</span>
+<span class="s1">import kotlinx.android.synthetic.main.fragment_play_list.btnShop</span>
+<span class="s1">import retrofit2.Call</span>
+<span class="s1">import retrofit2.Callback</span>
+<span class="s1">import retrofit2.Response</span>
+
+
+<span class="s0">class </span><span class="s1">PlayListFragment : Fragment()</span><span class="s0">, </span><span class="s1">(DataItem) -&gt; Unit {</span>
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">param1: String? = </span><span class="s0">null</span>
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">param2: String? = </span><span class="s0">null</span>
+    <span class="s0">var </span><span class="s1">isFilterOne: Boolean = </span><span class="s0">false</span>
+    <span class="s0">var </span><span class="s1">isFilterTwo: Boolean = </span><span class="s0">false</span>
+    <span class="s0">var </span><span class="s1">isFilterThree: Boolean = </span><span class="s0">false</span>
+    <span class="s0">var </span><span class="s1">playList: MutableList&lt;DataItem&gt;? = </span><span class="s0">null</span>
+    <span class="s0">var </span><span class="s1">filterCategoryOne: String = </span><span class="s2">&quot;&quot;</span>
+    <span class="s0">var </span><span class="s1">filterCategoryTwo: String = </span><span class="s2">&quot;&quot;</span>
+    <span class="s0">var </span><span class="s1">filterCategoryThree: String = </span><span class="s2">&quot;&quot;</span>
+    <span class="s0">var </span><span class="s1">categoryName: String = </span><span class="s2">&quot;&quot;</span>
+    <span class="s0">var </span><span class="s1">playListId: String = </span><span class="s2">&quot;&quot;</span>
+    <span class="s0">var </span><span class="s1">adapter: PlayListAdapter? = </span><span class="s0">null</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate(savedInstanceState: Bundle?) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span>
+        <span class="s1">arguments?.getString(</span><span class="s2">&quot;CategoryName&quot;</span><span class="s1">)?.let {</span>
+            <span class="s1">categoryName = it</span>
+
+        <span class="s1">}</span>
+        <span class="s1">arguments?.getString(</span><span class="s2">&quot;Id&quot;</span><span class="s1">)?.let {</span>
+            <span class="s1">playListId = it</span>
+
+        <span class="s1">}</span>
+        <span class="s0">when </span><span class="s1">(categoryName) {</span>
+            <span class="s2">&quot;BEAUTY MEDITATION&quot; </span><span class="s1">-&gt; {</span>
+                <span class="s1">filterCategoryOne = </span><span class="s2">&quot;ROUTINE&quot;</span>
+                <span class="s1">filterCategoryTwo = </span><span class="s2">&quot;WELLNESS&quot;</span>
+                <span class="s1">filterCategoryThree = </span><span class="s2">&quot;MINDFULNESS&quot;</span>
+            <span class="s1">}</span>
+            <span class="s2">&quot;SHORT BREAK&quot; </span><span class="s1">-&gt; {</span>
+                <span class="s1">filterCategoryOne = </span><span class="s2">&quot;VALUE&quot;</span>
+                <span class="s1">filterCategoryTwo = </span><span class="s2">&quot;AFFIRMATION&quot;</span>
+                <span class="s1">filterCategoryThree = </span><span class="s2">&quot;STRETCH&quot;</span>
+            <span class="s1">}</span>
+            <span class="s2">&quot;MUSIC&quot; </span><span class="s1">-&gt; {</span>
+                <span class="s1">filterCategoryOne = </span><span class="s2">&quot;CALM&quot;</span>
+                <span class="s1">filterCategoryTwo = </span><span class="s2">&quot;HOPE&quot;</span>
+                <span class="s1">filterCategoryThree = </span><span class="s2">&quot;ROMANCE&quot;</span>
+            <span class="s1">}</span>
+            <span class="s2">&quot;SOUND&quot; </span><span class="s1">-&gt; {</span>
+                <span class="s1">filterCategoryOne = </span><span class="s2">&quot;RELAX&quot;</span>
+                <span class="s1">filterCategoryTwo = </span><span class="s2">&quot;ASMR&quot;</span>
+                <span class="s1">filterCategoryThree = </span><span class="s2">&quot;DAILY&quot;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">fun </span><span class="s1">bindList(list: MutableList&lt;DataItem&gt;) {</span>
+        <span class="s1">adapter = activity?.let { PlayListAdapter(it</span><span class="s0">, </span><span class="s1">list</span><span class="s0">, this</span><span class="s1">) }</span>
+        <span class="s0">val </span><span class="s1">layoutManager = LinearLayoutManager(activity)</span>
+        <span class="s1">rvPlayList?.layoutManager = layoutManager</span>
+        <span class="s1">rvPlayList?.addItemDecoration(</span>
+            <span class="s1">MarginItemDecoration(</span>
+                <span class="s1">resources.getDimension(R.dimen._10sdp).toInt()</span>
+            <span class="s1">)</span>
+        <span class="s1">)</span>
+        <span class="s1">rvPlayList?.itemAnimator = DefaultItemAnimator()</span>
+
+        <span class="s1">rvPlayList?.adapter = adapter</span>
+        <span class="s1">adapter?.notifyDataSetChanged()</span>
+    <span class="s1">}</span>
+
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreateView(</span>
+        <span class="s1">inflater: LayoutInflater</span><span class="s0">, </span><span class="s1">container: ViewGroup?</span><span class="s0">,</span>
+        <span class="s1">savedInstanceState: Bundle?</span>
+    <span class="s1">): View? {</span>
+        <span class="s3">// Inflate the layout for this fragment</span>
+        <span class="s0">return </span><span class="s1">inflater.inflate(R.layout.fragment_play_list</span><span class="s0">, </span><span class="s1">container</span><span class="s0">, false</span><span class="s1">)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onViewCreated(view: View</span><span class="s0">, </span><span class="s1">savedInstanceState: Bundle?) {</span>
+        <span class="s0">super</span><span class="s1">.onViewCreated(view</span><span class="s0">, </span><span class="s1">savedInstanceState)</span>
+        <span class="s1">rvPlayList.hide()</span>
+        <span class="s1">progressPlaylist.show()</span>
+        <span class="s1">(activity </span><span class="s0">as </span><span class="s1">MainActivity).shuffleVideo()</span>
+
+        <span class="s1">filterOne.text = filterCategoryOne</span>
+        <span class="s1">filterTwo.text = filterCategoryTwo</span>
+        <span class="s1">filterThree.text = filterCategoryThree</span>
+
+        <span class="s1">filterOne.setOnClickListener {</span>
+            <span class="s0">if </span><span class="s1">(playList != </span><span class="s0">null </span><span class="s1">&amp;&amp; playList?.size != </span><span class="s4">0</span><span class="s1">) {</span>
+                <span class="s1">isFilterOne = !isFilterOne</span>
+                <span class="s1">isFilterTwo = </span><span class="s0">false</span>
+                <span class="s1">isFilterThree = </span><span class="s0">false</span>
+                <span class="s1">filter()</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s1">filterTwo.setOnClickListener {</span>
+            <span class="s0">if </span><span class="s1">(playList != </span><span class="s0">null </span><span class="s1">&amp;&amp; playList?.size != </span><span class="s4">0</span><span class="s1">) {</span>
+                <span class="s1">isFilterTwo = !isFilterTwo</span>
+                <span class="s1">isFilterOne = </span><span class="s0">false</span>
+                <span class="s1">isFilterThree = </span><span class="s0">false</span>
+                <span class="s1">filter()</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s1">filterThree.setOnClickListener {</span>
+            <span class="s0">if </span><span class="s1">(playList != </span><span class="s0">null </span><span class="s1">&amp;&amp; playList?.size != </span><span class="s4">0</span><span class="s1">) {</span>
+                <span class="s1">isFilterThree = !isFilterThree</span>
+                <span class="s1">isFilterTwo = </span><span class="s0">false</span>
+                <span class="s1">isFilterOne = </span><span class="s0">false</span>
+                <span class="s1">filter()</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s1">fetchPlayList(playListId)</span>
+        <span class="s1">tvListTitle.text = categoryName</span>
+
+        <span class="s1">btnShop.setOnClickListener {</span>
+            <span class="s0">val </span><span class="s1">transaction = activity?.supportFragmentManager?.beginTransaction()</span>
+<span class="s3">//            transaction?.hide(activity?.supportFragmentManager?.findFragmentByTag(&quot;PlayerList&quot;)!!)</span>
+            <span class="s1">transaction?.replace(R.id.frame_container</span><span class="s0">, </span><span class="s1">ShopFragment.newInstance(</span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s1">))</span>
+            <span class="s1">transaction?.addToBackStack(</span><span class="s0">null</span><span class="s1">)</span>
+            <span class="s1">transaction?.commit()</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">fetchPlayList(id: String) {</span>
+        <span class="s1">RetrofitClient.instance.getPlayList(id).enqueue(</span><span class="s0">object </span><span class="s1">: Callback&lt;PlayListResponse&gt; {</span>
+            <span class="s1">override </span><span class="s0">fun </span><span class="s1">onFailure(call: Call&lt;PlayListResponse&gt;</span><span class="s0">, </span><span class="s1">t: Throwable) {</span>
+                <span class="s1">progressPlaylist?.hide()</span>
+                <span class="s1">rvPlayList?.hide()</span>
+            <span class="s1">}</span>
+
+            <span class="s1">override </span><span class="s0">fun </span><span class="s1">onResponse(</span>
+                <span class="s1">call: Call&lt;PlayListResponse&gt;</span><span class="s0">,</span>
+                <span class="s1">response: Response&lt;PlayListResponse&gt;</span>
+            <span class="s1">) {</span>
+                <span class="s1">progressPlaylist?.hide()</span>
+                <span class="s1">rvPlayList?.show()</span>
+                <span class="s1">playList = response.body()?.data </span><span class="s0">as </span><span class="s1">MutableList&lt;DataItem&gt;?</span>
+                <span class="s1">response.body()?.data?.let {</span>
+                    <span class="s1">playList?.let { it1 -&gt; bindList(it1) }</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+
+        <span class="s1">})</span>
+    <span class="s1">}</span>
+
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">filter() {</span>
+        <span class="s0">if </span><span class="s1">(isFilterOne) {</span>
+            <span class="s1">filterOne.setBackgroundResource(R.drawable.rounded_bar)</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">filterOne.setBackgroundColor(</span>
+                <span class="s1">ContextCompat.getColor(</span>
+                    <span class="s1">activity!!</span><span class="s0">,</span>
+                    <span class="s1">android.R.color.transparent</span>
+                <span class="s1">)</span>
+            <span class="s1">)</span>
+        <span class="s1">}</span>
+        <span class="s0">if </span><span class="s1">(isFilterTwo) {</span>
+            <span class="s1">filterTwo.setBackgroundResource(R.drawable.rounded_bar)</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">filterTwo.setBackgroundColor(</span>
+                <span class="s1">ContextCompat.getColor(</span>
+                    <span class="s1">activity!!</span><span class="s0">,</span>
+                    <span class="s1">android.R.color.transparent</span>
+                <span class="s1">)</span>
+            <span class="s1">)</span>
+        <span class="s1">}</span>
+        <span class="s0">if </span><span class="s1">(isFilterThree) {</span>
+            <span class="s1">filterThree.setBackgroundResource(R.drawable.rounded_bar)</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">filterThree.setBackgroundColor(</span>
+                <span class="s1">ContextCompat.getColor(</span>
+                    <span class="s1">activity!!</span><span class="s0">,</span>
+                    <span class="s1">android.R.color.transparent</span>
+                <span class="s1">)</span>
+            <span class="s1">)</span>
+        <span class="s1">}</span>
+        <span class="s1">playList?.let {</span>
+            <span class="s0">if </span><span class="s1">(it.isNotEmpty()) {</span>
+                <span class="s0">if </span><span class="s1">(isFilterOne) {</span>
+                    <span class="s1">adapter?.filter?.filter(filterCategoryOne)</span>
+                <span class="s1">} </span><span class="s0">else if </span><span class="s1">(isFilterTwo) {</span>
+                    <span class="s1">adapter?.filter?.filter(filterCategoryTwo)</span>
+                <span class="s1">} </span><span class="s0">else if </span><span class="s1">(isFilterThree) {</span>
+                    <span class="s1">adapter?.filter?.filter(filterCategoryThree)</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">adapter?.filter?.filter(</span><span class="s2">&quot;&quot;</span><span class="s1">)</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">companion </span><span class="s0">object </span><span class="s1">{</span>
+        <span class="s1">@JvmStatic</span>
+        <span class="s0">fun </span><span class="s1">newInstance(param1: String</span><span class="s0">, </span><span class="s1">param2: String) =</span>
+            <span class="s1">PlayListFragment().apply {</span>
+                <span class="s1">arguments = Bundle().apply {</span>
+                    <span class="s1">putString(</span><span class="s2">&quot;CategoryName&quot;</span><span class="s0">, </span><span class="s1">param1)</span>
+                    <span class="s1">putString(</span><span class="s2">&quot;Id&quot;</span><span class="s0">, </span><span class="s1">param2)</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onResume() {</span>
+        <span class="s0">super</span><span class="s1">.onResume()</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onPause() {</span>
+        <span class="s0">super</span><span class="s1">.onPause()</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">invoke(dataItem: DataItem) {</span>
+        <span class="s0">val </span><span class="s1">transaction = activity?.supportFragmentManager?.beginTransaction()</span>
+        <span class="s1">transaction?.hide(activity?.supportFragmentManager?.findFragmentByTag(</span><span class="s2">&quot;PlayerList&quot;</span><span class="s1">)!!)</span>
+        <span class="s1">transaction?.add(R.id.frame_container</span><span class="s0">, </span><span class="s1">PlayerFragment.newInstance(dataItem</span><span class="s0">, false</span><span class="s1">)</span><span class="s0">,</span><span class="s2">&quot;PlayerFragment&quot;</span><span class="s1">)</span>
+        <span class="s1">transaction?.addToBackStack(</span><span class="s0">null</span><span class="s1">)</span>
+        <span class="s1">transaction?.commit()</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span></pre>
+</body>
+</html>

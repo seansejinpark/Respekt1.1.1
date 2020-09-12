@@ -1,0 +1,272 @@
+<html>
+<head>
+<title>fragment_me.xml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #e8bf6a;}
+.s1 { color: #bababa;}
+.s2 { color: #6a8759;}
+.s3 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+fragment_me.xml</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s2">=&quot;1.0&quot; </span><span class="s1">encoding</span><span class="s2">=&quot;utf-8&quot;</span><span class="s0">?&gt;</span>
+<span class="s0">&lt;LinearLayout </span><span class="s1">xmlns:android</span><span class="s2">=&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="s1">xmlns:app</span><span class="s2">=&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+    <span class="s1">xmlns:tools</span><span class="s2">=&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+    <span class="s1">android:layout_height</span><span class="s2">=&quot;match_parent&quot;</span>
+    <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span>
+    <span class="s1">tools:context</span><span class="s2">=&quot;.fragments.HomeFragment&quot;</span><span class="s0">&gt;</span>
+
+    <span class="s0">&lt;RelativeLayout</span>
+        <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+        <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+        <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;ImageView</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;@dimen/_60sdp&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;@dimen/_60sdp&quot;</span>
+            <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;@dimen/_20sdp&quot;</span>
+            <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;@dimen/_20sdp&quot;</span>
+            <span class="s1">android:background</span><span class="s2">=&quot;@drawable/ic_me_logo&quot; </span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;LinearLayout</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+            <span class="s1">android:layout_centerHorizontal</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:layout_centerVertical</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+            <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span><span class="s0">&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexabold&quot;</span>
+                <span class="s1">android:text</span><span class="s2">=&quot;ME&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@color/white&quot;</span>
+                <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_20ssp&quot; </span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;/LinearLayout&gt;</span>
+
+        <span class="s0">&lt;ImageButton</span>
+            <span class="s1">android:id</span><span class="s2">=&quot;@+id/btnShop&quot;</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;@dimen/_30sdp&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;@dimen/_30sdp&quot;</span>
+            <span class="s1">android:layout_alignParentEnd</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:layout_alignParentRight</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:layout_centerVertical</span><span class="s2">=&quot;true&quot;</span>
+            <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+            <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+            <span class="s1">android:background</span><span class="s2">=&quot;@drawable/ic_shop_icon&quot;</span>
+            <span class="s1">android:alpha</span><span class="s2">=&quot;0.75&quot;</span><span class="s0">/&gt;</span>
+    <span class="s0">&lt;/RelativeLayout&gt;</span>
+
+
+    <span class="s0">&lt;LinearLayout</span>
+        <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+        <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+        <span class="s1">android:padding</span><span class="s2">=&quot;@dimen/_15sdp&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;androidx.cardview.widget.CardView</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;@dimen/_80sdp&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;@dimen/_70sdp&quot;</span>
+            <span class="s1">android:layout_weight</span><span class="s2">=&quot;1&quot;</span>
+            <span class="s1">app:cardBackgroundColor</span><span class="s2">=&quot;#59000000&quot;</span>
+            <span class="s1">app:cardCornerRadius</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+            <span class="s1">app:cardElevation</span><span class="s2">=&quot;0dp&quot;</span><span class="s0">&gt;</span>
+
+            <span class="s0">&lt;LinearLayout</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span><span class="s0">&gt;</span>
+
+
+                <span class="s0">&lt;androidx.appcompat.widget.AppCompatTextView</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;@dimen/_5sdp&quot;</span>
+                    <span class="s1">android:background</span><span class="s2">=&quot;@android:color/transparent&quot;</span>
+                    <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexabold&quot;</span>
+                    <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                    <span class="s1">android:text</span><span class="s2">=&quot;TOTAL SESSION&quot;</span>
+                    <span class="s1">android:textColor</span><span class="s2">=&quot;@color/white&quot;</span>
+                    <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_14ssp&quot; </span><span class="s0">/&gt;</span>
+
+                <span class="s0">&lt;androidx.appcompat.widget.AppCompatTextView</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/tvTotalSession&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:background</span><span class="s2">=&quot;@android:color/transparent&quot;</span>
+                    <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexabold&quot;</span>
+                    <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                    <span class="s1">android:text</span><span class="s2">=&quot;0&quot;</span>
+                    <span class="s1">android:textColor</span><span class="s2">=&quot;#CF53F4&quot;</span>
+                    <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_20ssp&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/LinearLayout&gt;</span>
+        <span class="s0">&lt;/androidx.cardview.widget.CardView&gt;</span>
+
+        <span class="s0">&lt;androidx.cardview.widget.CardView</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;@dimen/_80sdp&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;@dimen/_70sdp&quot;</span>
+            <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+            <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+            <span class="s1">android:layout_weight</span><span class="s2">=&quot;1&quot;</span>
+            <span class="s1">app:cardBackgroundColor</span><span class="s2">=&quot;#59000000&quot;</span>
+            <span class="s1">app:cardCornerRadius</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+            <span class="s1">app:cardElevation</span><span class="s2">=&quot;0dp&quot;</span><span class="s0">&gt;</span>
+
+            <span class="s0">&lt;LinearLayout</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span><span class="s0">&gt;</span>
+
+
+                <span class="s0">&lt;androidx.appcompat.widget.AppCompatTextView</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;@dimen/_5sdp&quot;</span>
+                    <span class="s1">android:background</span><span class="s2">=&quot;@android:color/transparent&quot;</span>
+                    <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexabold&quot;</span>
+                    <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                    <span class="s1">android:text</span><span class="s2">=&quot;TOTAL MINUTES&quot;</span>
+                    <span class="s1">android:textColor</span><span class="s2">=&quot;@color/white&quot;</span>
+                    <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_14ssp&quot; </span><span class="s0">/&gt;</span>
+
+                <span class="s0">&lt;androidx.appcompat.widget.AppCompatTextView</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/tvTotalMinutes&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:background</span><span class="s2">=&quot;@android:color/transparent&quot;</span>
+                    <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexabold&quot;</span>
+                    <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                    <span class="s1">android:text</span><span class="s2">=&quot;0&quot;</span>
+                    <span class="s1">android:textColor</span><span class="s2">=&quot;#FF6F61&quot;</span>
+                    <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_20ssp&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/LinearLayout&gt;</span>
+        <span class="s0">&lt;/androidx.cardview.widget.CardView&gt;</span>
+
+    <span class="s0">&lt;/LinearLayout&gt;</span>
+
+    <span class="s0">&lt;LinearLayout</span>
+        <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+        <span class="s1">android:layout_height</span><span class="s2">=&quot;match_parent&quot;</span>
+        <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;TextView</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+            <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;@dimen/_15sdp&quot;</span>
+            <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;@dimen/_15sdp&quot;</span>
+            <span class="s1">android:layout_marginBottom</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+            <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexabold&quot;</span>
+            <span class="s1">android:text</span><span class="s2">=&quot;Resent Sessions&quot;</span>
+            <span class="s1">android:textColor</span><span class="s2">=&quot;@color/white&quot;</span>
+            <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_12ssp&quot; </span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;androidx.recyclerview.widget.RecyclerView</span>
+            <span class="s1">android:id</span><span class="s2">=&quot;@+id/rvPlayList&quot;</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+            <span class="s1">android:layout_marginBottom</span><span class="s2">=&quot;@dimen/_10sdp&quot; </span><span class="s0">/&gt;</span>
+
+        <span class="s0">&lt;ImageView</span>
+            <span class="s1">android:id</span><span class="s2">=&quot;@+id/btnSubscription&quot;</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;@dimen/_52sdp&quot;</span>
+            <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;@dimen/_20sdp&quot;</span>
+            <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;@dimen/_20sdp&quot;</span>
+            <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+            <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;@dimen/_20sdp&quot;</span>
+            <span class="s1">android:background</span><span class="s2">=&quot;@drawable/ic_subscription_button&quot; </span><span class="s0">/&gt;</span>
+
+
+        <span class="s0">&lt;RelativeLayout</span>
+            <span class="s1">android:id</span><span class="s2">=&quot;@+id/layoutRunningMusic&quot;</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+            <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;@dimen/_20sdp&quot;</span>
+            <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+            <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;@dimen/_20sdp&quot;</span>
+            <span class="s1">android:background</span><span class="s2">=&quot;@drawable/rounded_playing_layout&quot;</span>
+            <span class="s1">android:gravity</span><span class="s2">=&quot;center_vertical&quot;</span>
+            <span class="s1">android:orientation</span><span class="s2">=&quot;horizontal&quot;</span><span class="s0">&gt;</span>
+
+            <span class="s0">&lt;ImageView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/ivPlayingView&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;@dimen/_15sdp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;@dimen/_15sdp&quot;</span>
+                <span class="s1">android:layout_centerVertical</span><span class="s2">=&quot;true&quot;</span>
+                <span class="s1">android:background</span><span class="s2">=&quot;@drawable/ic_playing&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;androidx.cardview.widget.CardView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/cardImage&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_centerVertical</span><span class="s2">=&quot;true&quot;</span>
+                <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+                <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+                <span class="s1">android:layout_toEndOf</span><span class="s2">=&quot;@+id/ivPlayingView&quot;</span>
+                <span class="s1">android:layout_toRightOf</span><span class="s2">=&quot;@+id/ivPlayingView&quot;</span>
+                <span class="s1">app:cardBackgroundColor</span><span class="s2">=&quot;#A6F07D5E&quot;</span>
+                <span class="s1">app:cardCornerRadius</span><span class="s2">=&quot;@dimen/_8sdp&quot;</span>
+                <span class="s1">app:cardElevation</span><span class="s2">=&quot;0dp&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;androidx.appcompat.widget.AppCompatImageView</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/ivMusic&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;@dimen/_35sdp&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;@dimen/_35sdp&quot;</span>
+                    <span class="s1">android:scaleType</span><span class="s2">=&quot;fitXY&quot; </span><span class="s0">/&gt;</span>
+            <span class="s0">&lt;/androidx.cardview.widget.CardView&gt;</span>
+
+            <span class="s0">&lt;LinearLayout</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:layout_centerVertical</span><span class="s2">=&quot;true&quot;</span>
+                <span class="s1">android:layout_marginStart</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+                <span class="s1">android:layout_marginLeft</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+                <span class="s1">android:layout_toEndOf</span><span class="s2">=&quot;@+id/cardImage&quot;</span>
+                <span class="s1">android:layout_toRightOf</span><span class="s2">=&quot;@+id/cardImage&quot;</span>
+                <span class="s1">android:gravity</span><span class="s2">=&quot;center_vertical&quot;</span>
+                <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;TextView</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/tvMusicName&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexalight&quot;</span>
+                    <span class="s1">android:textColor</span><span class="s2">=&quot;@color/white&quot;</span>
+                    <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_12ssp&quot; </span><span class="s0">/&gt;</span>
+
+                <span class="s0">&lt;TextView</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/tvMusicduration&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;@dimen/_5sdp&quot;</span>
+                    <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexabold&quot;</span>
+                    <span class="s1">android:textColor</span><span class="s2">=&quot;@color/white&quot;</span>
+                    <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_12ssp&quot; </span><span class="s0">/&gt;</span>
+
+
+            <span class="s0">&lt;/LinearLayout&gt;</span>
+
+            <span class="s0">&lt;ImageButton</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/btnPlayPause&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;@dimen/_30sdp&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;@dimen/_30sdp&quot;</span>
+                <span class="s1">android:layout_alignParentEnd</span><span class="s2">=&quot;true&quot;</span>
+                <span class="s1">android:layout_alignParentRight</span><span class="s2">=&quot;true&quot;</span>
+                <span class="s1">android:layout_centerVertical</span><span class="s2">=&quot;true&quot;</span>
+                <span class="s1">android:layout_marginEnd</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+                <span class="s1">android:layout_marginRight</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+                <span class="s1">android:background</span><span class="s2">=&quot;@drawable/ic_play&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/RelativeLayout&gt;</span>
+    <span class="s0">&lt;/LinearLayout&gt;</span>
+<span class="s0">&lt;/LinearLayout&gt;</span></pre>
+</body>
+</html>

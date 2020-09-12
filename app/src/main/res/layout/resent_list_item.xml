@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_100sdp"
+    app:cardElevation="0dp"
+    android:layout_height="@dimen/_120sdp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:padding="@dimen/_10sdp"
+    app:cardBackgroundColor="#59000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivMusic"
+            android:layout_width="match_parent"
+            android:alpha="0.8"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:gravity="center"
+            android:lines="1"
+            android:maxLines="1"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_5sdp"
+            android:paddingStart="@dimen/_5sdp"
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nexalight"
+            android:text="For Beginner"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Respekt</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="policy_subscription">After 30 days free trial, subscription ($3.99) automatically renews unless auto-renew is turned off at least 24 hours before current period ends. Payment will be charged to your google Account. Manage your subscriptions and turn off auto-renewal in play store settings.</string>
+    <string name="policy_subscription_expire">Your subscription has been expired. Start your subscription again and subscription ($3.99) automatically renews unless auto-renew is turned off at least 24 hours before current period ends. Payment will be charged to your google Account. Manage your subscriptions and turn off auto-renewal in google play store Settings.</string>
+    <string name="policy_subscription_title">SUBSCRIPTION $3.99/Month\nWith 30 Days Free Trial</string>
+    <string name="policy_subscription_expire_title">SUBSCRIPTION\n$3.99/Month</string>
+</resources>
+

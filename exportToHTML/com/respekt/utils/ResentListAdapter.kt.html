@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>ResentListAdapter.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ResentListAdapter.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.utils</span>
+
+<span class="s1">import android.content.Context</span>
+<span class="s1">import android.view.LayoutInflater</span>
+<span class="s1">import android.view.View</span>
+<span class="s1">import android.view.ViewGroup</span>
+<span class="s1">import android.widget.Filter</span>
+<span class="s1">import android.widget.Filterable</span>
+<span class="s1">import android.widget.ImageView</span>
+<span class="s1">import android.widget.TextView</span>
+<span class="s1">import androidx.recyclerview.widget.RecyclerView</span>
+<span class="s1">import com.bumptech.glide.Glide</span>
+<span class="s1">import com.bumptech.glide.load.resource.bitmap.CenterCrop</span>
+<span class="s1">import com.bumptech.glide.request.RequestOptions</span>
+<span class="s1">import com.respekt.R</span>
+<span class="s1">import com.respekt.models.DataItem</span>
+<span class="s1">import com.respekt.models.PlayListResponse</span>
+<span class="s1">import java.util.*</span>
+<span class="s1">import kotlin.collections.ArrayList</span>
+
+<span class="s0">class </span><span class="s1">ResentListAdapter(</span>
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">context: Context</span><span class="s0">,</span>
+    <span class="s1">private </span><span class="s0">var </span><span class="s1">items: MutableList&lt;DataItem?&gt;</span><span class="s0">,</span>
+    <span class="s1">private </span><span class="s0">val </span><span class="s1">listener: (DataItem) -&gt; Unit</span>
+<span class="s1">) :</span>
+    <span class="s1">RecyclerView.Adapter&lt;ResentListAdapter.ViewHolder&gt;()</span><span class="s0">, </span><span class="s1">Filterable {</span>
+
+    <span class="s0">var </span><span class="s1">filterList: MutableList&lt;DataItem?&gt;? = </span><span class="s0">null</span>
+
+    <span class="s1">init {</span>
+        <span class="s1">filterList = items</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onBindViewHolder(holder: ViewHolder</span><span class="s0">, </span><span class="s1">position: Int) {</span>
+        <span class="s0">val </span><span class="s1">playlist = filterList?.get(position)</span>
+        <span class="s1">holder.tvTitle?.text = playlist?.musicTitle</span>
+        <span class="s1">holder.itemView.setOnClickListener { playlist?.let { it1 -&gt; listener(it1) } }</span>
+
+        <span class="s1">Glide.with(context)</span>
+            <span class="s1">.load(playlist?.coverPhoto)</span>
+            <span class="s1">.apply(RequestOptions())</span>
+            <span class="s1">.fitCenter()</span>
+            <span class="s1">.error(R.drawable.rounded_pink_layout)</span>
+            <span class="s1">.placeholder(R.drawable.rounded_pink_layout)</span>
+            <span class="s1">.into(holder.ivMusic!!)</span>
+
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreateViewHolder(parent: ViewGroup</span><span class="s0">, </span><span class="s1">viewType: Int): ViewHolder {</span>
+        <span class="s0">val </span><span class="s1">itemView = LayoutInflater.from(parent?.context)</span>
+            <span class="s1">.inflate(R.layout.resent_list_item</span><span class="s0">, </span><span class="s1">parent</span><span class="s0">, false</span><span class="s1">)</span>
+
+        <span class="s0">return </span><span class="s1">ViewHolder(itemView)</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">getItemCount(): Int = filterList?.size ?: </span><span class="s2">0</span>
+
+    <span class="s1">inner </span><span class="s0">class </span><span class="s1">ViewHolder(row: View) : RecyclerView.ViewHolder(row) {</span>
+        <span class="s0">var </span><span class="s1">tvTitle: TextView? = </span><span class="s0">null</span>
+        <span class="s0">var </span><span class="s1">ivMusic: ImageView? = </span><span class="s0">null</span>
+
+
+        <span class="s1">init {</span>
+            <span class="s0">this</span><span class="s1">.tvTitle = row.findViewById&lt;TextView&gt;(R.id.tvName)</span>
+            <span class="s0">this</span><span class="s1">.ivMusic = row.findViewById&lt;ImageView&gt;(R.id.ivMusic)</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">getFilter(): Filter {</span>
+        <span class="s0">return object </span><span class="s1">: Filter() {</span>
+            <span class="s1">override </span><span class="s0">fun </span><span class="s1">performFiltering(constraint: CharSequence?): FilterResults {</span>
+                <span class="s0">val </span><span class="s1">charSearch = constraint.toString()</span>
+                <span class="s0">if </span><span class="s1">(charSearch.isEmpty()) {</span>
+                    <span class="s1">filterList = items</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s0">var </span><span class="s1">resultList: MutableList&lt;DataItem?&gt;? = mutableListOf()</span>
+                    <span class="s0">for </span><span class="s1">(row </span><span class="s0">in </span><span class="s1">items) {</span>
+                        <span class="s0">if </span><span class="s1">(row?.subCategory?.toLowerCase(Locale.ROOT)</span>
+                                <span class="s1">?.contains(charSearch.toLowerCase(Locale.ROOT))!!</span>
+                        <span class="s1">) {</span>
+                            <span class="s1">resultList?.add(row)</span>
+                        <span class="s1">}</span>
+                    <span class="s1">}</span>
+                    <span class="s1">filterList = resultList</span>
+                <span class="s1">}</span>
+                <span class="s0">val </span><span class="s1">filterResults = FilterResults()</span>
+                <span class="s1">filterResults.values = filterList</span>
+                <span class="s0">return </span><span class="s1">filterResults</span>
+            <span class="s1">}</span>
+
+            <span class="s1">@Suppress(</span><span class="s3">&quot;UNCHECKED_CAST&quot;</span><span class="s1">)</span>
+            <span class="s1">override </span><span class="s0">fun </span><span class="s1">publishResults(constraint: CharSequence?</span><span class="s0">, </span><span class="s1">results: FilterResults?) {</span>
+                <span class="s1">filterList = results?.values </span><span class="s0">as </span><span class="s1">MutableList&lt;DataItem?&gt;?</span>
+                <span class="s1">notifyDataSetChanged()</span>
+            <span class="s1">}</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+
+<span class="s1">}</span></pre>
+</body>
+</html>

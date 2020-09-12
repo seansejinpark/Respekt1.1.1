@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1032742279856",
+    "firebase_url": "https://respekt-beauty.firebaseio.com",
+    "project_id": "respekt-beauty",
+    "storage_bucket": "respekt-beauty.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032742279856:android:14b286aac68020ab307975",
+        "android_client_info": {
+          "package_name": "com.respekt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032742279856-5odavnb7b7gjjit8t78279vm8lvok7tu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBU_SKg-5z-utYQARKlTGksgiUrjeuoVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032742279856-5odavnb7b7gjjit8t78279vm8lvok7tu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Api.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Api.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.api</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.lang.System</span><span class="s0">;</span>
+
+<span class="s1">@kotlin.Metadata(mv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s2">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s3">&quot;</span><span class="s0">\u0000\u001a\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0000\b</span><span class="s3">f</span><span class="s0">\u0018\u0000</span><span class="s3">2</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0001</span><span class="s3">J</span><span class="s0">\u0018\u0010\u0002\u001a\b\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\u0004</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">2</span><span class="s0">\b\b\u0001\u0010\u0005\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0006</span><span class="s3">H</span><span class="s0">\'\u00a8\u0006\u0007</span><span class="s3">&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s3">&quot;Lcom/respekt/api/Api;&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;getPlayList&quot;</span><span class="s0">, </span><span class="s3">&quot;Lretrofit2/Call;&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/models/PlayListResponse;&quot;</span><span class="s0">, </span><span class="s3">&quot;id&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;app_debug&quot;</span><span class="s1">})</span>
+<span class="s0">public abstract interface </span><span class="s1">Api {</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">@retrofit2.http.GET(value = </span><span class="s3">&quot;/music/playlist&quot;</span><span class="s1">)</span>
+    <span class="s0">public abstract </span><span class="s1">retrofit2.Call&lt;com.respekt.models.PlayListResponse&gt; getPlayList(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">@retrofit2.http.Query(value = </span><span class="s3">&quot;id&quot;</span><span class="s1">)</span>
+    <span class="s1">java.lang.String id)</span><span class="s0">;</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

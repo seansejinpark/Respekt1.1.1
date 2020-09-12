@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>PlayListAdapter.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PlayListAdapter.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.utils</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.lang.System</span><span class="s0">;</span>
+
+<span class="s1">@kotlin.Metadata(mv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s2">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s3">&quot;</span><span class="s0">\u0000</span><span class="s3">D</span><span class="s0">\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010</span><span class="s3">!</span><span class="s0">\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\u0002\n\u0002\b\u0007\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0003\u0018\u0000</span><span class="s3">2</span><span class="s0">\f\u0012\b\u0012\u0006</span><span class="s3">0</span><span class="s0">\u0002</span><span class="s3">R</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0000</span><span class="s3">0</span><span class="s0">\u0001</span><span class="s3">2</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">:</span><span class="s0">\u0001\u001d</span><span class="s3">B/</span><span class="s0">\u0012\u0006\u0010\u0004\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0005\u0012\f\u0010\u0006\u001a\b\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\b</span><span class="s3">0</span><span class="s0">\u0007\u0012\u0012\u0010\t\u001a\u000e\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\b\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\u000b</span><span class="s3">0</span><span class="s0">\n\u00a2\u0006\u0002\u0010\f</span><span class="s3">J</span><span class="s0">\b\u0010\u0012\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0013</span><span class="s3">H</span><span class="s0">\u0016</span><span class="s3">J</span><span class="s0">\b\u0010\u0014\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">H</span><span class="s0">\u0016</span><span class="s3">J</span><span class="s0">\u001c\u0010\u0016\u001a\u0002</span><span class="s3">0</span><span class="s0">\u000b</span><span class="s3">2</span><span class="s0">\n\u0010\u0017\u001a\u0006</span><span class="s3">0</span><span class="s0">\u0002</span><span class="s3">R</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0000</span><span class="s3">2</span><span class="s0">\u0006\u0010\u0018\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">H</span><span class="s0">\u0016</span><span class="s3">J</span><span class="s0">\u001c\u0010\u0019\u001a\u0006</span><span class="s3">0</span><span class="s0">\u0002</span><span class="s3">R</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0000</span><span class="s3">2</span><span class="s0">\u0006\u0010\u001a\u001a\u0002</span><span class="s3">0</span><span class="s0">\u001b</span><span class="s3">2</span><span class="s0">\u0006\u0010\u001c\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0015</span><span class="s3">H</span><span class="s0">\u0016</span><span class="s3">R</span><span class="s0">\u000e\u0010\u0004\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0005</span><span class="s3">X</span><span class="s0">\u0082\u000e\u00a2\u0006\u0002\n\u0000</span><span class="s3">R</span><span class="s0">\&quot;\u0010\r\u001a\n\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\b\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0007</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u000e\u0010\u000f\&quot;\u0004\b\u0010\u0010\u0011</span><span class="s3">R</span><span class="s0">\u0014\u0010\u0006\u001a\b\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\b</span><span class="s3">0</span><span class="s0">\u0007</span><span class="s3">X</span><span class="s0">\u0082\u000e\u00a2\u0006\u0002\n\u0000</span><span class="s3">R</span><span class="s0">\u001a\u0010\t\u001a\u000e\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\b\u0012\u0004\u0012\u0002</span><span class="s3">0</span><span class="s0">\u000b</span><span class="s3">0</span><span class="s0">\n</span><span class="s3">X</span><span class="s0">\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u001e</span><span class="s3">&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s3">&quot;Lcom/respekt/utils/PlayListAdapter;&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroidx/recyclerview/widget/RecyclerView$Adapter;&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/utils/PlayListAdapter$ViewHolder;&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/widget/Filterable;&quot;</span><span class="s0">, </span><span class="s3">&quot;context&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/content/Context;&quot;</span><span class="s0">, </span><span class="s3">&quot;items&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;Lcom/respekt/models/DataItem;&quot;</span><span class="s0">, </span><span class="s3">&quot;listener&quot;</span><span class="s0">, </span><span class="s3">&quot;Lkotlin/Function1;&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;(Landroid/content/Context;Ljava/util/List;Lkotlin/jvm/functions/Function1;)V&quot;</span><span class="s0">, </span><span class="s3">&quot;filterList&quot;</span><span class="s0">, </span><span class="s3">&quot;getFilterList&quot;</span><span class="s0">, </span><span class="s3">&quot;()Ljava/util/List;&quot;</span><span class="s0">, </span><span class="s3">&quot;setFilterList&quot;</span><span class="s0">, </span><span class="s3">&quot;(Ljava/util/List;)V&quot;</span><span class="s0">, </span><span class="s3">&quot;getFilter&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/widget/Filter;&quot;</span><span class="s0">, </span><span class="s3">&quot;getItemCount&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;onBindViewHolder&quot;</span><span class="s0">, </span><span class="s3">&quot;holder&quot;</span><span class="s0">, </span><span class="s3">&quot;position&quot;</span><span class="s0">, </span><span class="s3">&quot;onCreateViewHolder&quot;</span><span class="s0">, </span><span class="s3">&quot;parent&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/view/ViewGroup;&quot;</span><span class="s0">, </span><span class="s3">&quot;viewType&quot;</span><span class="s0">, </span><span class="s3">&quot;ViewHolder&quot;</span><span class="s0">, </span><span class="s3">&quot;app_debug&quot;</span><span class="s1">})</span>
+<span class="s0">public final class </span><span class="s1">PlayListAdapter </span><span class="s0">extends </span><span class="s1">androidx.recyclerview.widget.RecyclerView.Adapter&lt;com.respekt.utils.PlayListAdapter.ViewHolder&gt; </span><span class="s0">implements </span><span class="s1">android.widget.Filterable {</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">private </span><span class="s1">java.util.List&lt;com.respekt.models.DataItem&gt; filterList</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">android.content.Context context</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">java.util.List&lt;com.respekt.models.DataItem&gt; items</span><span class="s0">;</span>
+    <span class="s0">private final </span><span class="s1">kotlin.jvm.functions.Function1&lt;com.respekt.models.DataItem</span><span class="s0">, </span><span class="s1">kotlin.Unit&gt; listener = </span><span class="s0">null;</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">java.util.List&lt;com.respekt.models.DataItem&gt; getFilterList() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setFilterList(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">java.util.List&lt;com.respekt.models.DataItem&gt; p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onBindViewHolder(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.utils.PlayListAdapter.ViewHolder holder</span><span class="s0">, int </span><span class="s1">position) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public </span><span class="s1">com.respekt.utils.PlayListAdapter.ViewHolder onCreateViewHolder(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.view.ViewGroup parent</span><span class="s0">, int </span><span class="s1">viewType) {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public int </span><span class="s1">getItemCount() {</span>
+        <span class="s0">return </span><span class="s2">0</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public </span><span class="s1">android.widget.Filter getFilter() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public </span><span class="s1">PlayListAdapter(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.content.Context context</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">java.util.List&lt;com.respekt.models.DataItem&gt; items</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">kotlin.jvm.functions.Function1&lt;? </span><span class="s0">super </span><span class="s1">com.respekt.models.DataItem</span><span class="s0">, </span><span class="s1">kotlin.Unit&gt; listener) {</span>
+        <span class="s0">super</span><span class="s1">()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@kotlin.Metadata(mv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s2">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s3">&quot;</span><span class="s0">\u0000\&quot;\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\b\b\u0086\u0004\u0018\u0000</span><span class="s3">2</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0001</span><span class="s3">B</span><span class="s0">\r\u0012\u0006\u0010\u0002\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0003\u00a2\u0006\u0002\u0010\u0004</span><span class="s3">R</span><span class="s0">\u001c\u0010\u0005\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\u0006</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0007\u0010\b\&quot;\u0004\b\t\u0010\n</span><span class="s3">R</span><span class="s0">\u001c\u0010\u000b\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\f</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\r\u0010\u000e\&quot;\u0004\b\u000f\u0010\u0010</span><span class="s3">R</span><span class="s0">\u001c\u0010\u0011\u001a\u0004\u0018\u0001</span><span class="s3">0</span><span class="s0">\f</span><span class="s3">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0012\u0010\u000e\&quot;\u0004\b\u0013\u0010\u0010\u00a8\u0006\u0014</span><span class="s3">&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s3">&quot;Lcom/respekt/utils/PlayListAdapter$ViewHolder;&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;&quot;</span><span class="s0">, </span><span class="s3">&quot;row&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/view/View;&quot;</span><span class="s0">, </span><span class="s3">&quot;(Lcom/respekt/utils/PlayListAdapter;Landroid/view/View;)V&quot;</span><span class="s0">, </span><span class="s3">&quot;ivMusic&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/widget/ImageView;&quot;</span><span class="s0">, </span><span class="s3">&quot;getIvMusic&quot;</span><span class="s0">, </span><span class="s3">&quot;()Landroid/widget/ImageView;&quot;</span><span class="s0">, </span><span class="s3">&quot;setIvMusic&quot;</span><span class="s0">, </span><span class="s3">&quot;(Landroid/widget/ImageView;)V&quot;</span><span class="s0">, </span><span class="s3">&quot;tvDuration&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/widget/TextView;&quot;</span><span class="s0">, </span><span class="s3">&quot;getTvDuration&quot;</span><span class="s0">, </span><span class="s3">&quot;()Landroid/widget/TextView;&quot;</span><span class="s0">, </span><span class="s3">&quot;setTvDuration&quot;</span><span class="s0">, </span><span class="s3">&quot;(Landroid/widget/TextView;)V&quot;</span><span class="s0">, </span><span class="s3">&quot;tvTitle&quot;</span><span class="s0">, </span><span class="s3">&quot;getTvTitle&quot;</span><span class="s0">, </span><span class="s3">&quot;setTvTitle&quot;</span><span class="s0">, </span><span class="s3">&quot;app_debug&quot;</span><span class="s1">})</span>
+    <span class="s0">public final class </span><span class="s1">ViewHolder </span><span class="s0">extends </span><span class="s1">androidx.recyclerview.widget.RecyclerView.ViewHolder {</span>
+        <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+        <span class="s0">private </span><span class="s1">android.widget.TextView tvTitle</span><span class="s0">;</span>
+        <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+        <span class="s0">private </span><span class="s1">android.widget.ImageView ivMusic</span><span class="s0">;</span>
+        <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+        <span class="s0">private </span><span class="s1">android.widget.TextView tvDuration</span><span class="s0">;</span>
+        
+        <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+        <span class="s0">public final </span><span class="s1">android.widget.TextView getTvTitle() {</span>
+            <span class="s0">return null;</span>
+        <span class="s1">}</span>
+        
+        <span class="s0">public final void </span><span class="s1">setTvTitle(@org.jetbrains.annotations.Nullable()</span>
+        <span class="s1">android.widget.TextView p0) {</span>
+        <span class="s1">}</span>
+        
+        <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+        <span class="s0">public final </span><span class="s1">android.widget.ImageView getIvMusic() {</span>
+            <span class="s0">return null;</span>
+        <span class="s1">}</span>
+        
+        <span class="s0">public final void </span><span class="s1">setIvMusic(@org.jetbrains.annotations.Nullable()</span>
+        <span class="s1">android.widget.ImageView p0) {</span>
+        <span class="s1">}</span>
+        
+        <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+        <span class="s0">public final </span><span class="s1">android.widget.TextView getTvDuration() {</span>
+            <span class="s0">return null;</span>
+        <span class="s1">}</span>
+        
+        <span class="s0">public final void </span><span class="s1">setTvDuration(@org.jetbrains.annotations.Nullable()</span>
+        <span class="s1">android.widget.TextView p0) {</span>
+        <span class="s1">}</span>
+        
+        <span class="s0">public </span><span class="s1">ViewHolder(@org.jetbrains.annotations.NotNull()</span>
+        <span class="s1">android.view.View row) {</span>
+            <span class="s0">super</span><span class="s1">(</span><span class="s0">null</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>dialog_purchase.xml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #e8bf6a;}
+.s1 { color: #bababa;}
+.s2 { color: #6a8759;}
+.s3 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+dialog_purchase.xml</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s2">=&quot;1.0&quot; </span><span class="s1">encoding</span><span class="s2">=&quot;utf-8&quot;</span><span class="s0">?&gt;</span>
+<span class="s0">&lt;androidx.cardview.widget.CardView </span><span class="s1">xmlns:android</span><span class="s2">=&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="s1">xmlns:app</span><span class="s2">=&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+    <span class="s1">android:layout_height</span><span class="s2">=&quot;match_parent&quot;</span>
+    <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span>
+    <span class="s1">app:cardElevation</span><span class="s2">=&quot;0dp&quot;</span><span class="s0">&gt;</span>
+
+
+    <span class="s0">&lt;LinearLayout</span>
+        <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+        <span class="s1">android:layout_height</span><span class="s2">=&quot;match_parent&quot;</span>
+        <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span><span class="s0">&gt;</span>
+
+        <span class="s0">&lt;ImageView</span>
+            <span class="s1">android:scaleType</span><span class="s2">=&quot;fitXY&quot;</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;0dp&quot;</span>
+            <span class="s1">android:layout_weight</span><span class="s2">=&quot;1&quot;</span>
+            <span class="s1">android:src</span><span class="s2">=&quot;@drawable/banner_subscription&quot;</span><span class="s0">&gt;</span>
+
+
+        <span class="s0">&lt;/ImageView&gt;</span>
+
+        <span class="s0">&lt;LinearLayout</span>
+            <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+            <span class="s1">android:layout_height</span><span class="s2">=&quot;0dp&quot;</span>
+            <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+            <span class="s1">android:layout_weight</span><span class="s2">=&quot;1&quot;</span>
+            <span class="s1">android:gravity</span><span class="s2">=&quot;center_horizontal&quot;</span>
+            <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span><span class="s0">&gt;</span>
+
+            <span class="s0">&lt;LinearLayout</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_weight</span><span class="s2">=&quot;1&quot;</span>
+                <span class="s1">android:orientation</span><span class="s2">=&quot;vertical&quot;</span><span class="s0">&gt;</span>
+
+                <span class="s0">&lt;TextView</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/purchasedTitle&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexabold&quot;</span>
+                    <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                    <span class="s1">android:text</span><span class="s2">=&quot;SUBSCRIPTION $3.99/Month \n With 30 Days Free Trial&quot;</span>
+                    <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_15ssp&quot; </span><span class="s0">/&gt;</span>
+
+                <span class="s0">&lt;TextView</span>
+                    <span class="s1">android:id</span><span class="s2">=&quot;@+id/purchasedDesc&quot;</span>
+                    <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                    <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                    <span class="s1">android:layout_marginTop</span><span class="s2">=&quot;@dimen/_10sdp&quot;</span>
+                    <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexalight&quot;</span>
+                    <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                    <span class="s1">android:text</span><span class="s2">=&quot;@string/policy_subscription&quot;</span>
+                    <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_12ssp&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;/LinearLayout&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/tvSubscribe&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:background</span><span class="s2">=&quot;#00FFFF&quot;</span>
+                <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexabold&quot;</span>
+                <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                <span class="s1">android:padding</span><span class="s2">=&quot;@dimen/_5sdp&quot;</span>
+                <span class="s1">android:text</span><span class="s2">=&quot;SUBSCRIBE&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@color/white&quot;</span>
+                <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_15ssp&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;View</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;@dimen/_1sdp&quot;</span>
+                <span class="s1">android:background</span><span class="s2">=&quot;@android:color/darker_gray&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/tvPolicy&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexalight&quot;</span>
+                <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                <span class="s1">android:padding</span><span class="s2">=&quot;@dimen/_5sdp&quot;</span>
+                <span class="s1">android:text</span><span class="s2">=&quot;Privacy Policy&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@android:color/holo_blue_dark&quot;</span>
+                <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_13ssp&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;View</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;@dimen/_1sdp&quot;</span>
+                <span class="s1">android:background</span><span class="s2">=&quot;@android:color/darker_gray&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/tvTermsUse&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexalight&quot;</span>
+                <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                <span class="s1">android:padding</span><span class="s2">=&quot;@dimen/_5sdp&quot;</span>
+                <span class="s1">android:text</span><span class="s2">=&quot;Terms of Service&quot;</span>
+                <span class="s1">android:textColor</span><span class="s2">=&quot;@android:color/holo_blue_dark&quot;</span>
+                <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_13ssp&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;View</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;@dimen/_1sdp&quot;</span>
+                <span class="s1">android:background</span><span class="s2">=&quot;@android:color/darker_gray&quot; </span><span class="s0">/&gt;</span>
+
+            <span class="s0">&lt;TextView</span>
+                <span class="s1">android:id</span><span class="s2">=&quot;@+id/tvClose&quot;</span>
+                <span class="s1">android:layout_width</span><span class="s2">=&quot;match_parent&quot;</span>
+                <span class="s1">android:layout_height</span><span class="s2">=&quot;wrap_content&quot;</span>
+                <span class="s1">android:fontFamily</span><span class="s2">=&quot;@font/nexalight&quot;</span>
+                <span class="s1">android:gravity</span><span class="s2">=&quot;center&quot;</span>
+                <span class="s1">android:padding</span><span class="s2">=&quot;@dimen/_5sdp&quot;</span>
+                <span class="s1">android:text</span><span class="s2">=&quot;Close&quot;</span>
+                <span class="s1">android:textSize</span><span class="s2">=&quot;@dimen/_13ssp&quot; </span><span class="s0">/&gt;</span>
+        <span class="s0">&lt;/LinearLayout&gt;</span>
+    <span class="s0">&lt;/LinearLayout&gt;</span>
+<span class="s0">&lt;/androidx.cardview.widget.CardView&gt;</span></pre>
+</body>
+</html>

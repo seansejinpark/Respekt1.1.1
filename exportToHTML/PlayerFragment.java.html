@@ -1,0 +1,191 @@
+<html>
+<head>
+<title>PlayerFragment.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PlayerFragment.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.fragments</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.lang.System</span><span class="s0">;</span>
+
+<span class="s1">@kotlin.Suppress(names = {</span><span class="s2">&quot;WHEN_ENUM_CAN_BE_NULL_IN_JAVA&quot;</span><span class="s1">})</span>
+<span class="s1">@kotlin.Metadata(mv = {</span><span class="s3">1</span><span class="s0">, </span><span class="s3">1</span><span class="s0">, </span><span class="s3">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s3">1</span><span class="s0">, </span><span class="s3">0</span><span class="s0">, </span><span class="s3">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s3">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s2">&quot;</span><span class="s0">\u0000</span><span class="s2">~</span><span class="s0">\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0010\u000e\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0002\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0010\u0018\u0000 </span><span class="s2">A2</span><span class="s0">\u0002</span><span class="s2">0</span><span class="s0">\u0001</span><span class="s2">2</span><span class="s0">\u0002</span><span class="s2">0</span><span class="s0">\u0002</span><span class="s2">:</span><span class="s0">\u0001</span><span class="s2">AB</span><span class="s0">\u0005\u00a2\u0006\u0002\u0010\u0003</span><span class="s2">J</span><span class="s0">\b\u0010\u0018\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">H</span><span class="s0">\u0002</span><span class="s2">J</span><span class="s0">\u0016\u0010\u001a\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">2</span><span class="s0">\u0006\u0010\u001b\u001a\u0002</span><span class="s2">0</span><span class="s0">\u001c</span><span class="s2">2</span><span class="s0">\u0006\u0010\u001d\u001a\u0002</span><span class="s2">0</span><span class="s0">\u001e</span><span class="s2">J</span><span class="s0">\u0010\u0010\u001f\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">2</span><span class="s0">\u0006\u0010 \u001a\u0002</span><span class="s2">0</span><span class="s0">\u000e</span><span class="s2">H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\b\u0010</span><span class="s2">!</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\u0012\u0010\&quot;\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">2</span><span class="s0">\b\u0010</span><span class="s2">#</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s2">0$H</span><span class="s0">\u0016</span><span class="s2">J&amp;</span><span class="s0">\u0010</span><span class="s2">%</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s2">0&amp;2</span><span class="s0">\u0006\u0010\'\u001a\u0002</span><span class="s2">0(2</span><span class="s0">\b\u0010</span><span class="s2">)</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s2">0*2</span><span class="s0">\b\u0010</span><span class="s2">#</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s2">0$H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\b\u0010</span><span class="s2">+</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\u0010\u0010</span><span class="s2">,</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">2</span><span class="s0">\u0006\u0010</span><span class="s2">-</span><span class="s0">\u001a\u0002</span><span class="s2">0.H</span><span class="s0">\u0007</span><span class="s2">J</span><span class="s0">\u0010\u0010</span><span class="s2">,</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">2</span><span class="s0">\u0006\u0010</span><span class="s2">-</span><span class="s0">\u001a\u0002</span><span class="s2">0/H</span><span class="s0">\u0007</span><span class="s2">J</span><span class="s0">\u0010\u0010</span><span class="s2">,</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">2</span><span class="s0">\u0006\u0010</span><span class="s2">-</span><span class="s0">\u001a\u0002</span><span class="s2">00H</span><span class="s0">\u0007</span><span class="s2">J</span><span class="s0">\u0010\u0010</span><span class="s2">,</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">2</span><span class="s0">\u0006\u0010</span><span class="s2">-</span><span class="s0">\u001a\u0002</span><span class="s2">01H</span><span class="s0">\u0007</span><span class="s2">J</span><span class="s0">\u0010\u0010</span><span class="s2">,</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">2</span><span class="s0">\u0006\u0010</span><span class="s2">-</span><span class="s0">\u001a\u0002</span><span class="s2">02H</span><span class="s0">\u0007</span><span class="s2">J</span><span class="s0">\b\u0010</span><span class="s2">3</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\b\u0010</span><span class="s2">4</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\b\u0010</span><span class="s2">5</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\b\u0010</span><span class="s2">6</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\b\u0010</span><span class="s2">7</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\b\u0010</span><span class="s2">8</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\b\u0010</span><span class="s2">9</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\u001a\u0010</span><span class="s2">:</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">2</span><span class="s0">\u0006\u0010\u001d\u001a\u0002</span><span class="s2">0&amp;2</span><span class="s0">\b\u0010</span><span class="s2">#</span><span class="s0">\u001a\u0004\u0018\u0001</span><span class="s2">0$H</span><span class="s0">\u0016</span><span class="s2">J</span><span class="s0">\u0006\u0010</span><span class="s2">;</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">J</span><span class="s0">\u0006\u0010</span><span class="s2">&lt;</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">J</span><span class="s0">\b\u0010</span><span class="s2">=</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">H</span><span class="s0">\u0002</span><span class="s2">J</span><span class="s0">\u0006\u0010</span><span class="s2">&gt;</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">J</span><span class="s0">\u0006\u0010</span><span class="s2">?</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">J</span><span class="s0">\u0006\u0010</span><span class="s2">@</span><span class="s0">\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0019</span><span class="s2">R</span><span class="s0">\u001c\u0010\u0004\u001a\u0004\u0018\u0001</span><span class="s2">0</span><span class="s0">\u0005</span><span class="s2">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0006\u0010\u0007\&quot;\u0004\b\b\u0010\t</span><span class="s2">R</span><span class="s0">\u000e\u0010\n\u001a\u0002</span><span class="s2">0</span><span class="s0">\u000b</span><span class="s2">X</span><span class="s0">\u0082\u000e\u00a2\u0006\u0002\n\u0000</span><span class="s2">R</span><span class="s0">\u000e\u0010\f\u001a\u0002</span><span class="s2">0</span><span class="s0">\u000b</span><span class="s2">X</span><span class="s0">\u0082\u000e\u00a2\u0006\u0002\n\u0000</span><span class="s2">R</span><span class="s0">\u001c\u0010\r\u001a\u0004\u0018\u0001</span><span class="s2">0</span><span class="s0">\u000e</span><span class="s2">X</span><span class="s0">\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u000f\u0010\u0010\&quot;\u0004\b\u0011\u0010\u0012</span><span class="s2">R</span><span class="s0">\u0010\u0010\u0013\u001a\u0004\u0018\u0001</span><span class="s2">0</span><span class="s0">\u0014</span><span class="s2">X</span><span class="s0">\u0082\u000e\u00a2\u0006\u0002\n\u0000</span><span class="s2">R</span><span class="s0">\u0010\u0010\u0015\u001a\u0004\u0018\u0001</span><span class="s2">0</span><span class="s0">\u0014</span><span class="s2">X</span><span class="s0">\u0082\u000e\u00a2\u0006\u0002\n\u0000</span><span class="s2">R</span><span class="s0">\u0010\u0010\u0016\u001a\u0004\u0018\u0001</span><span class="s2">0</span><span class="s0">\u0017</span><span class="s2">X</span><span class="s0">\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u0006</span><span class="s2">B&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s2">&quot;Lcom/respekt/fragments/PlayerFragment;&quot;</span><span class="s0">, </span><span class="s2">&quot;Landroidx/fragment/app/Fragment;&quot;</span><span class="s0">, </span><span class="s2">&quot;Lcom/respekt/fragments/PurchaseDialogFragment$OnClosePurchasedDialog;&quot;</span><span class="s0">, </span><span class="s2">&quot;()V&quot;</span><span class="s0">, </span><span class="s2">&quot;dailog&quot;</span><span class="s0">, </span><span class="s2">&quot;Lcom/respekt/fragments/PurchaseDialogFragment;&quot;</span><span class="s0">, </span><span class="s2">&quot;getDailog&quot;</span><span class="s0">, </span><span class="s2">&quot;()Lcom/respekt/fragments/PurchaseDialogFragment;&quot;</span><span class="s0">, </span><span class="s2">&quot;setDailog&quot;</span><span class="s0">, </span><span class="s2">&quot;(Lcom/respekt/fragments/PurchaseDialogFragment;)V&quot;</span><span class="s0">, </span><span class="s2">&quot;isFromMiniPlayer&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s2">&quot;isUserSeeking&quot;</span><span class="s0">, </span><span class="s2">&quot;mContext&quot;</span><span class="s0">, </span><span class="s2">&quot;Landroid/content/Context;&quot;</span><span class="s0">, </span><span class="s2">&quot;getMContext&quot;</span><span class="s0">, </span><span class="s2">&quot;()Landroid/content/Context;&quot;</span><span class="s0">, </span><span class="s2">&quot;setMContext&quot;</span><span class="s0">, </span><span class="s2">&quot;(Landroid/content/Context;)V&quot;</span><span class="s0">, </span><span class="s2">&quot;param1&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s2">&quot;param2&quot;</span><span class="s0">, </span><span class="s2">&quot;playItem&quot;</span><span class="s0">, </span><span class="s2">&quot;Lcom/respekt/models/DataItem;&quot;</span><span class="s0">, </span><span class="s2">&quot;btnClick&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s2">&quot;getDurationTimer&quot;</span><span class="s0">, </span><span class="s2">&quot;duration&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s2">&quot;view&quot;</span><span class="s0">, </span><span class="s2">&quot;Landroid/widget/TextView;&quot;</span><span class="s0">, </span><span class="s2">&quot;onAttach&quot;</span><span class="s0">, </span><span class="s2">&quot;context&quot;</span><span class="s0">, </span><span class="s2">&quot;onClose&quot;</span><span class="s0">, </span><span class="s2">&quot;onCreate&quot;</span><span class="s0">, </span><span class="s2">&quot;savedInstanceState&quot;</span><span class="s0">, </span><span class="s2">&quot;Landroid/os/Bundle;&quot;</span><span class="s0">, </span><span class="s2">&quot;onCreateView&quot;</span><span class="s0">, </span><span class="s2">&quot;Landroid/view/View;&quot;</span><span class="s0">, </span><span class="s2">&quot;inflater&quot;</span><span class="s0">, </span><span class="s2">&quot;Landroid/view/LayoutInflater;&quot;</span><span class="s0">, </span><span class="s2">&quot;container&quot;</span><span class="s0">, </span><span class="s2">&quot;Landroid/view/ViewGroup;&quot;</span><span class="s0">, </span><span class="s2">&quot;onDetach&quot;</span><span class="s0">, </span><span class="s2">&quot;onMessageEvent&quot;</span><span class="s0">, </span><span class="s2">&quot;event&quot;</span><span class="s0">, </span><span class="s2">&quot;Lcom/respekt/mediaplayer/LocalEventFromMediaPlayerHolder$PlaybackDuration;&quot;</span><span class="s0">, </span><span class="s2">&quot;Lcom/respekt/mediaplayer/LocalEventFromMediaPlayerHolder$PlaybackPosition;&quot;</span><span class="s0">, </span><span class="s2">&quot;Lcom/respekt/mediaplayer/LocalEventFromMediaPlayerHolder$PreparedDone;&quot;</span><span class="s0">, </span><span class="s2">&quot;Lcom/respekt/mediaplayer/LocalEventFromMediaPlayerHolder$StateChanged;&quot;</span><span class="s0">, </span><span class="s2">&quot;Lcom/respekt/mediaplayer/LocalEventFromMediaPlayerHolder$UpdateLog;&quot;</span><span class="s0">, </span><span class="s2">&quot;onPause&quot;</span><span class="s0">, </span><span class="s2">&quot;onPrivacyClicked&quot;</span><span class="s0">, </span><span class="s2">&quot;onResume&quot;</span><span class="s0">, </span><span class="s2">&quot;onStart&quot;</span><span class="s0">, </span><span class="s2">&quot;onStop&quot;</span><span class="s0">, </span><span class="s2">&quot;onSubscribeClicked&quot;</span><span class="s0">, </span><span class="s2">&quot;onTermsClicked&quot;</span><span class="s0">, </span><span class="s2">&quot;onViewCreated&quot;</span><span class="s0">, </span><span class="s2">&quot;pause&quot;</span><span class="s0">, </span><span class="s2">&quot;play&quot;</span><span class="s0">, </span><span class="s2">&quot;playIfPurchased&quot;</span><span class="s0">, </span><span class="s2">&quot;reset&quot;</span><span class="s0">, </span><span class="s2">&quot;setupSeekbar&quot;</span><span class="s0">, </span><span class="s2">&quot;stop&quot;</span><span class="s0">, </span><span class="s2">&quot;Companion&quot;</span><span class="s0">, </span><span class="s2">&quot;app_debug&quot;</span><span class="s1">})</span>
+<span class="s0">public final class </span><span class="s1">PlayerFragment </span><span class="s0">extends </span><span class="s1">androidx.fragment.app.Fragment </span><span class="s0">implements </span><span class="s1">com.respekt.fragments.PurchaseDialogFragment.OnClosePurchasedDialog {</span>
+    <span class="s0">private </span><span class="s1">java.lang.String param1</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">java.lang.String param2</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">com.respekt.models.DataItem playItem</span><span class="s0">;</span>
+    <span class="s0">private boolean </span><span class="s1">isFromMiniPlayer = </span><span class="s0">false;</span>
+    <span class="s0">private boolean </span><span class="s1">isUserSeeking = </span><span class="s0">false;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">private </span><span class="s1">android.content.Context mContext</span><span class="s0">;</span>
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">private </span><span class="s1">com.respekt.fragments.PurchaseDialogFragment dailog</span><span class="s0">;</span>
+    <span class="s0">public static final </span><span class="s1">com.respekt.fragments.PlayerFragment.Companion Companion = </span><span class="s0">null;</span>
+    <span class="s0">private </span><span class="s1">java.util.HashMap _$_findViewCache</span><span class="s0">;</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">android.content.Context getMContext() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setMContext(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">android.content.Context p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s0">public final </span><span class="s1">com.respekt.fragments.PurchaseDialogFragment getDailog() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setDailog(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">com.respekt.fragments.PurchaseDialogFragment p0) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onCreate(@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">android.os.Bundle savedInstanceState) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public </span><span class="s1">android.view.View onCreateView(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.view.LayoutInflater inflater</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">android.view.ViewGroup container</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">android.os.Bundle savedInstanceState) {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onViewCreated(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.view.View view</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.Nullable()</span>
+    <span class="s1">android.os.Bundle savedInstanceState) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">private final void </span><span class="s1">playIfPurchased() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onAttach(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.content.Context context) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onDetach() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">private final void </span><span class="s1">btnClick() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">getDurationTimer(</span><span class="s0">int </span><span class="s1">duration</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.widget.TextView view) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">setupSeekbar() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">pause() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">play() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">stop() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public final void </span><span class="s1">reset() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onResume() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onPause() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onStart() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onStop() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.greenrobot.eventbus.Subscribe(sticky = </span><span class="s0">true, </span><span class="s1">threadMode = org.greenrobot.eventbus.ThreadMode.MAIN)</span>
+    <span class="s0">public final void </span><span class="s1">onMessageEvent(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.mediaplayer.LocalEventFromMediaPlayerHolder.UpdateLog event) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.greenrobot.eventbus.Subscribe(sticky = </span><span class="s0">true, </span><span class="s1">threadMode = org.greenrobot.eventbus.ThreadMode.MAIN)</span>
+    <span class="s0">public final void </span><span class="s1">onMessageEvent(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.mediaplayer.LocalEventFromMediaPlayerHolder.PlaybackDuration event) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.greenrobot.eventbus.Subscribe(sticky = </span><span class="s0">true, </span><span class="s1">threadMode = org.greenrobot.eventbus.ThreadMode.MAIN)</span>
+    <span class="s0">public final void </span><span class="s1">onMessageEvent(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.mediaplayer.LocalEventFromMediaPlayerHolder.PlaybackPosition event) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.greenrobot.eventbus.Subscribe(sticky = </span><span class="s0">true, </span><span class="s1">threadMode = org.greenrobot.eventbus.ThreadMode.MAIN)</span>
+    <span class="s0">public final void </span><span class="s1">onMessageEvent(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.mediaplayer.LocalEventFromMediaPlayerHolder.PreparedDone event) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.greenrobot.eventbus.Subscribe(threadMode = org.greenrobot.eventbus.ThreadMode.MAIN)</span>
+    <span class="s0">public final void </span><span class="s1">onMessageEvent(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.mediaplayer.LocalEventFromMediaPlayerHolder.StateChanged event) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onClose() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onSubscribeClicked() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onPrivacyClicked() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">onTermsClicked() {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public </span><span class="s1">PlayerFragment() {</span>
+        <span class="s0">super</span><span class="s1">()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s0">public static final </span><span class="s1">com.respekt.fragments.PlayerFragment newInstance(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">com.respekt.models.DataItem playItem</span><span class="s0">, boolean </span><span class="s1">param2) {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+    
+    <span class="s1">@kotlin.Metadata(mv = {</span><span class="s3">1</span><span class="s0">, </span><span class="s3">1</span><span class="s0">, </span><span class="s3">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s3">1</span><span class="s0">, </span><span class="s3">0</span><span class="s0">, </span><span class="s3">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s3">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s2">&quot;</span><span class="s0">\u0000\u001e\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0000\b\u0086\u0003\u0018\u0000</span><span class="s2">2</span><span class="s0">\u0002</span><span class="s2">0</span><span class="s0">\u0001</span><span class="s2">B</span><span class="s0">\u0007\b\u0002\u00a2\u0006\u0002\u0010\u0002</span><span class="s2">J</span><span class="s0">\u0018\u0010\u0003\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0004</span><span class="s2">2</span><span class="s0">\u0006\u0010\u0005\u001a\u0002</span><span class="s2">0</span><span class="s0">\u0006</span><span class="s2">2</span><span class="s0">\u0006\u0010\u0007\u001a\u0002</span><span class="s2">0</span><span class="s0">\b</span><span class="s2">H</span><span class="s0">\u0007\u00a8\u0006\t</span><span class="s2">&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s2">&quot;Lcom/respekt/fragments/PlayerFragment$Companion;&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s2">&quot;()V&quot;</span><span class="s0">, </span><span class="s2">&quot;newInstance&quot;</span><span class="s0">, </span><span class="s2">&quot;Lcom/respekt/fragments/PlayerFragment;&quot;</span><span class="s0">, </span><span class="s2">&quot;playItem&quot;</span><span class="s0">, </span><span class="s2">&quot;Lcom/respekt/models/DataItem;&quot;</span><span class="s0">, </span><span class="s2">&quot;param2&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s0">, </span><span class="s2">&quot;app_debug&quot;</span><span class="s1">})</span>
+    <span class="s0">public static final class </span><span class="s1">Companion {</span>
+        
+        <span class="s1">@org.jetbrains.annotations.NotNull()</span>
+        <span class="s0">public final </span><span class="s1">com.respekt.fragments.PlayerFragment newInstance(@org.jetbrains.annotations.NotNull()</span>
+        <span class="s1">com.respekt.models.DataItem playItem</span><span class="s0">, boolean </span><span class="s1">param2) {</span>
+            <span class="s0">return null;</span>
+        <span class="s1">}</span>
+        
+        <span class="s0">private </span><span class="s1">Companion() {</span>
+            <span class="s0">super</span><span class="s1">()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

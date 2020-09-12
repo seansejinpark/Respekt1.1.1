@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F07D5E</color>
+    <color name="colorPrimaryDark">#F07D5E</color>
+    <color name="colorAccent">#F07D5E</color>
+    <color name="white">#ffffff</color>
+    <color name="app_pink">#F07D5E</color>
+    <color name="button_pink">#ff796b</color>
+</resources>

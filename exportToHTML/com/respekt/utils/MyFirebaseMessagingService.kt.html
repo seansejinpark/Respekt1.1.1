@@ -1,0 +1,162 @@
+<html>
+<head>
+<title>MyFirebaseMessagingService.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #629755; font-style: italic;}
+.s3 { color: #629755; font-weight: bold; font-style: italic;}
+.s4 { color: #808080;}
+.s5 { color: #6a8759;}
+.s6 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MyFirebaseMessagingService.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.utils</span>
+
+<span class="s1">import android.app.NotificationChannel</span>
+<span class="s1">import android.app.NotificationManager</span>
+<span class="s1">import android.app.PendingIntent</span>
+<span class="s1">import android.content.Context</span>
+<span class="s1">import android.content.Intent</span>
+<span class="s1">import android.media.RingtoneManager</span>
+<span class="s1">import android.os.Build</span>
+<span class="s1">import android.util.Log</span>
+<span class="s1">import androidx.core.app.NotificationCompat</span>
+
+<span class="s1">import com.google.firebase.messaging.FirebaseMessagingService</span>
+<span class="s1">import com.google.firebase.messaging.RemoteMessage</span>
+<span class="s1">import com.respekt.R</span>
+<span class="s1">import com.respekt.activites.MainActivity</span>
+
+
+<span class="s0">class </span><span class="s1">MyFirebaseMessagingService : FirebaseMessagingService() {</span>
+
+    <span class="s2">/**</span>
+     <span class="s2">* Called when message is received.</span>
+     <span class="s2">*</span>
+     <span class="s2">* </span><span class="s3">@param </span><span class="s2">remoteMessage Object representing the message received from Firebase Cloud Messaging.</span>
+     <span class="s2">*/</span>
+    <span class="s4">// [START receive_message]</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onMessageReceived(remoteMessage: RemoteMessage) {</span>
+        <span class="s4">// [START_EXCLUDE]</span>
+        <span class="s4">// There are two types of messages data messages and notification messages. Data messages are handled</span>
+        <span class="s4">// here in onMessageReceived whether the app is in the foreground or background. Data messages are the type</span>
+        <span class="s4">// traditionally used with GCM. Notification messages are only received here in onMessageReceived when the app</span>
+        <span class="s4">// is in the foreground. When the app is in the background an automatically generated notification is displayed.</span>
+        <span class="s4">// When the user taps on the notification they are returned to the app. Messages containing both notification</span>
+        <span class="s4">// and data payloads are treated as notification messages. The Firebase console always sends notification</span>
+        <span class="s4">// messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options</span>
+        <span class="s4">// [END_EXCLUDE]</span>
+        <span class="s1">remoteMessage.notification?.body?.let { sendNotification(it) }</span>
+        <span class="s4">// TODO(developer): Handle FCM messages here.</span>
+        <span class="s4">// Not getting messages here? See why this may be: https://goo.gl/39bRNJ</span>
+        <span class="s1">Log.d(TAG</span><span class="s0">, </span><span class="s5">&quot;From: </span><span class="s0">${</span><span class="s1">remoteMessage.from</span><span class="s0">}</span><span class="s5">&quot;</span><span class="s1">)</span>
+
+        <span class="s4">// Check if message contains a data payload.</span>
+        <span class="s0">if </span><span class="s1">(remoteMessage.data.isNotEmpty()) {</span>
+            <span class="s1">Log.d(TAG</span><span class="s0">, </span><span class="s5">&quot;Message data payload: </span><span class="s0">${</span><span class="s1">remoteMessage.data</span><span class="s0">}</span><span class="s5">&quot;</span><span class="s1">)</span>
+
+            <span class="s0">if </span><span class="s1">(</span><span class="s4">/* Check if data needs to be processed by long running job */ </span><span class="s0">true</span><span class="s1">) {</span>
+                <span class="s4">// For long-running tasks (10 seconds or more) use WorkManager.</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s4">// Handle message within 10 seconds</span>
+                <span class="s1">handleNow()</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s4">// Check if message contains a notification payload.</span>
+        <span class="s1">remoteMessage.notification?.let {</span>
+            <span class="s1">Log.d(TAG</span><span class="s0">, </span><span class="s5">&quot;Message Notification Body: </span><span class="s0">${</span><span class="s1">it.body</span><span class="s0">}</span><span class="s5">&quot;</span><span class="s1">)</span>
+        <span class="s1">}</span>
+
+        <span class="s4">// Also if you intend on generating your own notifications as a result of a received FCM</span>
+        <span class="s4">// message, here is where that should be initiated. See sendNotification method below.</span>
+    <span class="s1">}</span>
+    <span class="s4">// [END receive_message]</span>
+
+    <span class="s4">// [START on_new_token]</span>
+    <span class="s2">/**</span>
+     <span class="s2">* Called if InstanceID token is updated. This may occur if the security of</span>
+     <span class="s2">* the previous token had been compromised. Note that this is called when the InstanceID token</span>
+     <span class="s2">* is initially generated so this is where you would retrieve the token.</span>
+     <span class="s2">*/</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onNewToken(token: String) {</span>
+        <span class="s1">Log.d(TAG</span><span class="s0">, </span><span class="s5">&quot;Refreshed token: </span><span class="s0">$</span><span class="s1">token</span><span class="s5">&quot;</span><span class="s1">)</span>
+
+        <span class="s4">// If you want to send messages to this application instance or</span>
+        <span class="s4">// manage this apps subscriptions on the server side, send the</span>
+        <span class="s4">// Instance ID token to your app server.</span>
+        <span class="s1">sendRegistrationToServer(token)</span>
+    <span class="s1">}</span>
+    <span class="s4">// [END on_new_token]</span>
+
+
+
+    <span class="s2">/**</span>
+     <span class="s2">* Handle time allotted to BroadcastReceivers.</span>
+     <span class="s2">*/</span>
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">handleNow() {</span>
+        <span class="s1">Log.d(TAG</span><span class="s0">, </span><span class="s5">&quot;Short lived task is done.&quot;</span><span class="s1">)</span>
+    <span class="s1">}</span>
+
+    <span class="s2">/**</span>
+     <span class="s2">* Persist token to third-party servers.</span>
+     <span class="s2">*</span>
+     <span class="s2">* Modify this method to associate the user's FCM InstanceID token with any server-side account</span>
+     <span class="s2">* maintained by your application.</span>
+     <span class="s2">*</span>
+     <span class="s2">* </span><span class="s3">@param </span><span class="s2">token The new token.</span>
+     <span class="s2">*/</span>
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">sendRegistrationToServer(token: String?) {</span>
+        <span class="s4">// TODO: Implement this method to send token to your app server.</span>
+        <span class="s1">Log.d(TAG</span><span class="s0">, </span><span class="s5">&quot;sendRegistrationTokenToServer(</span><span class="s0">$</span><span class="s1">token</span><span class="s5">)&quot;</span><span class="s1">)</span>
+    <span class="s1">}</span>
+
+    <span class="s2">/**</span>
+     <span class="s2">* Create and show a simple notification containing the received FCM message.</span>
+     <span class="s2">*</span>
+     <span class="s2">* </span><span class="s3">@param </span><span class="s2">messageBody FCM message body received.</span>
+     <span class="s2">*/</span>
+    <span class="s1">private </span><span class="s0">fun </span><span class="s1">sendNotification(messageBody: String) {</span>
+        <span class="s0">val </span><span class="s1">intent = Intent(</span><span class="s0">this, </span><span class="s1">MainActivity::</span><span class="s0">class</span><span class="s1">.java)</span>
+        <span class="s1">intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)</span>
+        <span class="s0">val </span><span class="s1">pendingIntent = PendingIntent.getActivity(</span><span class="s0">this, </span><span class="s6">0 </span><span class="s4">/* Request code */</span><span class="s0">, </span><span class="s1">intent</span><span class="s0">,</span>
+            <span class="s1">PendingIntent.FLAG_ONE_SHOT)</span>
+
+        <span class="s0">val </span><span class="s1">channelId = </span><span class="s5">&quot;Notification&quot;</span>
+        <span class="s0">val </span><span class="s1">defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)</span>
+        <span class="s0">val </span><span class="s1">notificationBuilder = NotificationCompat.Builder(</span><span class="s0">this, </span><span class="s1">channelId)</span>
+            <span class="s1">.setSmallIcon(R.drawable.ic_launcher)</span>
+            <span class="s1">.setContentTitle(getString(R.string.app_name))</span>
+            <span class="s1">.setContentText(messageBody)</span>
+            <span class="s1">.setAutoCancel(</span><span class="s0">true</span><span class="s1">)</span>
+            <span class="s1">.setSound(defaultSoundUri)</span>
+            <span class="s1">.setContentIntent(pendingIntent)</span>
+
+        <span class="s0">val </span><span class="s1">notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) </span><span class="s0">as </span><span class="s1">NotificationManager</span>
+
+        <span class="s4">// Since android Oreo notification channel is needed.</span>
+        <span class="s0">if </span><span class="s1">(Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) {</span>
+            <span class="s0">val </span><span class="s1">channel = NotificationChannel(channelId</span><span class="s0">,</span>
+                <span class="s5">&quot;Channel human readable title&quot;</span><span class="s0">,</span>
+                <span class="s1">NotificationManager.IMPORTANCE_DEFAULT)</span>
+            <span class="s1">notificationManager.createNotificationChannel(channel)</span>
+        <span class="s1">}</span>
+
+        <span class="s1">notificationManager.notify(</span><span class="s6">0 </span><span class="s4">/* ID of notification */</span><span class="s0">, </span><span class="s1">notificationBuilder.build())</span>
+    <span class="s1">}</span>
+
+    <span class="s1">companion </span><span class="s0">object </span><span class="s1">{</span>
+
+        <span class="s1">private const </span><span class="s0">val </span><span class="s1">TAG = </span><span class="s5">&quot;MyFirebaseMsgService&quot;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

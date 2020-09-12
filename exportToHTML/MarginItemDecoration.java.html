@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>MarginItemDecoration.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MarginItemDecoration.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.respekt.utils</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.lang.System</span><span class="s0">;</span>
+
+<span class="s1">@kotlin.Metadata(mv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">1</span><span class="s0">, </span><span class="s2">16</span><span class="s1">}</span><span class="s0">, </span><span class="s1">bv = {</span><span class="s2">1</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">3</span><span class="s1">}</span><span class="s0">, </span><span class="s1">k = </span><span class="s2">1</span><span class="s0">, </span><span class="s1">d1 = {</span><span class="s3">&quot;</span><span class="s0">\u0000</span><span class="s3">0</span><span class="s0">\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\u0018\u0000</span><span class="s3">2</span><span class="s0">\u0002</span><span class="s3">0</span><span class="s0">\u0001</span><span class="s3">B</span><span class="s0">\r\u0012\u0006\u0010\u0002\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0003\u00a2\u0006\u0002\u0010\u0004</span><span class="s3">J(</span><span class="s0">\u0010\u0005\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0006</span><span class="s3">2</span><span class="s0">\u0006\u0010\u0007\u001a\u0002</span><span class="s3">0</span><span class="s0">\b</span><span class="s3">2</span><span class="s0">\u0006\u0010\t\u001a\u0002</span><span class="s3">0</span><span class="s0">\n</span><span class="s3">2</span><span class="s0">\u0006\u0010\u000b\u001a\u0002</span><span class="s3">0</span><span class="s0">\f</span><span class="s3">2</span><span class="s0">\u0006\u0010\r\u001a\u0002</span><span class="s3">0</span><span class="s0">\u000e</span><span class="s3">H</span><span class="s0">\u0016</span><span class="s3">R</span><span class="s0">\u000e\u0010\u0002\u001a\u0002</span><span class="s3">0</span><span class="s0">\u0003</span><span class="s3">X</span><span class="s0">\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u000f</span><span class="s3">&quot;</span><span class="s1">}</span><span class="s0">, </span><span class="s1">d2 = {</span><span class="s3">&quot;Lcom/respekt/utils/MarginItemDecoration;&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;&quot;</span><span class="s0">, </span><span class="s3">&quot;spaceHeight&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;(I)V&quot;</span><span class="s0">, </span><span class="s3">&quot;getItemOffsets&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s0">, </span><span class="s3">&quot;outRect&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/graphics/Rect;&quot;</span><span class="s0">, </span><span class="s3">&quot;view&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroid/view/View;&quot;</span><span class="s0">, </span><span class="s3">&quot;parent&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroidx/recyclerview/widget/RecyclerView;&quot;</span><span class="s0">, </span><span class="s3">&quot;state&quot;</span><span class="s0">, </span><span class="s3">&quot;Landroidx/recyclerview/widget/RecyclerView$State;&quot;</span><span class="s0">, </span><span class="s3">&quot;app_debug&quot;</span><span class="s1">})</span>
+<span class="s0">public final class </span><span class="s1">MarginItemDecoration </span><span class="s0">extends </span><span class="s1">androidx.recyclerview.widget.RecyclerView.ItemDecoration {</span>
+    <span class="s0">private final int </span><span class="s1">spaceHeight = </span><span class="s2">0</span><span class="s0">;</span>
+    
+    <span class="s1">@java.lang.Override()</span>
+    <span class="s0">public void </span><span class="s1">getItemOffsets(@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.graphics.Rect outRect</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">android.view.View view</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">androidx.recyclerview.widget.RecyclerView parent</span><span class="s0">, </span><span class="s1">@org.jetbrains.annotations.NotNull()</span>
+    <span class="s1">androidx.recyclerview.widget.RecyclerView.State state) {</span>
+    <span class="s1">}</span>
+    
+    <span class="s0">public </span><span class="s1">MarginItemDecoration(</span><span class="s0">int </span><span class="s1">spaceHeight) {</span>
+        <span class="s0">super</span><span class="s1">()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

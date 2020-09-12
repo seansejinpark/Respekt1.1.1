@@ -1,0 +1,295 @@
+<html>
+<head>
+<title>MediaPlayerHolder.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #cc7832;}
+.s3 { color: #629755; font-style: italic;}
+.s4 { color: #77b767; font-style: italic;}
+.s5 { color: #6897bb;}
+.s6 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MediaPlayerHolder.java</font>
+</center></td></tr></table>
+<pre><span class="s0">/* 
+ * Copyright 2018 Nazmul Idris. All rights reserved. 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and 
+ * limitations under the License. 
+ */</span>
+
+<span class="s2">package </span><span class="s1">com.respekt.mediaplayer</span><span class="s2">;</span>
+
+<span class="s2">import </span><span class="s1">android.content.Context</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">android.media.MediaPlayer</span><span class="s2">;</span>
+
+<span class="s2">import </span><span class="s1">com.respekt.models.DataItem</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">com.respekt.utils.MeData</span><span class="s2">;</span>
+
+<span class="s2">import </span><span class="s1">org.greenrobot.eventbus.EventBus</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">org.greenrobot.eventbus.Subscribe</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">org.greenrobot.eventbus.ThreadMode</span><span class="s2">;</span>
+
+<span class="s2">import </span><span class="s1">java.util.ArrayList</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">java.util.concurrent.Executors</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">java.util.concurrent.ScheduledExecutorService</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">java.util.concurrent.TimeUnit</span><span class="s2">;</span>
+
+<span class="s3">/**</span>
+ <span class="s3">* Provides access to a MediaPlayer object which is used to play a single MP3 file from the</span>
+ <span class="s3">* </span><span class="s4">&lt;code&gt;</span><span class="s3">res/raw</span><span class="s4">&lt;/code&gt; </span><span class="s3">folder.</span>
+ <span class="s3">*/</span>
+<span class="s2">public class </span><span class="s1">MediaPlayerHolder {</span>
+
+    <span class="s2">public static final int </span><span class="s1">SEEKBAR_REFRESH_INTERVAL_MS = </span><span class="s5">1000</span><span class="s2">;</span>
+
+    <span class="s2">private </span><span class="s1">String mResourceId</span><span class="s2">;</span>
+    <span class="s2">private final </span><span class="s1">MediaPlayer mMediaPlayer</span><span class="s2">;</span>
+    <span class="s2">private </span><span class="s1">Context mContext</span><span class="s2">;</span>
+    <span class="s2">private </span><span class="s1">ArrayList&lt;String&gt; mLogMessages = </span><span class="s2">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s2">;</span>
+    <span class="s2">private </span><span class="s1">ScheduledExecutorService mExecutor</span><span class="s2">;</span>
+    <span class="s2">private </span><span class="s1">Runnable mSeekbarProgressUpdateTask</span><span class="s2">;</span>
+    <span class="s2">private </span><span class="s1">DataItem dataItem = </span><span class="s2">null;</span>
+
+    <span class="s2">public enum </span><span class="s1">PlayerState {</span>
+        <span class="s1">PLAYING</span><span class="s2">, </span><span class="s1">PAUSED</span><span class="s2">, </span><span class="s1">COMPLETED</span><span class="s2">, </span><span class="s1">RESET</span><span class="s2">, </span><span class="s1">STOP</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">setDataItem(DataItem dataItem) {</span>
+        <span class="s2">this</span><span class="s1">.dataItem = dataItem</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public </span><span class="s1">DataItem getDataItem() {</span>
+        <span class="s2">return </span><span class="s1">dataItem</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public </span><span class="s1">MediaPlayerHolder(Context context) {</span>
+        <span class="s1">mContext = context</span><span class="s2">;</span>
+        <span class="s1">EventBus.getDefault().register(</span><span class="s2">this</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">mMediaPlayer = </span><span class="s2">new </span><span class="s1">MediaPlayer()</span><span class="s2">;</span>
+        <span class="s1">mMediaPlayer.setOnCompletionListener(</span><span class="s2">new </span><span class="s1">MediaPlayer.OnCompletionListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s2">public void </span><span class="s1">onCompletion(MediaPlayer mediaPlayer) {</span>
+                <span class="s1">stopUpdatingSeekbarWithPlaybackProgress(</span><span class="s2">true</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">logToUI(</span><span class="s6">&quot;MediaPlayer playback completed&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">EventBus.getDefault().post(</span><span class="s2">new </span><span class="s1">LocalEventFromMediaPlayerHolder.PlaybackCompleted())</span><span class="s2">;</span>
+                <span class="s1">EventBus.getDefault()</span>
+                        <span class="s1">.post(</span><span class="s2">new </span><span class="s1">LocalEventFromMediaPlayerHolder.StateChanged(</span>
+                                <span class="s1">PlayerState.COMPLETED))</span><span class="s2">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s2">;</span>
+        <span class="s1">logToUI(</span><span class="s6">&quot;mMediaPlayer = new MediaPlayer()&quot;</span><span class="s1">)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">// MediaPlayer orchestration.</span>
+
+    <span class="s2">public void </span><span class="s1">release() {</span>
+        <span class="s1">logToUI(</span><span class="s6">&quot;release() and mMediaPlayer = null&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">mMediaPlayer.release()</span><span class="s2">;</span>
+        <span class="s1">EventBus.getDefault().unregister(</span><span class="s2">this</span><span class="s1">)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">play() {</span>
+        <span class="s2">if </span><span class="s1">(!mMediaPlayer.isPlaying()) {</span>
+            <span class="s1">mMediaPlayer.start()</span><span class="s2">;</span>
+            <span class="s1">startUpdatingSeekbarWithPlaybackProgress()</span><span class="s2">;</span>
+            <span class="s1">EventBus.getDefault()</span>
+                    <span class="s1">.post(</span><span class="s2">new </span><span class="s1">LocalEventFromMediaPlayerHolder.StateChanged(PlayerState.PLAYING))</span><span class="s2">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+
+    <span class="s2">public void </span><span class="s1">pause() {</span>
+        <span class="s2">if </span><span class="s1">(mMediaPlayer.isPlaying()) {</span>
+            <span class="s1">mMediaPlayer.pause()</span><span class="s2">;</span>
+            <span class="s1">logToUI(</span><span class="s6">&quot;pause()&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">EventBus.getDefault()</span>
+                    <span class="s1">.post(</span><span class="s2">new </span><span class="s1">LocalEventFromMediaPlayerHolder.StateChanged(PlayerState.PAUSED))</span><span class="s2">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">reset(</span><span class="s2">boolean </span><span class="s1">isStop) {</span>
+        <span class="s1">logToUI(</span><span class="s6">&quot;reset()&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">mMediaPlayer.reset()</span><span class="s2">;</span>
+        <span class="s1">load(mResourceId</span><span class="s2">, </span><span class="s1">isStop)</span><span class="s2">;</span>
+        <span class="s1">stopUpdatingSeekbarWithPlaybackProgress(</span><span class="s2">true</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">EventBus.getDefault()</span>
+                <span class="s1">.post(</span><span class="s2">new </span><span class="s1">LocalEventFromMediaPlayerHolder.StateChanged(PlayerState.RESET))</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public boolean </span><span class="s1">isPlaying() {</span>
+        <span class="s2">return </span><span class="s1">mMediaPlayer.isPlaying()</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">load(String resourceId</span><span class="s2">, boolean </span><span class="s1">isStop) {</span>
+        <span class="s1">mResourceId = resourceId</span><span class="s2">;</span>
+
+        <span class="s2">try </span><span class="s1">{</span>
+            <span class="s1">logToUI(</span><span class="s6">&quot;load() {1. setDataSource}&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">mMediaPlayer.setDataSource(mResourceId)</span><span class="s2">;</span>
+        <span class="s1">} </span><span class="s2">catch </span><span class="s1">(Exception e) {</span>
+            <span class="s1">logToUI(e.toString())</span><span class="s2">;</span>
+        <span class="s1">}</span>
+
+        <span class="s2">try </span><span class="s1">{</span>
+            <span class="s1">logToUI(</span><span class="s6">&quot;load() {2. prepare}&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">mMediaPlayer.prepareAsync()</span><span class="s2">;</span>
+
+        <span class="s1">} </span><span class="s2">catch </span><span class="s1">(Exception e) {</span>
+            <span class="s1">logToUI(e.toString())</span><span class="s2">;</span>
+        <span class="s1">}</span>
+        <span class="s2">if </span><span class="s1">(isStop) {</span>
+            <span class="s1">EventBus.getDefault()</span>
+                    <span class="s1">.post(</span><span class="s2">new </span><span class="s1">LocalEventFromMediaPlayerHolder.StateChanged(PlayerState.STOP))</span><span class="s2">;</span>
+        <span class="s1">}</span>
+        <span class="s1">mMediaPlayer.setOnPreparedListener(</span><span class="s2">new </span><span class="s1">MediaPlayer.OnPreparedListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s2">public void </span><span class="s1">onPrepared(MediaPlayer mp) {</span>
+                <span class="s1">initSeekbar()</span><span class="s2">;</span>
+                <span class="s2">if </span><span class="s1">(!isStop)</span>
+                    <span class="s1">EventBus.getDefault().post(</span><span class="s2">new </span><span class="s1">LocalEventFromMediaPlayerHolder.PreparedDone())</span><span class="s2">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">seekTo(</span><span class="s2">int </span><span class="s1">duration) {</span>
+        <span class="s1">logToUI(String.format(</span><span class="s6">&quot;seekTo() %d ms&quot;</span><span class="s2">, </span><span class="s1">duration))</span><span class="s2">;</span>
+        <span class="s1">mMediaPlayer.seekTo(duration)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">// Reporting media playback position to Seekbar in MainActivity.</span>
+
+    <span class="s2">private void </span><span class="s1">stopUpdatingSeekbarWithPlaybackProgress(</span><span class="s2">boolean </span><span class="s1">resetUIPlaybackPosition) {</span>
+        <span class="s2">if </span><span class="s1">(mExecutor != </span><span class="s2">null</span><span class="s1">) {</span>
+            <span class="s1">mExecutor.shutdownNow()</span><span class="s2">;</span>
+            <span class="s1">mExecutor = </span><span class="s2">null;</span>
+            <span class="s1">mSeekbarProgressUpdateTask = </span><span class="s2">null;</span>
+        <span class="s1">}</span>
+        <span class="s2">if </span><span class="s1">(resetUIPlaybackPosition) {</span>
+            <span class="s1">EventBus.getDefault().post(</span><span class="s2">new </span><span class="s1">LocalEventFromMediaPlayerHolder.PlaybackPosition(</span><span class="s5">0</span><span class="s1">))</span><span class="s2">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s2">private void </span><span class="s1">startUpdatingSeekbarWithPlaybackProgress() {</span>
+        <span class="s0">// Setup a recurring task to sync the mMediaPlayer position with the Seekbar.</span>
+        <span class="s2">if </span><span class="s1">(mExecutor == </span><span class="s2">null</span><span class="s1">) {</span>
+            <span class="s1">mExecutor = Executors.newSingleThreadScheduledExecutor()</span><span class="s2">;</span>
+        <span class="s1">}</span>
+        <span class="s2">if </span><span class="s1">(mSeekbarProgressUpdateTask == </span><span class="s2">null</span><span class="s1">) {</span>
+            <span class="s1">mSeekbarProgressUpdateTask = </span><span class="s2">new </span><span class="s1">Runnable() {</span>
+                <span class="s1">@Override</span>
+                <span class="s2">public void </span><span class="s1">run() {</span>
+                    <span class="s2">if </span><span class="s1">(mMediaPlayer != </span><span class="s2">null </span><span class="s1">&amp;&amp; mMediaPlayer.isPlaying()) {</span>
+                        <span class="s2">int </span><span class="s1">currentPosition = mMediaPlayer.getCurrentPosition()</span><span class="s2">;</span>
+                        <span class="s1">Integer totalMinutes = Integer.parseInt(MeData.Companion.getTotalMinutes())</span><span class="s2">;</span>
+                        <span class="s2">if </span><span class="s1">(mMediaPlayer.isPlaying())</span>
+                            <span class="s1">totalMinutes = totalMinutes + </span><span class="s5">1000</span><span class="s2">;</span>
+
+                        <span class="s1">MeData.Companion.setTotalMinutes(totalMinutes + </span><span class="s6">&quot;&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                        <span class="s1">EventBus.getDefault().post(</span>
+                                <span class="s2">new </span><span class="s1">LocalEventFromMediaPlayerHolder.PlaybackPosition(</span>
+                                        <span class="s1">currentPosition))</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span><span class="s2">;</span>
+        <span class="s1">}</span>
+        <span class="s1">mExecutor.scheduleAtFixedRate(</span>
+                <span class="s1">mSeekbarProgressUpdateTask</span><span class="s2">,</span>
+                <span class="s5">0</span><span class="s2">,</span>
+                <span class="s1">SEEKBAR_REFRESH_INTERVAL_MS</span><span class="s2">,</span>
+                <span class="s1">TimeUnit.MILLISECONDS</span>
+        <span class="s1">)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">initSeekbar() {</span>
+        <span class="s0">// Set the duration.</span>
+        <span class="s2">final int </span><span class="s1">duration = mMediaPlayer.getDuration()</span><span class="s2">;</span>
+        <span class="s1">EventBus.getDefault().post(</span>
+                <span class="s2">new </span><span class="s1">LocalEventFromMediaPlayerHolder.PlaybackDuration(duration))</span><span class="s2">;</span>
+        <span class="s1">logToUI(String.format(</span><span class="s6">&quot;setting seekbar max %d sec&quot;</span><span class="s2">,</span>
+                <span class="s1">TimeUnit.MILLISECONDS.toSeconds(duration)))</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.BACKGROUND)</span>
+    <span class="s2">public void </span><span class="s1">onMessageEvent(LocalEventFromMainActivity.SeekTo event) {</span>
+        <span class="s1">seekTo(event.position)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.BACKGROUND)</span>
+    <span class="s2">public void </span><span class="s1">onMessageEvent(</span>
+            <span class="s1">LocalEventFromMainActivity.StopUpdatingSeekbarWithMediaPosition event) {</span>
+        <span class="s1">stopUpdatingSeekbarWithPlaybackProgress(</span><span class="s2">false</span><span class="s1">)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.BACKGROUND)</span>
+    <span class="s2">public void </span><span class="s1">onMessageEvent(</span>
+            <span class="s1">LocalEventFromMainActivity.StartUpdatingSeekbarWithPlaybackPosition event) {</span>
+        <span class="s1">startUpdatingSeekbarWithPlaybackProgress()</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">// Logging to UI methods.</span>
+
+    <span class="s2">public void </span><span class="s1">logToUI(String msg) {</span>
+        <span class="s1">mLogMessages.add(msg)</span><span class="s2">;</span>
+        <span class="s1">fireLogUpdate()</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">/**</span>
+     <span class="s3">* update the MainActivity's UI with the debug log messages</span>
+     <span class="s3">*/</span>
+    <span class="s2">public void </span><span class="s1">fireLogUpdate() {</span>
+        <span class="s1">StringBuffer formattedLogMessages = </span><span class="s2">new </span><span class="s1">StringBuffer()</span><span class="s2">;</span>
+        <span class="s2">for </span><span class="s1">(</span><span class="s2">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s2">; </span><span class="s1">i &lt; mLogMessages.size()</span><span class="s2">; </span><span class="s1">i++) {</span>
+            <span class="s1">formattedLogMessages.append(i)</span>
+                    <span class="s1">.append(</span><span class="s6">&quot; - &quot;</span><span class="s1">)</span>
+                    <span class="s1">.append(mLogMessages.get(i))</span><span class="s2">;</span>
+            <span class="s2">if </span><span class="s1">(i != mLogMessages.size() - </span><span class="s5">1</span><span class="s1">) {</span>
+                <span class="s1">formattedLogMessages.append(</span><span class="s6">&quot;</span><span class="s2">\n</span><span class="s6">&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s1">EventBus.getDefault().post(</span>
+                <span class="s2">new </span><span class="s1">LocalEventFromMediaPlayerHolder.UpdateLog(formattedLogMessages))</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">// Respond to playback localevents.</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.BACKGROUND)</span>
+    <span class="s2">public void </span><span class="s1">onMessageEvent(LocalEventFromMainActivity.PausePlayback event) {</span>
+        <span class="s1">pause()</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.BACKGROUND)</span>
+    <span class="s2">public void </span><span class="s1">onMessageEvent(LocalEventFromMainActivity.StartPlayback event) {</span>
+        <span class="s1">play()</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.BACKGROUND)</span>
+    <span class="s2">public void </span><span class="s1">onMessageEvent(LocalEventFromMainActivity.StopPlayback event) {</span>
+        <span class="s1">reset(</span><span class="s2">true</span><span class="s1">)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Subscribe(threadMode = ThreadMode.BACKGROUND)</span>
+    <span class="s2">public void </span><span class="s1">onMessageEvent(LocalEventFromMainActivity.ResetPlayback event) {</span>
+        <span class="s1">reset(</span><span class="s2">false</span><span class="s1">)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
